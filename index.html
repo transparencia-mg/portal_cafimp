@@ -209,20 +209,11 @@
         .combo-clear-btn { position: absolute; right: 26px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 14px; padding: 2px 4px; line-height: 1; display: none; }
         .combo-clear-btn.visible { display: block; }
 
+        /* RESUMO POR ÓRGÃO (Visão Geral) */
+        .resumo-tr { cursor: pointer; }
+        .resumo-tr td:first-child { font-weight: 500; color: #1a3a5c; }
+
         /* CONSULTA INDIVIDUAL */
-        .empresa-card { background:white; border-radius:10px; box-shadow:0 3px 12px rgba(0,0,0,0.08); overflow:hidden; margin-bottom:20px; }
-        .empresa-card-header { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%); color:#fff; padding:18px 22px; }
-        .empresa-card-header h3 { font-size:17px; font-weight:700; margin:0 0 4px; }
-        .empresa-card-header .cnpj { font-size:12.5px; opacity:0.9; font-weight:500; }
-        .empresa-card-body { padding: 18px 22px; }
-        .empty-state { text-align:center; padding:60px 20px; color:#94a3b8; }
-        .empty-state .material-icons { font-size:56px; color:#c7d2df; }
-        .empty-state h5 { color:#64748b; font-size:15px; margin:12px 0 4px; }
-        .empty-state p { font-size:12.5px; }
-        .timeline-item { border-left:3px solid var(--accent-red); padding:10px 0 10px 18px; margin-left:4px; position:relative; }
-        .timeline-item::before { content:''; position:absolute; left:-7px; top:16px; width:11px; height:11px; border-radius:50%; background:var(--accent-red); border:2px solid #fff; box-shadow:0 0 0 2px var(--accent-red); }
-        .timeline-item.encerrada { border-left-color:#0f6b3a; }
-        .timeline-item.encerrada::before { background:#0f6b3a; box-shadow:0 0 0 2px #0f6b3a; }
 
         /* RESPONSIVO */
         @media (max-width: 992px) { .container-fluid, .dashboard-container { padding: 0 15px !important; } }
@@ -244,15 +235,6 @@
 
 <div class="main-container">
     <div class="container-fluid dashboard-container">
-
-        <!-- Cabeçalho -->
-        <div class="portal-header">
-            <div class="icone"><i class="material-icons">gavel</i></div>
-            <div>
-                <h1>CAFIMP - Cadastro de Fornecedores Impedidos de Licitar e Contratar</h1>
-                <p>Portal da Transparência de Minas Gerais</p>
-            </div>
-        </div>
 
         <!-- Abas -->
         <div class="nav-tabs-container">
@@ -329,9 +311,9 @@
 // Aponte para o repositório GitHub (branch "main") onde o CSV do CAFIMP
 // será atualizado. O arquivo deve ter exatamente estas colunas (na 1ª linha):
 // cnpj_cpf;nome_empresarial;tipo_penalidade;motivo_penalidade;data_inicio;data_fim;data_publicacao
-const GITHUB_BASE = 'https://raw.githubusercontent.com/SEU-USUARIO/SEU-REPOSITORIO/refs/heads/main/dataset/';
+const GITHUB_BASE = 'https://raw.githubusercontent.com/transparencia-mg/portal_cafimp/refs/heads/main/dataset/data/';
 const CSV_FILE     = 'cafimp.csv';
-const REPO_URL     = 'https://github.com/SEU-USUARIO/SEU-REPOSITORIO'; // usado nos botões "Ver no GitHub"
+const REPO_URL     = 'https://github.com/transparencia-mg/portal_cafimp'; // usado nos botões "Ver no GitHub"
 
 // ============================================================
 // 2. GLOBALS
@@ -364,7 +346,7 @@ function _limpar(s) { return String(s==null?'':s).replace(/[\uFEFF\u200B\u00A0]/
 
 // Converte datas em vários formatos (DD/MM/AAAA, AAAA-MM-DD[ HH:MM:SS]) para AAAA-MM-DD
 function dataParaISO(d) {
-    d = _limpar(d);
+    d = _limpar(d).replace(/^'+|'+$/g,'').trim(); // remove aspas simples que envolvem as datas no CSV de origem
     if (!d || d==='0000-00-00') return '';
     const s = d.split(' ')[0].split('T')[0];
     if (s.includes('/')) {
@@ -387,10 +369,16 @@ function formatarData(d) {
 // Formata CNPJ (14 dígitos) ou CPF (11 dígitos) com máscara padrão — SEM ocultar dígitos,
 // pois o CAFIMP é um cadastro público de sanções (transparência ativa exige exibição integral).
 function formatarCnpjCpf(v) {
-    const d = String(v||'').replace(/\D/g,'');
-    if (d.length === 11) return d.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-    if (d.length === 14) return d.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
-    return v || '-';
+    let d = String(v||'').replace(/\D/g,'');
+    if (!d) return '-';
+    // O CSV de origem armazena o CNPJ/CPF como número, perdendo zeros à esquerda.
+    // CPF tem 11 dígitos e CNPJ 14 — reconstituímos o zero-padding pelo tamanho.
+    d = d.length <= 11 ? d.padStart(11,'0') : d.padStart(14,'0');
+    if (d.length === 11) {
+        // CPF: máscara ***.456.789-** — oculta os 3 primeiros e os 2 últimos dígitos
+        return `***.${d.substring(3,6)}.${d.substring(6,9)}-**`;
+    }
+    return d.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
 }
 
 function esc(s) { return String(s==null?'':s).replace(/'/g,"\\'").replace(/"/g,'&quot;'); }
@@ -514,50 +502,8 @@ function opcoesUnicas(campo) {
 
 function renderizarVisaoGeral() {
     const c = document.getElementById('visaogeral-content'); if (!c) return;
-    dadosFiltrados = ordenar(dadosCafimp, sortCfg.col, sortCfg.dir);
 
     c.innerHTML = `
-    <!-- FILTROS -->
-    <div class="filter-container">
-        <div class="filters-row">
-            <div class="filter-group" style="flex:2;min-width:220px;">
-                <label class="filter-label">Empresa</label>
-                ${buildComboHTML('filtroEmpresa','Selecione ou digite a razão social...')}
-            </div>
-            <div class="filter-group" style="flex:1.4;min-width:180px;">
-                <label class="filter-label">CNPJ/CPF</label>
-                ${buildComboHTML('filtroCnpj','Selecione ou digite...')}
-            </div>
-            <div class="filter-group" style="flex:1.4;min-width:180px;">
-                <label class="filter-label">Tipo de Penalidade</label>
-                ${buildComboHTML('filtroTipo','Selecione ou digite...')}
-            </div>
-            <div class="filter-group">
-                <label class="filter-label">Situação</label>
-                <select class="form-select" id="filtroSituacao">
-                    <option value="">Todas</option>
-                    <option value="ativa">Ativa</option>
-                    <option value="encerrada">Encerrada</option>
-                    <option value="indeterminada">Prazo Indeterminado</option>
-                </select>
-            </div>
-        </div>
-        <div class="filters-row">
-            <div class="filter-group">
-                <label class="filter-label">Publicação - De</label>
-                <input type="date" class="form-control" id="filtroPubDe">
-            </div>
-            <div class="filter-group">
-                <label class="filter-label">Publicação - Até</label>
-                <input type="date" class="form-control" id="filtroPubAte">
-            </div>
-        </div>
-        <div class="botoes-abaixo">
-            <button class="btn-pesquisa" onclick="aplicarFiltrosVG()"><i class="material-icons">search</i> Pesquisar</button>
-            <button class="btn-secondary-custom" onclick="limparFiltrosVG()"><i class="material-icons">clear</i> Limpar Filtros</button>
-        </div>
-    </div>
-
     <!-- MÉTRICAS -->
     <div class="row g-3 mb-4" id="metricasVG"></div>
 
@@ -577,40 +523,82 @@ function renderizarVisaoGeral() {
         </div>
     </div>
 
-    <!-- TOOLBAR -->
-    <div class="toolbar">
-        <div class="toolbar-left">
-            <button class="btn-export" onclick="exportarVGCSV()"><i class="material-icons">description</i> CSV</button>
-            <button class="btn-export" onclick="exportarVGPDF()"><i class="material-icons">print</i> PDF</button>
-        </div>
-        <div class="toolbar-right" style="display:flex;align-items:center;gap:8px;">
-            <input type="text" id="buscaVG" maxlength="60" placeholder="Buscar empresa, CNPJ, motivo..." class="form-control" style="height:32px;font-size:12px;width:260px;padding:4px 10px;" oninput="buscarVG(this.value)">
-            <span class="table-badge" id="badgeVG">${dadosFiltrados.length} registros</span>
+    <!-- RESUMO POR ÓRGÃO -->
+    <div class="row g-3 mb-3">
+        <div class="col-12">
+            <div class="chart-container">
+                <div class="chart-header"><h4 class="chart-title">Resumo por Órgão/Entidade</h4></div>
+                <div id="resumoOrgao"></div>
+            </div>
         </div>
     </div>
+    <p style="font-size:11.5px;color:#94a3b8;text-align:center;margin-top:-6px;">
+        <i class="material-icons" style="font-size:13px;vertical-align:middle;">touch_app</i>
+        Clique em um órgão para ver as empresas correspondentes na Consulta Individual.
+    </p>
 
-    <!-- TABELA -->
-    <div class="table-container">
-        <div class="table-fixed-header-container">
-            <table class="table" id="tabelaVG">
-                <thead id="theadVG"><tr></tr></thead>
-                <tbody id="tbodyVG"></tbody>
-            </table>
-        </div>
-        <div class="pagination-container" id="pagContainerVG"></div>
-    </div>
     <div style="display:flex;justify-content:flex-end;margin-top:12px;">
         <button class="btn-topo" onclick="voltarAoTopo()"><i class="material-icons">arrow_upward</i> Voltar ao topo</button>
     </div>`;
 
-    inicializarCombosVG();
-    reconstruirCabecalhoVG();
-    paginaAtual = 1;
-    atualizarMetricasVG(dadosFiltrados);
-    atualizarTabelaVG();
-    setTimeout(()=>atualizarGraficosVG(dadosFiltrados), 150);
+    atualizarMetricasVG(dadosCafimp);
+    setTimeout(()=>atualizarGraficosVG(dadosCafimp), 150);
+    renderizarResumoOrgaoVG(dadosCafimp);
     setTimeout(iframeH, 300);
 }
+
+// Tabela de resumo por Órgão/Entidade: empresas, penalidades, ativas e encerradas
+function renderizarResumoOrgaoVG(dados) {
+    const el = document.getElementById('resumoOrgao'); if (!el) return;
+    const grupos = {};
+    dados.forEach(r => {
+        const chave = r.orgao || 'Não informado';
+        if (!grupos[chave]) grupos[chave] = { empresas:new Set(), penalidades:0, ativas:0, encerradas:0 };
+        const g = grupos[chave];
+        g.empresas.add(r.cnpj_cpf);
+        g.penalidades++;
+        const sit = calcularSituacao(r);
+        if (sit==='ativa') g.ativas++; else if (sit==='encerrada') g.encerradas++;
+    });
+    const linhas = Object.entries(grupos).sort((a,b)=>b[1].penalidades - a[1].penalidades);
+    if (!linhas.length) { el.innerHTML = '<p style="padding:16px;color:#94a3b8;font-size:12px;">Sem dados.</p>'; return; }
+
+    el.innerHTML = `
+    <div class="table-fixed-header-container" style="max-height:400px;">
+        <table class="table">
+            <thead><tr>
+                <th>Órgão/Entidade</th>
+                <th class="text-right">Empresas</th>
+                <th class="text-right">Penalidades</th>
+                <th class="text-right">Ativas</th>
+                <th class="text-right">Encerradas</th>
+            </tr></thead>
+            <tbody>
+                ${linhas.map(([nome,g])=>`
+                <tr class="resumo-tr" onclick="irParaConsultaComFiltro('orgao','${esc(nome)}')">
+                    <td>${nome}</td>
+                    <td class="text-right">${g.empresas.size}</td>
+                    <td class="text-right">${g.penalidades}</td>
+                    <td class="text-right" style="color:#8f1c22;font-weight:600;">${g.ativas}</td>
+                    <td class="text-right" style="color:#0f6b3a;font-weight:600;">${g.encerradas}</td>
+                </tr>`).join('')}
+            </tbody>
+        </table>
+    </div>`;
+}
+
+// Navega para a Consulta Individual já filtrada pelo órgão clicado no resumo
+function irParaConsultaComFiltro(campo, valor) {
+    document.getElementById('consulta-tab').click();
+    setTimeout(()=>{
+        limparFiltrosVG();
+        if (campo==='orgao') window._combos['filtroOrgao']?.setValue(valor,false);
+        aplicarFiltrosVG();
+        voltarAoTopo();
+    }, 250);
+}
+
+
 
 function inicializarCombosVG() {
     if (!window._combos['filtroEmpresa']) window._combos['filtroEmpresa'] = new ComboFilter('filtroEmpresa', opcoesUnicas('nome_empresarial'), ()=>{});
@@ -619,12 +607,15 @@ function inicializarCombosVG() {
     else window._combos['filtroCnpj'].updateOptions(opcoesUnicas('cnpj_cpf'));
     if (!window._combos['filtroTipo']) window._combos['filtroTipo'] = new ComboFilter('filtroTipo', opcoesUnicas('tipo_penalidade'), ()=>{});
     else window._combos['filtroTipo'].updateOptions(opcoesUnicas('tipo_penalidade'));
+    if (!window._combos['filtroOrgao']) window._combos['filtroOrgao'] = new ComboFilter('filtroOrgao', opcoesUnicas('orgao'), ()=>{});
+    else window._combos['filtroOrgao'].updateOptions(opcoesUnicas('orgao'));
 }
 
 function aplicarFiltrosVG() {
     const empresa = window._combos['filtroEmpresa']?.value || '';
     const cnpj    = window._combos['filtroCnpj']?.value || '';
     const tipo    = window._combos['filtroTipo']?.value || '';
+    const orgao   = window._combos['filtroOrgao']?.value || '';
     const situacao = document.getElementById('filtroSituacao').value;
     const pubDe   = document.getElementById('filtroPubDe').value;
     const pubAte  = document.getElementById('filtroPubAte').value;
@@ -633,6 +624,7 @@ function aplicarFiltrosVG() {
         if (empresa && r.nome_empresarial !== empresa) return false;
         if (cnpj && r.cnpj_cpf !== cnpj) return false;
         if (tipo && r.tipo_penalidade !== tipo) return false;
+        if (orgao && r.orgao !== orgao) return false;
         if (situacao && calcularSituacao(r) !== situacao) return false;
         const pubISO = dataParaISO(r.data_publicacao);
         if (pubDe && pubISO && pubISO < pubDe) return false;
@@ -641,9 +633,7 @@ function aplicarFiltrosVG() {
     });
     dadosFiltrados = ordenar(dadosFiltrados, sortCfg.col, sortCfg.dir);
     paginaAtual = 1;
-    atualizarMetricasVG(dadosFiltrados);
     atualizarTabelaVG();
-    atualizarGraficosVG(dadosFiltrados);
     document.getElementById('badgeVG').textContent = dadosFiltrados.length + ' registros';
 }
 
@@ -651,6 +641,7 @@ function limparFiltrosVG() {
     window._combos['filtroEmpresa']?.clear();
     window._combos['filtroCnpj']?.clear();
     window._combos['filtroTipo']?.clear();
+    window._combos['filtroOrgao']?.clear();
     document.getElementById('filtroSituacao').value = '';
     document.getElementById('filtroPubDe').value = '';
     document.getElementById('filtroPubAte').value = '';
@@ -665,22 +656,22 @@ function buscarVG(termo) {
         (r.nome_empresarial||'').toLowerCase().includes(t) ||
         (r.cnpj_cpf||'').toLowerCase().includes(t) ||
         (r.tipo_penalidade||'').toLowerCase().includes(t) ||
-        (r.motivo_penalidade||'').toLowerCase().includes(t)
+        (r.motivo_penalidade||'').toLowerCase().includes(t) ||
+        (r.orgao||'').toLowerCase().includes(t)
     );
     dadosFiltrados = ordenar(base, sortCfg.col, sortCfg.dir);
     paginaAtual = 1;
-    atualizarMetricasVG(dadosFiltrados);
     atualizarTabelaVG();
-    atualizarGraficosVG(dadosFiltrados);
     document.getElementById('badgeVG').textContent = dadosFiltrados.length + ' registros';
 }
 
 function atualizarMetricasVG(dados) {
+    const el = document.getElementById('metricasVG');
+    if (!el) return;
     const totalEmpresas = new Set(dados.map(r=>r.cnpj_cpf)).size;
     const totalPenalidades = dados.length;
     const ativas = dados.filter(r=>calcularSituacao(r)==='ativa').length;
     const encerradas = dados.filter(r=>calcularSituacao(r)==='encerrada').length;
-    const el = document.getElementById('metricasVG');
     el.innerHTML = `
         <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-header">Empresas Penalizadas</div>
             <div class="metric-body"><div class="metric-value">${totalEmpresas.toLocaleString('pt-BR')}</div><div class="metric-sublabel">CNPJ/CPF distintos</div></div></div></div>
@@ -731,6 +722,7 @@ const COLUNAS_VG = [
     { col:'data_inicio', label:'Início' },
     { col:'data_fim', label:'Fim' },
     { col:'data_publicacao', label:'Publicação' },
+    { col:'orgao', label:'Órgão/Entidade', wrap:true },
     { col:'situacao', label:'Situação' },
 ];
 
@@ -772,6 +764,7 @@ function atualizarTabelaVG() {
                 <td>${formatarData(r.data_inicio)}</td>
                 <td>${formatarData(r.data_fim)}</td>
                 <td>${formatarData(r.data_publicacao)}</td>
+                <td>${r.orgao||'<span class="nao-aplica">Não informado</span>'}</td>
                 <td>${badgeSituacao(sit)}</td>
             </tr>`;
         }).join('');
@@ -831,108 +824,94 @@ function renderizarPaginacao(containerId, total, totalPaginas, onPageChange, onP
 // ============================================================
 function renderizarConsulta() {
     const c = document.getElementById('consulta-content'); if (!c) return;
+    dadosFiltrados = ordenar(dadosCafimp, sortCfg.col, sortCfg.dir);
+
     c.innerHTML = `
+    <!-- FILTROS -->
     <div class="filter-container">
-        <div class="filters-row" style="align-items:flex-end;">
-            <div class="filter-group" style="flex:3;min-width:280px;">
-                <label class="filter-label">Buscar por Empresa ou CNPJ/CPF</label>
-                ${buildComboHTML('filtroConsultaEmpresa','Digite o nome ou CNPJ/CPF da empresa...')}
+        <div class="filters-row">
+            <div class="filter-group" style="flex:2;min-width:220px;">
+                <label class="filter-label">Empresa</label>
+                ${buildComboHTML('filtroEmpresa','Selecione ou digite a razão social...')}
             </div>
-            <div class="filter-group" style="flex:0 0 auto;min-width:160px;">
-                <button class="btn-pesquisa" style="width:100%;" onclick="consultarEmpresa()"><i class="material-icons">search</i> Consultar</button>
+            <div class="filter-group" style="flex:1.4;min-width:180px;">
+                <label class="filter-label">CNPJ/CPF</label>
+                ${buildComboHTML('filtroCnpj','Selecione ou digite...')}
             </div>
+            <div class="filter-group" style="flex:1.4;min-width:180px;">
+                <label class="filter-label">Tipo de Penalidade</label>
+                ${buildComboHTML('filtroTipo','Selecione ou digite...')}
+            </div>
+            <div class="filter-group" style="flex:1.6;min-width:200px;">
+                <label class="filter-label">Órgão/Entidade</label>
+                ${buildComboHTML('filtroOrgao','Selecione ou digite...')}
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Situação</label>
+                <select class="form-select" id="filtroSituacao">
+                    <option value="">Todas</option>
+                    <option value="ativa">Ativa</option>
+                    <option value="encerrada">Encerrada</option>
+                    <option value="indeterminada">Prazo Indeterminado</option>
+                </select>
+            </div>
+        </div>
+        <div class="filters-row">
+            <div class="filter-group">
+                <label class="filter-label">Publicação - De</label>
+                <input type="date" class="form-control" id="filtroPubDe">
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Publicação - Até</label>
+                <input type="date" class="form-control" id="filtroPubAte">
+            </div>
+        </div>
+        <div class="botoes-abaixo">
+            <button class="btn-pesquisa" onclick="aplicarFiltrosVG()"><i class="material-icons">search</i> Pesquisar</button>
+            <button class="btn-secondary-custom" onclick="limparFiltrosVG()"><i class="material-icons">clear</i> Limpar Filtros</button>
         </div>
     </div>
-    <div id="resultadoConsulta"></div>`;
 
-    const opts = [...new Set(dadosCafimp.map(r=>r.cnpj_cpf))].filter(Boolean).map(cnpj=>{
-        const row = dadosCafimp.find(r=>r.cnpj_cpf===cnpj);
-        return { value: cnpj, label: `${row.nome_empresarial||''} — ${formatarCnpjCpf(cnpj)}` };
-    }).sort((a,b)=>a.label.localeCompare(b.label));
-
-    window._combos['filtroConsultaEmpresa'] = new ComboFilter('filtroConsultaEmpresa', opts, (val)=>{ if(val) consultarEmpresa(); });
-
-    document.getElementById('resultadoConsulta').innerHTML = `
-        <div class="empty-state">
-            <i class="material-icons">domain_disabled</i>
-            <h5>Nenhuma empresa selecionada</h5>
-            <p>Utilize o campo acima para consultar o histórico de penalidades de uma empresa cadastrada no CAFIMP.</p>
-        </div>`;
-    setTimeout(iframeH, 200);
-}
-
-function irParaConsulta(cnpj) {
-    document.getElementById('consulta-tab').click();
-    setTimeout(()=>{
-        window._combos['filtroConsultaEmpresa']?.setValue(cnpj, false);
-        consultarEmpresaPorCnpj(cnpj);
-    }, 200);
-}
-
-function consultarEmpresa() {
-    const cnpj = window._combos['filtroConsultaEmpresa']?.value;
-    if (!cnpj) { mostrarToast('Selecione uma empresa para consultar.'); return; }
-    consultarEmpresaPorCnpj(cnpj);
-}
-
-function consultarEmpresaPorCnpj(cnpj) {
-    const registros = dadosCafimp.filter(r => r.cnpj_cpf === cnpj)
-        .sort((a,b)=> (dataParaISO(b.data_publicacao)||'').localeCompare(dataParaISO(a.data_publicacao)||''));
-    const el = document.getElementById('resultadoConsulta');
-    if (!registros.length) {
-        el.innerHTML = `<div class="empty-state"><i class="material-icons">search_off</i><h5>Nenhum registro encontrado</h5></div>`;
-        return;
-    }
-    const nome = registros[0].nome_empresarial;
-    const ativas = registros.filter(r=>calcularSituacao(r)==='ativa').length;
-    const encerradas = registros.filter(r=>calcularSituacao(r)==='encerrada').length;
-    const indet = registros.filter(r=>calcularSituacao(r)==='indeterminada').length;
-
-    el.innerHTML = `
-    <div class="empresa-card">
-        <div class="empresa-card-header">
-            <h3>${nome}</h3>
-            <div class="cnpj">CNPJ/CPF: ${formatarCnpjCpf(cnpj)}</div>
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+        <div class="toolbar-left">
+            <button class="btn-export" onclick="exportarVGCSV()"><i class="material-icons">description</i> CSV</button>
+            <button class="btn-export" onclick="exportarVGPDF()"><i class="material-icons">print</i> PDF</button>
         </div>
-        <div class="empresa-card-body">
-            <div class="row g-3 mb-4">
-                <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-header">Total de Penalidades</div>
-                    <div class="metric-body"><div class="metric-value">${registros.length}</div></div></div></div>
-                <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-header">Ativas</div>
-                    <div class="metric-body"><div class="metric-value" style="color:#8f1c22">${ativas}</div></div></div></div>
-                <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-header">Encerradas</div>
-                    <div class="metric-body"><div class="metric-value" style="color:#0f6b3a">${encerradas}</div></div></div></div>
-                <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-header">Prazo Indeterminado</div>
-                    <div class="metric-body"><div class="metric-value" style="color:#7a5c00">${indet}</div></div></div></div>
-            </div>
-
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-                <h5 style="font-size:14px;font-weight:700;color:#20445d;margin:0;"><i class="material-icons" style="vertical-align:middle;">history</i> Histórico de Penalidades</h5>
-                <div style="display:flex;gap:8px;">
-                    <button class="btn-export" onclick='baixarCSV("historico_${esc(cnpj)}.csv", ${JSON.stringify(COLUNAS_VG.map(c=>c.col))}, ${JSON.stringify(COLUNAS_VG.map(c=>c.label))}, window._registrosConsulta)'><i class="material-icons">description</i> CSV</button>
-                    <button class="btn-export" onclick='baixarPDF("Historico ${esc(nome)}", ${JSON.stringify(COLUNAS_VG.map(c=>c.col))}, ${JSON.stringify(COLUNAS_VG.map(c=>c.label))}, window._registrosConsulta)'><i class="material-icons">print</i> PDF</button>
-                </div>
-            </div>
-
-            ${registros.map(r=>{
-                const sit = calcularSituacao(r);
-                return `<div class="timeline-item ${sit==='encerrada'?'encerrada':''}">
-                    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:6px;">
-                        <strong style="color:#1a3a5c;font-size:13px;">${r.tipo_penalidade||'Penalidade'}</strong>
-                        ${badgeSituacao(sit)}
-                    </div>
-                    <div style="font-size:12.5px;color:#334155;margin-bottom:6px;">${r.motivo_penalidade||'-'}</div>
-                    <div style="font-size:11.5px;color:#64748b;display:flex;gap:16px;flex-wrap:wrap;">
-                        <span><i class="material-icons" style="font-size:12px;">play_arrow</i> Início: ${formatarData(r.data_inicio)}</span>
-                        <span><i class="material-icons" style="font-size:12px;">stop</i> Fim: ${formatarData(r.data_fim)}</span>
-                        <span><i class="material-icons" style="font-size:12px;">campaign</i> Publicação: ${formatarData(r.data_publicacao)}</span>
-                    </div>
-                </div>`;
-            }).join('')}
+        <div class="toolbar-right" style="display:flex;align-items:center;gap:8px;">
+            <input type="text" id="buscaVG" maxlength="60" placeholder="Buscar empresa, CNPJ, motivo..." class="form-control" style="height:32px;font-size:12px;width:260px;padding:4px 10px;" oninput="buscarVG(this.value)">
+            <span class="table-badge" id="badgeVG">${dadosFiltrados.length} registros</span>
         </div>
+    </div>
+
+    <!-- TABELA -->
+    <div class="table-container">
+        <div class="table-fixed-header-container">
+            <table class="table" id="tabelaVG">
+                <thead id="theadVG"><tr></tr></thead>
+                <tbody id="tbodyVG"></tbody>
+            </table>
+        </div>
+        <div class="pagination-container" id="pagContainerVG"></div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-top:12px;">
+        <button class="btn-topo" onclick="voltarAoTopo()"><i class="material-icons">arrow_upward</i> Voltar ao topo</button>
     </div>`;
-    window._registrosConsulta = registros;
-    setTimeout(iframeH, 200);
+
+    inicializarCombosVG();
+    reconstruirCabecalhoVG();
+    paginaAtual = 1;
+    atualizarTabelaVG();
+
+    setTimeout(iframeH, 300);
+}
+
+// Clique no nome da empresa em qualquer linha da tabela: filtra a própria tabela para essa empresa
+function irParaConsulta(cnpj) {
+    limparFiltrosVG();
+    window._combos['filtroCnpj']?.setValue(cnpj, false);
+    aplicarFiltrosVG();
+    voltarAoTopo();
 }
 
 // ============================================================
@@ -946,6 +925,7 @@ const DICIONARIO_CAFIMP = [
     { campo:'data_inicio', descricao:'Data de início da vigência da penalidade', tipo:'Data (DD/MM/AAAA)' },
     { campo:'data_fim', descricao:'Data de término da vigência da penalidade. Quando não preenchida, indica prazo indeterminado', tipo:'Data (DD/MM/AAAA)' },
     { campo:'data_publicacao', descricao:'Data de publicação do ato/portaria que aplicou a penalidade', tipo:'Data (DD/MM/AAAA)' },
+    { campo:'orgao', descricao:'Órgão ou entidade da administração pública estadual que aplicou a penalidade / perante o qual ocorreu o descumprimento', tipo:'Texto' },
 ];
 
 function renderizarDicionario() {
@@ -980,10 +960,6 @@ function renderizarDicionario() {
                 </tbody>
             </table>
         </div>
-    </div>
-    <div class="filter-container" style="margin-top:6px;">
-        <h6 style="font-size:12.5px;font-weight:700;color:#20445d;margin-bottom:8px;"><i class="material-icons" style="font-size:15px;vertical-align:middle;">info</i> Regra de Situação</h6>
-        <p style="font-size:12px;color:#475569;margin:0;">A coluna calculada <strong>Situação</strong>, exibida na Visão Geral e na Consulta Individual, é derivada comparando a <code>data_fim</code> com a data atual: <strong>Ativa</strong> (data_fim futura ou igual a hoje), <strong>Encerrada</strong> (data_fim já ultrapassada) ou <strong>Prazo Indeterminado</strong> (data_fim não preenchida).</p>
     </div>
     <div style="display:flex;justify-content:flex-end;margin-top:12px;">
         <button class="btn-topo" onclick="voltarAoTopo()"><i class="material-icons">arrow_upward</i> Voltar ao topo</button>
@@ -1025,20 +1001,6 @@ function renderizarDownloads() {
                 <button class="btn-export" style="width:100%;justify-content:center;" onclick='baixarCSV("cafimp_completo.csv", ${JSON.stringify(COLUNAS_VG.map(c=>c.col))}, ${JSON.stringify(COLUNAS_VG.map(c=>c.label))}, dadosCafimp)'>
                     <i class="material-icons">description</i> CSV Completo
                 </button>
-            </div>
-            <div style="background:#f8fafd;border:1px solid #e2e8f0;border-radius:8px;padding:12px 16px;min-width:200px;">
-                <div style="font-weight:700;color:#20445d;font-size:14px;margin-bottom:8px;">Base Filtrada (Visão Geral)</div>
-                <div style="font-size:11.5px;color:#64748b;margin-bottom:10px;">Respeita os filtros aplicados na aba Visão Geral</div>
-                <button class="btn-export" style="width:100%;justify-content:center;" onclick="exportarVGCSV()">
-                    <i class="material-icons">filter_alt</i> CSV Filtrado
-                </button>
-            </div>
-            <div style="background:#f8fafd;border:1px solid #e2e8f0;border-radius:8px;padding:12px 16px;min-width:200px;">
-                <div style="font-weight:700;color:#20445d;font-size:14px;margin-bottom:8px;">Arquivo Fonte</div>
-                <div style="font-size:11.5px;color:#64748b;margin-bottom:10px;">cafimp.csv original, direto do GitHub</div>
-                <a class="btn-export" style="width:100%;justify-content:center;text-decoration:none;" href="${GITHUB_BASE}${CSV_FILE}" target="_blank">
-                    <i class="material-icons">open_in_new</i> Abrir CSV
-                </a>
             </div>
         </div>
     </div>
