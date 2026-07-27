@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>CAFIMP - Portal da Transparência MG</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        :root {
+            --primary-dark:      #1a3a5c;
+            --primary-darker:    #0f2a44;
+            --accent-red:        #b93c42;
+            --accent-bright:     #db233f;
+            --background-light:  #f5f7fa;
+            --success-green:     #28a745;
+            --warning-yellow:    #ffc107;
+            --info-blue:         #17a2b8;
+            --border-color:      #dee2e6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; overflow-x: hidden; margin: 0; padding: 0; height: auto; min-height: auto; }
+        body {
+            font-family: 'Montserrat', Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-light);
+            padding-bottom: 15px;
+            overflow-x: hidden;
+        }
+        body, button, input, select, textarea, span, div { font-family: 'Montserrat', sans-serif !important; }
+        .material-icons { font-family: 'Material Icons' !important; font-size: 14px; vertical-align: middle; }
+
+        .main-container { height: auto; min-height: auto; overflow: visible; position: relative; }
+        .container-fluid { width: 100%; max-width: 88% !important; padding: 0 40px; margin: 0; height: auto; }
+        .dashboard-container { width: 100%; max-width: 100%; padding: 0 40px; margin: 0 auto; height: auto; }
+        .tab-content, .tab-pane { width: 100%; height: auto; min-height: auto; overflow: visible; }
+        .table-container { height: auto; min-height: auto; overflow: visible; position: relative; }
+        .iframe-mode { overflow: visible !important; }
+
+        .data-atualizacao-container { display: flex; justify-content: left; align-items: center; margin: 15px 0; }
+        .data-atualizacao-box {
+            background: transparent !important;
+            border-radius: 8px; padding: 8px 15px;
+            display: flex; align-items: center; gap: 8px;
+            font-size: 12px; color: var(--primary-dark); font-weight: 600; box-shadow: none;
+        }
+        .data-atualizacao-box i { font-size: 14px; color: var(--accent-red); }
+
+        /* CABEÇALHO DO PORTAL */
+        .portal-header { display:flex; align-items:center; gap:14px; padding: 18px 0 4px; }
+        .portal-header .icone { width:48px; height:48px; border-radius:12px; background:linear-gradient(135deg, var(--primary-dark), var(--primary-darker)); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 4px 12px rgba(26,58,92,0.25); }
+        .portal-header .icone .material-icons { font-size:26px; }
+        .portal-header h1 { font-size:19px; font-weight:700; color:var(--primary-dark); margin:0; }
+        .portal-header p { font-size:12.5px; color:#64748b; margin:2px 0 0; }
+
+        /* FILTROS */
+        .filter-container {
+            background: white; border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            padding: 20px; margin-bottom: 20px; width: 100%;
+        }
+        .filter-label { font-size: 11px; font-weight: 600; color: #1a3a5c; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.3px; line-height: 1.3; }
+        .form-control, .form-select { border: 2px solid #e9ecef; border-radius: 6px; padding: 10px 12px; font-size: 13px; transition: all 0.3s ease; height: auto; width: 100%; }
+        .form-control:focus, .form-select:focus { border-color: var(--accent-red); box-shadow: 0 0 0 2px rgba(185,60,66,0.15); outline: none; }
+        .modern-select { border: 1.5px solid #dfe5ec !important; border-radius: 8px !important; padding: 10px 12px !important; font-size: 13px !important; height: 42px !important; line-height: 1.5 !important; background-color: #fff; transition: all 0.2s ease; width: 100%; }
+        .modern-select:focus { border-color: #1a3a5c !important; box-shadow: 0 0 0 2px rgba(26,58,92,0.1); outline: none; }
+        .filters-row { display: flex; gap: 15px; width: 100%; flex-wrap: wrap; margin-bottom: 12px; }
+        .filter-group { flex: 1; min-width: 140px; }
+        .botoes-abaixo { margin-top: 8px; display: flex; gap: 10px; flex-wrap: wrap; }
+
+        /* CARDS */
+        .metric-card { background: white; border-radius: 8px; border: 1px solid #e5e9ef; box-shadow: 0 3px 12px rgba(0,0,0,0.06); overflow: hidden; height: 100%; transition: box-shadow 0.25s ease, transform 0.25s ease; }
+        .metric-card:hover { box-shadow: 0 8px 24px rgba(26,58,92,0.13); transform: translateY(-2px); }
+        .metric-header { background: #20445d; color: white; font-size: 13px; font-weight: 600; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; }
+        .metric-body { padding: 12px 15px; }
+        .metric-value { font-size: 20px; font-weight: 700; color: #171c21; }
+        .metric-sublabel { font-size: 10px; color: #94a3b8; font-weight: 500; margin-top: 2px; }
+
+        /* GRÁFICOS */
+        .chart-container { background: white; border-radius: 10px; box-shadow: 0 3px 12px rgba(0,0,0,0.06); margin-bottom: 20px; overflow: hidden; }
+        .chart-container canvas { max-width: 100%; }
+        .chart-header { background: #20445d; color: white; padding: 12px 16px; margin: 0; }
+        .chart-title { font-size: 14px; font-weight: 600; color: white; margin: 0; }
+        .chart-wrapper { height: 260px; padding: 10px 15px; width: 100%; }
+
+        /* TABELAS */
+        .table-badge { background: #1a3a5c; color: white; padding: 5px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+        .table-fixed-header-container { position: relative; overflow: auto; width: 100%; max-height: 600px; }
+        .table-fixed-header-container table thead th { background-color: #54697b !important; color: white !important; position: sticky; top: 0; z-index: 10; font-weight: 600; padding: 10px 8px; font-size: 11px; text-transform: uppercase; white-space: nowrap; vertical-align: middle; line-height: 1.3; }
+        .table { width: 100%; font-size: 12px; border-collapse: collapse; table-layout: auto; }
+        .table th, .table td { border: 1px solid #d6dee6; }
+        .table thead th { background-color: #54697b !important; color: white !important; font-weight: 600; font-size: 11px; padding: 10px 8px; text-transform: uppercase; border: 1px solid #d6dee6; cursor: pointer; user-select: none; white-space: nowrap; vertical-align: middle; line-height: 1.3; }
+        .table thead th.th-wrap { white-space: normal !important; }
+        .table thead th:not(.text-right) { min-width: 80px; }
+        .table thead th:first-child { border-top-left-radius: 8px; }
+        .table thead th:last-child  { border-top-right-radius: 8px; }
+        .table thead th:hover { background-color: #3d5566 !important; }
+        .table tbody tr { background-color: #ffffff; }
+        .table tbody td { padding: 10px 10px; vertical-align: middle; border-bottom: 1px solid #f1f1f1; font-size: 12px; }
+        .table tbody tr:hover { background-color: rgba(41,67,90,0.04); }
+        .table tfoot tr, .table tfoot td { background-color: #dfe3e8 !important; font-weight: 700; font-size: 12px; }
+        .table-responsive { display: block; width: 100%; overflow-x: auto; }
+
+        .proc-link, .org-link, .empresa-link { color: #006a82; text-decoration: none; font-weight: 600; cursor: pointer; }
+        .proc-link:hover, .org-link:hover, .empresa-link:hover { color: var(--accent-red); text-decoration: underline; }
+        .nao-aplica { color: #adb5bd; font-size: 11px; }
+        .sortable-header { cursor: pointer; position: relative; padding-right: 26px !important; }
+        .sortable-header:hover { background-color: #3d5566 !important; }
+        .sortable-header .sort-icon { font-size: 13px; position: absolute; right: 5px; top: 50%; transform: translateY(-50%); opacity: 0.8; }
+        .text-right { text-align: right; }
+
+        /* BOTÕES */
+        .btn-pesquisa { background: linear-gradient(to right, #20445d, #20445d); border: none; padding: 0 16px; font-weight: 600; border-radius: 6px; transition: all 0.3s ease; font-size: 13px; color: white; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; height: 36px; white-space: nowrap; }
+        .btn-pesquisa:hover { background: linear-gradient(to right, var(--accent-red), #a32c32); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(185,60,66,0.2); color: white; }
+        .btn-secondary-custom { background: white; border: 2px solid var(--primary-darker); color: var(--primary-darker); padding: 0 16px; font-weight: 600; font-size: 13px; border-radius: 6px; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; height: 36px; white-space: nowrap; text-decoration: none !important; }
+        .btn-secondary-custom:hover { background-color: #132837 !important; color: white !important; border-color: #132837 !important; }
+        .btn-export { appearance: none; -webkit-appearance: none; background: transparent !important; border: 1px solid #d6dee6; color: #1a3a5c; padding: 0 14px; border-radius: 6px; font-size: 12px; font-weight: 500; display: inline-flex; align-items: center; gap: 4px; height: 32px; cursor: pointer; transition: all 0.2s ease; white-space: nowrap; }
+        .btn-export i { font-size: 14px !important; }
+        button.btn-export:hover { background-color: #1a3a5c !important; border-color: #1a3a5c !important; color: #ffffff !important; }
+        .btn-topo { background: #eeeff5; color: #1a3a5c; border: 1px solid #d6dee6; border-radius: 12px; padding: 0 16px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: all 0.3s ease; height: 32px; }
+        .btn-topo:hover { background-color: #1a3a5c; color: #ffffff; border-color: #1a3a5c; }
+
+        /* ABAS */
+        .nav-tabs-container { background: transparent; padding: 10px 0; margin-top: 5px; margin-bottom: 15px; width: 100%; }
+        .nav-tabs { border: none !important; gap: 10px; width: 100%; flex-wrap: wrap; }
+        .nav-tabs .nav-link { border: none !important; background: #ffffff !important; border-radius: 10px !important; padding: 8px 18px !important; font-weight: 500; font-size: 13px; color: #1a3a5c !important; display: inline-flex !important; align-items: center; gap: 6px; transition: all .25s ease; white-space: nowrap; }
+        .nav-tabs .nav-link:hover { background: #e6e9ed !important; }
+        .nav-tabs .nav-link.active { background: #234c63 !important; color: #fff !important; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .nav-tabs .material-icons { font-size: 14px !important; }
+
+        /* MODAL */
+        .modal-creative .modal-header { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%); color: white !important; padding: 15px 20px; border-bottom: none; }
+        .modal-creative .modal-header .modal-title { color: white !important; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+        .modal-creative .modal-header .btn-close { filter: brightness(0) invert(1); opacity: 1; }
+        .info-card { background: #f8fafd; border-radius: 10px; padding: 13px 16px; margin-bottom: 13px; border: 1px solid #e2e8f0; border-left: 4px solid var(--accent-red); }
+        .info-card.primary { border-left-color: var(--primary-dark); }
+        .info-label { font-size: 10px; text-transform: uppercase; color: #64748b; font-weight: 600; margin-bottom: 4px; }
+        .info-value { font-size: 13px; font-weight: 500; color: #1e293b; word-break: break-word; }
+        .info-value.highlight { font-size: 16px; color: var(--accent-red); font-weight: 700; }
+        .modal { position: fixed !important; }
+        .modal-dialog { margin: 20px auto !important; }
+        .modal-body { max-height: 65vh; overflow-y: auto !important; overflow-x: hidden; }
+
+        /* PAGINAÇÃO */
+        .pagination-container { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: white; border-top: 1px solid #dee2e6; width: 100%; flex-wrap: wrap; gap: 10px; border-radius: 0 0 8px 8px; }
+        .pagination-info { display: flex; align-items: center; gap: 12px; font-size: 12px; color: #6c757d; flex-wrap: wrap; }
+        .pagination-controls { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+        .pagination-controls button { min-width: 34px; height: 34px; border: 1px solid #dee2e6; background: white; color: var(--primary-dark); border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; font-size: 13px; padding: 0 6px; }
+        .pagination-controls button:hover:not(:disabled) { background-color: var(--primary-dark); color: white; border-color: var(--primary-dark); }
+        .pagination-controls button.active { background-color: var(--primary-dark); color: white; border-color: var(--primary-dark); }
+        .pagination-controls button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .page-size-selector { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #6c757d; }
+        .page-size-selector select { width: 70px; border: 1px solid #d6dee6; border-radius: 6px; padding: 4px 6px; font-size: 12px; background-color: white; color: var(--primary-dark); font-weight: 600; cursor: pointer; }
+
+        /* TOOLBAR */
+        .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+        .toolbar-left  { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .toolbar-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+        /* LOADING */
+        .loading-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(238,241,246,0.95); z-index: 9999; justify-content: center; align-items: center; flex-direction: column; gap: 14px; }
+        .loading-overlay.show { display: flex; }
+        .loading-progress { font-size: 13px; color: #20445d; font-weight: 700; }
+
+        /* TOAST */
+        .toast-notification { position: fixed; top: 20px; right: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); padding: 12px 20px; transform: translateX(120%); transition: transform 0.3s ease; z-index: 10000; border-left: 4px solid; max-width: 350px; }
+        .toast-notification.show { transform: translateX(0); }
+        .toast-notification.success { border-left-color: var(--success-green); }
+        .toast-notification.error { border-left-color: var(--accent-red); }
+        .toast-content { display: flex; align-items: center; font-size: 13px; color: var(--primary-dark); gap: 8px; }
+
+        /* METADADOS / DICIONÁRIO */
+        .metadata-container { background: white; border-radius: 10px; box-shadow: 0 3px 12px rgba(0,0,0,0.06); overflow: hidden; margin-bottom: 20px; }
+        .metadata-header { background: #20445d; color: white; padding: 12px 16px; font-size: 13px; font-weight: 700; display:flex; align-items:center; }
+        .metadata-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        .metadata-table thead th { background-color: #54697b !important; color: white !important; padding: 10px; font-size: 11px; text-transform: uppercase; font-weight: 600; }
+        .metadata-table tbody tr:nth-child(even) { background: #f8fafd; }
+        .metadata-table tbody td { padding: 10px; border-bottom: 1px solid #f0f4f8; vertical-align: top; color: #334155; }
+        .metadata-table code { background: #e2e8f0; color: #0f172a; padding: 2px 6px; border-radius: 4px; font-size: 11px; }
+        .dic-row-highlight { background:#fffbea !important; }
+
+        /* BADGE SITUAÇÃO */
+        .badge-situacao { padding: 3px 10px; border-radius: 20px; font-size: 10.5px; font-weight: 700; display: inline-block; letter-spacing: 0.2px; white-space: nowrap; }
+        .badge-ativa     { background: #fbe1e2; color: #8f1c22; border: 1px solid #f2c0c2; }
+        .badge-encerrada { background: #dcf5e7; color: #0f6b3a; border: 1px solid #b2e6c8; }
+        .badge-indeterminada { background: #fff3cd; color: #7a5c00; border: 1px solid #ffe08a; }
+
+        /* COMBOBOX FILTER */
+        .combo-filter-wrap { position: relative; width: 100%; }
+        .combo-filter-input { border: 1.5px solid #dfe5ec; border-radius: 8px; padding: 10px 32px 10px 12px; font-size: 13px; height: 42px; line-height: 1.5; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M0 0l6 7 6-7z' fill='%231a3a5c'/%3E%3C/svg%3E") no-repeat right 10px center; transition: all 0.2s ease; width: 100%; cursor: pointer; }
+        .combo-filter-input:focus { border-color: #1a3a5c; box-shadow: 0 0 0 2px rgba(26,58,92,0.1); outline: none; }
+        .combo-filter-dropdown { position: absolute; top: 44px; left: 0; right: 0; background: #fff; border: 1.5px solid #dfe5ec; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 9999; max-height: 260px; overflow-y: auto; display: none; }
+        .combo-filter-dropdown.open { display: block; }
+        .combo-filter-option { padding: 9px 12px; font-size: 12px; cursor: pointer; color: #1e293b; border-bottom: 1px solid #f1f5f9; }
+        .combo-filter-option:last-child { border-bottom: none; }
+        .combo-filter-option:hover, .combo-filter-option.active { background: #f0f4f8; color: #1a3a5c; font-weight: 600; }
+        .combo-filter-option.selected { background: #e6f0f8; font-weight: 700; color: #1a3a5c; }
+        .combo-clear-btn { position: absolute; right: 26px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 14px; padding: 2px 4px; line-height: 1; display: none; }
+        .combo-clear-btn.visible { display: block; }
+
+        /* CONSULTA INDIVIDUAL */
+        .empresa-card { background:white; border-radius:10px; box-shadow:0 3px 12px rgba(0,0,0,0.08); overflow:hidden; margin-bottom:20px; }
+        .empresa-card-header { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-darker) 100%); color:#fff; padding:18px 22px; }
+        .empresa-card-header h3 { font-size:17px; font-weight:700; margin:0 0 4px; }
+        .empresa-card-header .cnpj { font-size:12.5px; opacity:0.9; font-weight:500; }
+        .empresa-card-body { padding: 18px 22px; }
+        .empty-state { text-align:center; padding:60px 20px; color:#94a3b8; }
+        .empty-state .material-icons { font-size:56px; color:#c7d2df; }
+        .empty-state h5 { color:#64748b; font-size:15px; margin:12px 0 4px; }
+        .empty-state p { font-size:12.5px; }
+        .timeline-item { border-left:3px solid var(--accent-red); padding:10px 0 10px 18px; margin-left:4px; position:relative; }
+        .timeline-item::before { content:''; position:absolute; left:-7px; top:16px; width:11px; height:11px; border-radius:50%; background:var(--accent-red); border:2px solid #fff; box-shadow:0 0 0 2px var(--accent-red); }
+        .timeline-item.encerrada { border-left-color:#0f6b3a; }
+        .timeline-item.encerrada::before { background:#0f6b3a; box-shadow:0 0 0 2px #0f6b3a; }
+
+        /* RESPONSIVO */
+        @media (max-width: 992px) { .container-fluid, .dashboard-container { padding: 0 15px !important; } }
+        @media (max-width: 768px) {
+            .container-fluid, .dashboard-container { padding: 0 10px !important; }
+            .nav-tabs { flex-direction: column; gap: 6px; }
+            .nav-tabs .nav-link { width: 100%; justify-content: flex-start; font-size: 13px; padding: 10px 14px !important; }
+            .filters-row { flex-direction: column; }
+            .filter-group { min-width: 100%; width: 100%; }
+            .botoes-abaixo { flex-direction: column; }
+            .btn-pesquisa, .btn-secondary-custom { width: 100%; justify-content: center; }
+            .toolbar { flex-direction: column; align-items: flex-start; }
+            .pagination-container { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .chart-wrapper { height: 200px; }
+        }
+    </style>
+</head>
+<body class="iframe-mode">
+
+<div class="main-container">
+    <div class="container-fluid dashboard-container">
+
+        <!-- Cabeçalho -->
+        <div class="portal-header">
+            <div class="icone"><i class="material-icons">gavel</i></div>
+            <div>
+                <h1>CAFIMP - Cadastro de Fornecedores Impedidos de Licitar e Contratar</h1>
+                <p>Portal da Transparência de Minas Gerais</p>
+            </div>
+        </div>
+
+        <!-- Abas -->
+        <div class="nav-tabs-container">
+            <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
+                <li class="nav-item">
+                    <button class="nav-link active" id="visaogeral-tab" data-bs-toggle="tab" data-bs-target="#tab-visaogeral">
+                        <i class="material-icons">insights</i>Visão Geral
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="consulta-tab" data-bs-toggle="tab" data-bs-target="#tab-consulta">
+                        <i class="material-icons">search</i>Consulta Individual
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="dicionario-tab" data-bs-toggle="tab" data-bs-target="#tab-dicionario">
+                        <i class="material-icons">menu_book</i>Dicionário de Dados
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="downloads-tab" data-bs-toggle="tab" data-bs-target="#tab-downloads">
+                        <i class="material-icons">download</i>Downloads
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Data de atualização -->
+        <div class="data-atualizacao-container">
+            <div class="data-atualizacao-box">
+                <i class="material-icons">event</i>
+                Atualizado em: <span id="data-atualizacao-header" style="margin-left:4px;">Carregando...</span>
+            </div>
+        </div>
+
+        <!-- Conteúdo das abas -->
+        <div class="tab-content" id="dashboardTabsContent">
+            <div class="tab-pane fade show active" id="tab-visaogeral" role="tabpanel">
+                <div id="visaogeral-content"></div>
+            </div>
+            <div class="tab-pane fade" id="tab-consulta" role="tabpanel">
+                <div id="consulta-content"></div>
+            </div>
+            <div class="tab-pane fade" id="tab-dicionario" role="tabpanel">
+                <div id="dicionario-content"></div>
+            </div>
+            <div class="tab-pane fade" id="tab-downloads" role="tabpanel">
+                <div id="downloads-content"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TOAST -->
+<div id="toastSucesso" class="toast-notification success" style="display:none;">
+    <div class="toast-content">
+        <i class="material-icons" style="color:#28a745">check_circle</i>
+        <span id="toastMsg">Link copiado para área de transferência!</span>
+    </div>
+</div>
+
+<!-- Loading -->
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner-border" role="status" style="color:#20445d;width:2.5rem;height:2.5rem;"></div>
+    <div class="loading-progress" id="loadingProgress">Carregando dados...</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// ============================================================
+// 1. CONFIGURAÇÃO — EDITE ESTAS DUAS LINHAS COM O SEU REPOSITÓRIO
+// ============================================================
+// Aponte para o repositório GitHub (branch "main") onde o CSV do CAFIMP
+// será atualizado. O arquivo deve ter exatamente estas colunas (na 1ª linha):
+// cnpj_cpf;nome_empresarial;tipo_penalidade;motivo_penalidade;data_inicio;data_fim;data_publicacao
+const GITHUB_BASE = 'https://raw.githubusercontent.com/SEU-USUARIO/SEU-REPOSITORIO/refs/heads/main/dataset/';
+const CSV_FILE     = 'cafimp.csv';
+const REPO_URL     = 'https://github.com/SEU-USUARIO/SEU-REPOSITORIO'; // usado nos botões "Ver no GitHub"
+
+// ============================================================
+// 2. GLOBALS
+// ============================================================
+let dadosCafimp   = [];   // dataset completo normalizado
+let dadosFiltrados = [];  // após aplicar filtros da Visão Geral
+let paginaAtual = 1;
+let porPagina   = 25;
+let sortCfg = { col: 'data_publicacao', dir: 'desc' };
+window._combos = {};
+
+// ============================================================
+// 3. UTILITÁRIOS
+// ============================================================
+function mostrarLoading(show, msg) {
+    const el = document.getElementById('loadingOverlay');
+    if (show) el.classList.add('show'); else { el.classList.remove('show'); el.style.display='none'; }
+    if (msg) document.getElementById('loadingProgress').textContent = msg;
+}
+
+function mostrarToast(msg) {
+    const t = document.getElementById('toastSucesso');
+    document.getElementById('toastMsg').textContent = msg || 'Concluído!';
+    t.style.display = 'flex';
+    t.classList.add('show');
+    setTimeout(()=>{ t.classList.remove('show'); setTimeout(()=>{ t.style.display='none'; },300); }, 2500);
+}
+
+function _limpar(s) { return String(s==null?'':s).replace(/[\uFEFF\u200B\u00A0]/g,'').trim(); }
+
+// Converte datas em vários formatos (DD/MM/AAAA, AAAA-MM-DD[ HH:MM:SS]) para AAAA-MM-DD
+function dataParaISO(d) {
+    d = _limpar(d);
+    if (!d || d==='0000-00-00') return '';
+    const s = d.split(' ')[0].split('T')[0];
+    if (s.includes('/')) {
+        const [dd, mm, yyyy] = s.split('/');
+        if (!dd || !mm || !yyyy) return '';
+        return `${yyyy}-${mm.padStart(2,'0')}-${dd.padStart(2,'0')}`;
+    }
+    const p = s.split('-');
+    if (p.length < 3) return '';
+    return `${p[0]}-${p[1].padStart(2,'0')}-${p[2].padStart(2,'0')}`;
+}
+
+function formatarData(d) {
+    const iso = dataParaISO(d);
+    if (!iso) return '-';
+    const [y,m,day] = iso.split('-');
+    return `${day}/${m}/${y}`;
+}
+
+// Formata CNPJ (14 dígitos) ou CPF (11 dígitos) com máscara padrão — SEM ocultar dígitos,
+// pois o CAFIMP é um cadastro público de sanções (transparência ativa exige exibição integral).
+function formatarCnpjCpf(v) {
+    const d = String(v||'').replace(/\D/g,'');
+    if (d.length === 11) return d.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    if (d.length === 14) return d.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+    return v || '-';
+}
+
+function esc(s) { return String(s==null?'':s).replace(/'/g,"\\'").replace(/"/g,'&quot;'); }
+
+function hojeISO() {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+// Situação da penalidade com base em data_fim
+function calcularSituacao(row) {
+    const fimISO = dataParaISO(row.data_fim);
+    if (!fimISO) return 'indeterminada'; // sem data fim = prazo indeterminado / permanente
+    return fimISO >= hojeISO() ? 'ativa' : 'encerrada';
+}
+
+function badgeSituacao(sit) {
+    const map = {
+        ativa:         { cls:'badge-ativa',         label:'Ativa' },
+        encerrada:     { cls:'badge-encerrada',     label:'Encerrada' },
+        indeterminada: { cls:'badge-indeterminada', label:'Prazo Indeterminado' }
+    };
+    const m = map[sit] || map.indeterminada;
+    return `<span class="badge-situacao ${m.cls}">${m.label}</span>`;
+}
+
+function ordenar(arr, col, dir) {
+    return [...arr].sort((a,b)=>{
+        let va = a[col]!=null ? a[col] : '';
+        let vb = b[col]!=null ? b[col] : '';
+        const isData = col.startsWith('data_');
+        if (isData) { va = dataParaISO(va); vb = dataParaISO(vb); }
+        else { va = va.toString().toLowerCase(); vb = vb.toString().toLowerCase(); }
+        return dir==='asc' ? (va<vb?-1:va>vb?1:0) : (va>vb?-1:va<vb?1:0);
+    });
+}
+
+function iframeH() {
+    const modalAberto = document.querySelector('.modal.show');
+    if (modalAberto) return;
+    const h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)+10;
+    try { if(window.parent&&window.parent!==window) window.parent.postMessage({iframeHeight:h,type:'resize'},'*'); } catch(e){}
+}
+
+function voltarAoTopo() {
+    if (window.parent && window.parent !== window) {
+        try { window.parent.postMessage({ type: 'scrollToTop', scrollTop: true }, '*'); window.parent.scrollTo({ top: 0, behavior: 'smooth' }); } catch(e) {}
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+}
+
+function baixarCSV(nomeArquivo, campos, labels, dados) {
+    const linhas = [labels.join(';'), ...dados.map(r => campos.map(c=>{
+        let v = c==='situacao' ? badgeParaTexto(calcularSituacao(r)) : (c.startsWith('data_') ? formatarData(r[c]) : (c==='cnpj_cpf' ? formatarCnpjCpf(r[c]) : (r[c]||'')));
+        return `"${String(v).replace(/"/g,'""')}"`;
+    }).join(';'))].join('\n');
+    const blob = new Blob(['\uFEFF'+linhas], {type:'text/csv'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = nomeArquivo;
+    a.click();
+}
+function badgeParaTexto(sit){ return sit==='ativa'?'Ativa':sit==='encerrada'?'Encerrada':'Prazo Indeterminado'; }
+
+function baixarPDF(titulo, campos, labels, dados) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({orientation:'landscape'});
+    doc.setFontSize(13); doc.setTextColor(26,58,92); doc.text(titulo, 14, 14);
+    doc.setFontSize(9); doc.setTextColor(100);
+    doc.text(`Gerado em ${new Date().toLocaleString('pt-BR')} — ${dados.length} registro(s)`, 14, 20);
+    doc.autoTable({
+        startY: 26,
+        head: [labels],
+        body: dados.map(r => campos.map(c => c==='situacao' ? badgeParaTexto(calcularSituacao(r)) : (c.startsWith('data_') ? formatarData(r[c]) : (c==='cnpj_cpf' ? formatarCnpjCpf(r[c]) : (r[c]||'-'))))),
+        styles: { fontSize: 8, cellPadding: 3 },
+        headStyles: { fillColor: [32,68,93], textColor: 255, fontStyle: 'bold' },
+        alternateRowStyles: { fillColor: [248,250,253] },
+    });
+    doc.save(titulo.toLowerCase().replace(/\s+/g,'_')+'.pdf');
+}
+
+// ============================================================
+// 4. CARREGAMENTO DE DADOS
+// ============================================================
+async function carregarDados() {
+    mostrarLoading(true, 'Carregando dados do CAFIMP...');
+    try {
+        const resp = await fetch(GITHUB_BASE + CSV_FILE);
+        if (!resp.ok) throw new Error('HTTP '+resp.status);
+        const texto = await resp.text();
+        const parsed = Papa.parse(texto.replace(/^\uFEFF/,''), { header:true, skipEmptyLines:true, delimiter:'' });
+        dadosCafimp = (parsed.data||[]).map(r=>{
+            const row = {};
+            Object.keys(r).forEach(k => { row[_limpar(k)] = _limpar(r[k]); });
+            return row;
+        }).filter(r => r.cnpj_cpf || r.nome_empresarial);
+
+        document.getElementById('data-atualizacao-header').textContent = new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});
+    } catch (err) {
+        console.error('Erro ao carregar CSV:', err);
+        dadosCafimp = [];
+        document.getElementById('data-atualizacao-header').textContent = 'indisponível';
+        mostrarToast('Não foi possível carregar os dados. Verifique a URL configurada em GITHUB_BASE.');
+    }
+    mostrarLoading(false);
+    renderizarVisaoGeral();
+    renderizarConsulta();
+    renderizarDicionario();
+    renderizarDownloads();
+}
+
+// ============================================================
+// 5. VISÃO GERAL
+// ============================================================
+function opcoesUnicas(campo) {
+    return [...new Set(dadosCafimp.map(r => (r[campo]||'').trim()).filter(Boolean))].sort()
+        .map(v => ({ value:v, label: campo==='cnpj_cpf' ? formatarCnpjCpf(v) : v }));
+}
+
+function renderizarVisaoGeral() {
+    const c = document.getElementById('visaogeral-content'); if (!c) return;
+    dadosFiltrados = ordenar(dadosCafimp, sortCfg.col, sortCfg.dir);
+
+    c.innerHTML = `
+    <!-- FILTROS -->
+    <div class="filter-container">
+        <div class="filters-row">
+            <div class="filter-group" style="flex:2;min-width:220px;">
+                <label class="filter-label">Empresa</label>
+                ${buildComboHTML('filtroEmpresa','Selecione ou digite a razão social...')}
+            </div>
+            <div class="filter-group" style="flex:1.4;min-width:180px;">
+                <label class="filter-label">CNPJ/CPF</label>
+                ${buildComboHTML('filtroCnpj','Selecione ou digite...')}
+            </div>
+            <div class="filter-group" style="flex:1.4;min-width:180px;">
+                <label class="filter-label">Tipo de Penalidade</label>
+                ${buildComboHTML('filtroTipo','Selecione ou digite...')}
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Situação</label>
+                <select class="form-select" id="filtroSituacao">
+                    <option value="">Todas</option>
+                    <option value="ativa">Ativa</option>
+                    <option value="encerrada">Encerrada</option>
+                    <option value="indeterminada">Prazo Indeterminado</option>
+                </select>
+            </div>
+        </div>
+        <div class="filters-row">
+            <div class="filter-group">
+                <label class="filter-label">Publicação - De</label>
+                <input type="date" class="form-control" id="filtroPubDe">
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Publicação - Até</label>
+                <input type="date" class="form-control" id="filtroPubAte">
+            </div>
+        </div>
+        <div class="botoes-abaixo">
+            <button class="btn-pesquisa" onclick="aplicarFiltrosVG()"><i class="material-icons">search</i> Pesquisar</button>
+            <button class="btn-secondary-custom" onclick="limparFiltrosVG()"><i class="material-icons">clear</i> Limpar Filtros</button>
+        </div>
+    </div>
+
+    <!-- MÉTRICAS -->
+    <div class="row g-3 mb-4" id="metricasVG"></div>
+
+    <!-- GRÁFICOS -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-6">
+            <div class="chart-container">
+                <div class="chart-header"><h4 class="chart-title">Penalidades por Tipo</h4></div>
+                <div class="chart-wrapper"><canvas id="chartTipo"></canvas></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="chart-container">
+                <div class="chart-header"><h4 class="chart-title">Publicações por Ano</h4></div>
+                <div class="chart-wrapper"><canvas id="chartAno"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+        <div class="toolbar-left">
+            <button class="btn-export" onclick="exportarVGCSV()"><i class="material-icons">description</i> CSV</button>
+            <button class="btn-export" onclick="exportarVGPDF()"><i class="material-icons">print</i> PDF</button>
+        </div>
+        <div class="toolbar-right" style="display:flex;align-items:center;gap:8px;">
+            <input type="text" id="buscaVG" maxlength="60" placeholder="Buscar empresa, CNPJ, motivo..." class="form-control" style="height:32px;font-size:12px;width:260px;padding:4px 10px;" oninput="buscarVG(this.value)">
+            <span class="table-badge" id="badgeVG">${dadosFiltrados.length} registros</span>
+        </div>
+    </div>
+
+    <!-- TABELA -->
+    <div class="table-container">
+        <div class="table-fixed-header-container">
+            <table class="table" id="tabelaVG">
+                <thead id="theadVG"><tr></tr></thead>
+                <tbody id="tbodyVG"></tbody>
+            </table>
+        </div>
+        <div class="pagination-container" id="pagContainerVG"></div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-top:12px;">
+        <button class="btn-topo" onclick="voltarAoTopo()"><i class="material-icons">arrow_upward</i> Voltar ao topo</button>
+    </div>`;
+
+    inicializarCombosVG();
+    reconstruirCabecalhoVG();
+    paginaAtual = 1;
+    atualizarMetricasVG(dadosFiltrados);
+    atualizarTabelaVG();
+    setTimeout(()=>atualizarGraficosVG(dadosFiltrados), 150);
+    setTimeout(iframeH, 300);
+}
+
+function inicializarCombosVG() {
+    if (!window._combos['filtroEmpresa']) window._combos['filtroEmpresa'] = new ComboFilter('filtroEmpresa', opcoesUnicas('nome_empresarial'), ()=>{});
+    else window._combos['filtroEmpresa'].updateOptions(opcoesUnicas('nome_empresarial'));
+    if (!window._combos['filtroCnpj']) window._combos['filtroCnpj'] = new ComboFilter('filtroCnpj', opcoesUnicas('cnpj_cpf'), ()=>{});
+    else window._combos['filtroCnpj'].updateOptions(opcoesUnicas('cnpj_cpf'));
+    if (!window._combos['filtroTipo']) window._combos['filtroTipo'] = new ComboFilter('filtroTipo', opcoesUnicas('tipo_penalidade'), ()=>{});
+    else window._combos['filtroTipo'].updateOptions(opcoesUnicas('tipo_penalidade'));
+}
+
+function aplicarFiltrosVG() {
+    const empresa = window._combos['filtroEmpresa']?.value || '';
+    const cnpj    = window._combos['filtroCnpj']?.value || '';
+    const tipo    = window._combos['filtroTipo']?.value || '';
+    const situacao = document.getElementById('filtroSituacao').value;
+    const pubDe   = document.getElementById('filtroPubDe').value;
+    const pubAte  = document.getElementById('filtroPubAte').value;
+
+    dadosFiltrados = dadosCafimp.filter(r => {
+        if (empresa && r.nome_empresarial !== empresa) return false;
+        if (cnpj && r.cnpj_cpf !== cnpj) return false;
+        if (tipo && r.tipo_penalidade !== tipo) return false;
+        if (situacao && calcularSituacao(r) !== situacao) return false;
+        const pubISO = dataParaISO(r.data_publicacao);
+        if (pubDe && pubISO && pubISO < pubDe) return false;
+        if (pubAte && pubISO && pubISO > pubAte) return false;
+        return true;
+    });
+    dadosFiltrados = ordenar(dadosFiltrados, sortCfg.col, sortCfg.dir);
+    paginaAtual = 1;
+    atualizarMetricasVG(dadosFiltrados);
+    atualizarTabelaVG();
+    atualizarGraficosVG(dadosFiltrados);
+    document.getElementById('badgeVG').textContent = dadosFiltrados.length + ' registros';
+}
+
+function limparFiltrosVG() {
+    window._combos['filtroEmpresa']?.clear();
+    window._combos['filtroCnpj']?.clear();
+    window._combos['filtroTipo']?.clear();
+    document.getElementById('filtroSituacao').value = '';
+    document.getElementById('filtroPubDe').value = '';
+    document.getElementById('filtroPubAte').value = '';
+    document.getElementById('buscaVG').value = '';
+    aplicarFiltrosVG();
+}
+
+function buscarVG(termo) {
+    const t = (termo||'').toLowerCase().trim();
+    let base = dadosCafimp;
+    if (t) base = base.filter(r =>
+        (r.nome_empresarial||'').toLowerCase().includes(t) ||
+        (r.cnpj_cpf||'').toLowerCase().includes(t) ||
+        (r.tipo_penalidade||'').toLowerCase().includes(t) ||
+        (r.motivo_penalidade||'').toLowerCase().includes(t)
+    );
+    dadosFiltrados = ordenar(base, sortCfg.col, sortCfg.dir);
+    paginaAtual = 1;
+    atualizarMetricasVG(dadosFiltrados);
+    atualizarTabelaVG();
+    atualizarGraficosVG(dadosFiltrados);
+    document.getElementById('badgeVG').textContent = dadosFiltrados.length + ' registros';
+}
+
+function atualizarMetricasVG(dados) {
+    const totalEmpresas = new Set(dados.map(r=>r.cnpj_cpf)).size;
+    const totalPenalidades = dados.length;
+    const ativas = dados.filter(r=>calcularSituacao(r)==='ativa').length;
+    const encerradas = dados.filter(r=>calcularSituacao(r)==='encerrada').length;
+    const el = document.getElementById('metricasVG');
+    el.innerHTML = `
+        <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-header">Empresas Penalizadas</div>
+            <div class="metric-body"><div class="metric-value">${totalEmpresas.toLocaleString('pt-BR')}</div><div class="metric-sublabel">CNPJ/CPF distintos</div></div></div></div>
+        <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-header">Total de Penalidades</div>
+            <div class="metric-body"><div class="metric-value">${totalPenalidades.toLocaleString('pt-BR')}</div><div class="metric-sublabel">registros</div></div></div></div>
+        <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-header">Penalidades Ativas</div>
+            <div class="metric-body"><div class="metric-value" style="color:#8f1c22">${ativas.toLocaleString('pt-BR')}</div><div class="metric-sublabel">vigentes atualmente</div></div></div></div>
+        <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-header">Penalidades Encerradas</div>
+            <div class="metric-body"><div class="metric-value" style="color:#0f6b3a">${encerradas.toLocaleString('pt-BR')}</div><div class="metric-sublabel">prazo já vencido</div></div></div></div>`;
+}
+
+let chartTipoObj=null, chartAnoObj=null;
+function atualizarGraficosVG(dados) {
+    const ctxT = document.getElementById('chartTipo');
+    const ctxA = document.getElementById('chartAno');
+    if (!ctxT || !ctxA) return;
+
+    const porTipo = {};
+    dados.forEach(r => { const k = r.tipo_penalidade || 'Não informado'; porTipo[k] = (porTipo[k]||0)+1; });
+    const tiposOrd = Object.entries(porTipo).sort((a,b)=>b[1]-a[1]).slice(0,8);
+
+    const porAno = {};
+    dados.forEach(r => { const iso = dataParaISO(r.data_publicacao); const ano = iso ? iso.substring(0,4) : 'S/D'; porAno[ano]=(porAno[ano]||0)+1; });
+    const anosOrd = Object.keys(porAno).sort();
+
+    const paleta = ['#20445d','#b93c42','#3d5566','#db233f','#54697b','#8fa4b3','#a32c32','#c8d2db'];
+
+    if (chartTipoObj) chartTipoObj.destroy();
+    chartTipoObj = new Chart(ctxT, {
+        type: 'bar',
+        data: { labels: tiposOrd.map(t=>t[0]), datasets: [{ label:'Penalidades', data: tiposOrd.map(t=>t[1]), backgroundColor: paleta }] },
+        options: { responsive:true, maintainAspectRatio:false, indexAxis:'y', plugins:{legend:{display:false}}, scales:{x:{beginAtZero:true,ticks:{precision:0}}} }
+    });
+
+    if (chartAnoObj) chartAnoObj.destroy();
+    chartAnoObj = new Chart(ctxA, {
+        type: 'bar',
+        data: { labels: anosOrd, datasets: [{ label:'Publicações', data: anosOrd.map(a=>porAno[a]), backgroundColor:'#20445d' }] },
+        options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true,ticks:{precision:0}}} }
+    });
+}
+
+const COLUNAS_VG = [
+    { col:'nome_empresarial', label:'Empresa', wrap:true },
+    { col:'cnpj_cpf', label:'CNPJ/CPF' },
+    { col:'tipo_penalidade', label:'Tipo de Penalidade' },
+    { col:'motivo_penalidade', label:'Motivo', wrap:true },
+    { col:'data_inicio', label:'Início' },
+    { col:'data_fim', label:'Fim' },
+    { col:'data_publicacao', label:'Publicação' },
+    { col:'situacao', label:'Situação' },
+];
+
+function reconstruirCabecalhoVG() {
+    const thead = document.getElementById('theadVG');
+    thead.innerHTML = '<tr>' + COLUNAS_VG.map(c => {
+        const icone = sortCfg.col===c.col ? `<i class="material-icons sort-icon">${sortCfg.dir==='asc'?'arrow_upward':'arrow_downward'}</i>` : `<i class="material-icons sort-icon" style="opacity:.35">unfold_more</i>`;
+        return `<th class="sortable-header${c.wrap?' th-wrap':''}" onclick="sortVG('${c.col}')">${c.label}${icone}</th>`;
+    }).join('') + '</tr>';
+}
+
+function sortVG(col) {
+    sortCfg.dir = (sortCfg.col===col && sortCfg.dir==='asc') ? 'desc' : 'asc';
+    sortCfg.col = col;
+    dadosFiltrados = ordenar(dadosFiltrados, sortCfg.col, sortCfg.dir);
+    reconstruirCabecalhoVG();
+    paginaAtual = 1;
+    atualizarTabelaVG();
+}
+
+function atualizarTabelaVG() {
+    const tbody = document.getElementById('tbodyVG');
+    const total = dadosFiltrados.length;
+    const totalPaginas = Math.max(1, Math.ceil(total/porPagina));
+    if (paginaAtual > totalPaginas) paginaAtual = totalPaginas;
+    const inicio = (paginaAtual-1)*porPagina;
+    const pagina = dadosFiltrados.slice(inicio, inicio+porPagina);
+
+    if (!pagina.length) {
+        tbody.innerHTML = `<tr><td colspan="${COLUNAS_VG.length}" style="text-align:center;padding:30px;color:#94a3b8;">Nenhum registro encontrado.</td></tr>`;
+    } else {
+        tbody.innerHTML = pagina.map(r => {
+            const sit = calcularSituacao(r);
+            return `<tr>
+                <td><a class="empresa-link" onclick="irParaConsulta('${esc(r.cnpj_cpf)}')">${r.nome_empresarial||'-'}</a></td>
+                <td>${formatarCnpjCpf(r.cnpj_cpf)}</td>
+                <td>${r.tipo_penalidade||'-'}</td>
+                <td>${r.motivo_penalidade||'-'}</td>
+                <td>${formatarData(r.data_inicio)}</td>
+                <td>${formatarData(r.data_fim)}</td>
+                <td>${formatarData(r.data_publicacao)}</td>
+                <td>${badgeSituacao(sit)}</td>
+            </tr>`;
+        }).join('');
+    }
+    renderizarPaginacao('pagContainerVG', total, totalPaginas, (p)=>{ paginaAtual=p; atualizarTabelaVG(); }, (novoTam)=>{ porPagina=novoTam; paginaAtual=1; atualizarTabelaVG(); });
+    setTimeout(iframeH, 150);
+}
+
+function exportarVGCSV() {
+    baixarCSV('cafimp_filtrado.csv', COLUNAS_VG.map(c=>c.col), COLUNAS_VG.map(c=>c.label), dadosFiltrados);
+    mostrarToast('CSV exportado com sucesso!');
+}
+function exportarVGPDF() {
+    baixarPDF('CAFIMP - Visão Geral', COLUNAS_VG.map(c=>c.col), COLUNAS_VG.map(c=>c.label), dadosFiltrados);
+    mostrarToast('PDF exportado com sucesso!');
+}
+
+// ============================================================
+// 6. PAGINAÇÃO (genérica)
+// ============================================================
+function renderizarPaginacao(containerId, total, totalPaginas, onPageChange, onPageSizeChange) {
+    const el = document.getElementById(containerId); if (!el) return;
+    const inicio = total===0?0:(paginaAtual-1)*porPagina+1;
+    const fim = Math.min(paginaAtual*porPagina, total);
+
+    let botoes = '';
+    const janela = 2;
+    for (let p=1; p<=totalPaginas; p++) {
+        if (p===1 || p===totalPaginas || (p>=paginaAtual-janela && p<=paginaAtual+janela)) {
+            botoes += `<button class="${p===paginaAtual?'active':''}" onclick="(${onPageChange.toString()})(${p})">${p}</button>`;
+        } else if (p===paginaAtual-janela-1 || p===paginaAtual+janela+1) {
+            botoes += `<span style="padding:0 4px;color:#94a3b8;">…</span>`;
+        }
+    }
+
+    el.innerHTML = `
+        <div class="pagination-info">
+            <span>${inicio}-${fim} de ${total}</span>
+            <div class="page-size-selector">
+                <span>Por página:</span>
+                <select id="${containerId}_size" onchange="(${onPageSizeChange.toString()})(parseInt(this.value))">
+                    ${[10,25,50,100].map(n=>`<option value="${n}" ${n===porPagina?'selected':''}>${n}</option>`).join('')}
+                </select>
+            </div>
+        </div>
+        <div class="pagination-controls">
+            <button ${paginaAtual===1?'disabled':''} onclick="(${onPageChange.toString()})(1)"><i class="material-icons">first_page</i></button>
+            <button ${paginaAtual===1?'disabled':''} onclick="(${onPageChange.toString()})(${paginaAtual-1})"><i class="material-icons">chevron_left</i></button>
+            ${botoes}
+            <button ${paginaAtual===totalPaginas?'disabled':''} onclick="(${onPageChange.toString()})(${paginaAtual+1})"><i class="material-icons">chevron_right</i></button>
+            <button ${paginaAtual===totalPaginas?'disabled':''} onclick="(${onPageChange.toString()})(${totalPaginas})"><i class="material-icons">last_page</i></button>
+        </div>`;
+}
+
+// ============================================================
+// 7. CONSULTA INDIVIDUAL
+// ============================================================
+function renderizarConsulta() {
+    const c = document.getElementById('consulta-content'); if (!c) return;
+    c.innerHTML = `
+    <div class="filter-container">
+        <div class="filters-row" style="align-items:flex-end;">
+            <div class="filter-group" style="flex:3;min-width:280px;">
+                <label class="filter-label">Buscar por Empresa ou CNPJ/CPF</label>
+                ${buildComboHTML('filtroConsultaEmpresa','Digite o nome ou CNPJ/CPF da empresa...')}
+            </div>
+            <div class="filter-group" style="flex:0 0 auto;min-width:160px;">
+                <button class="btn-pesquisa" style="width:100%;" onclick="consultarEmpresa()"><i class="material-icons">search</i> Consultar</button>
+            </div>
+        </div>
+    </div>
+    <div id="resultadoConsulta"></div>`;
+
+    const opts = [...new Set(dadosCafimp.map(r=>r.cnpj_cpf))].filter(Boolean).map(cnpj=>{
+        const row = dadosCafimp.find(r=>r.cnpj_cpf===cnpj);
+        return { value: cnpj, label: `${row.nome_empresarial||''} — ${formatarCnpjCpf(cnpj)}` };
+    }).sort((a,b)=>a.label.localeCompare(b.label));
+
+    window._combos['filtroConsultaEmpresa'] = new ComboFilter('filtroConsultaEmpresa', opts, (val)=>{ if(val) consultarEmpresa(); });
+
+    document.getElementById('resultadoConsulta').innerHTML = `
+        <div class="empty-state">
+            <i class="material-icons">domain_disabled</i>
+            <h5>Nenhuma empresa selecionada</h5>
+            <p>Utilize o campo acima para consultar o histórico de penalidades de uma empresa cadastrada no CAFIMP.</p>
+        </div>`;
+    setTimeout(iframeH, 200);
+}
+
+function irParaConsulta(cnpj) {
+    document.getElementById('consulta-tab').click();
+    setTimeout(()=>{
+        window._combos['filtroConsultaEmpresa']?.setValue(cnpj, false);
+        consultarEmpresaPorCnpj(cnpj);
+    }, 200);
+}
+
+function consultarEmpresa() {
+    const cnpj = window._combos['filtroConsultaEmpresa']?.value;
+    if (!cnpj) { mostrarToast('Selecione uma empresa para consultar.'); return; }
+    consultarEmpresaPorCnpj(cnpj);
+}
+
+function consultarEmpresaPorCnpj(cnpj) {
+    const registros = dadosCafimp.filter(r => r.cnpj_cpf === cnpj)
+        .sort((a,b)=> (dataParaISO(b.data_publicacao)||'').localeCompare(dataParaISO(a.data_publicacao)||''));
+    const el = document.getElementById('resultadoConsulta');
+    if (!registros.length) {
+        el.innerHTML = `<div class="empty-state"><i class="material-icons">search_off</i><h5>Nenhum registro encontrado</h5></div>`;
+        return;
+    }
+    const nome = registros[0].nome_empresarial;
+    const ativas = registros.filter(r=>calcularSituacao(r)==='ativa').length;
+    const encerradas = registros.filter(r=>calcularSituacao(r)==='encerrada').length;
+    const indet = registros.filter(r=>calcularSituacao(r)==='indeterminada').length;
+
+    el.innerHTML = `
+    <div class="empresa-card">
+        <div class="empresa-card-header">
+            <h3>${nome}</h3>
+            <div class="cnpj">CNPJ/CPF: ${formatarCnpjCpf(cnpj)}</div>
+        </div>
+        <div class="empresa-card-body">
+            <div class="row g-3 mb-4">
+                <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-header">Total de Penalidades</div>
+                    <div class="metric-body"><div class="metric-value">${registros.length}</div></div></div></div>
+                <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-header">Ativas</div>
+                    <div class="metric-body"><div class="metric-value" style="color:#8f1c22">${ativas}</div></div></div></div>
+                <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-header">Encerradas</div>
+                    <div class="metric-body"><div class="metric-value" style="color:#0f6b3a">${encerradas}</div></div></div></div>
+                <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-header">Prazo Indeterminado</div>
+                    <div class="metric-body"><div class="metric-value" style="color:#7a5c00">${indet}</div></div></div></div>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                <h5 style="font-size:14px;font-weight:700;color:#20445d;margin:0;"><i class="material-icons" style="vertical-align:middle;">history</i> Histórico de Penalidades</h5>
+                <div style="display:flex;gap:8px;">
+                    <button class="btn-export" onclick='baixarCSV("historico_${esc(cnpj)}.csv", ${JSON.stringify(COLUNAS_VG.map(c=>c.col))}, ${JSON.stringify(COLUNAS_VG.map(c=>c.label))}, window._registrosConsulta)'><i class="material-icons">description</i> CSV</button>
+                    <button class="btn-export" onclick='baixarPDF("Historico ${esc(nome)}", ${JSON.stringify(COLUNAS_VG.map(c=>c.col))}, ${JSON.stringify(COLUNAS_VG.map(c=>c.label))}, window._registrosConsulta)'><i class="material-icons">print</i> PDF</button>
+                </div>
+            </div>
+
+            ${registros.map(r=>{
+                const sit = calcularSituacao(r);
+                return `<div class="timeline-item ${sit==='encerrada'?'encerrada':''}">
+                    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:6px;">
+                        <strong style="color:#1a3a5c;font-size:13px;">${r.tipo_penalidade||'Penalidade'}</strong>
+                        ${badgeSituacao(sit)}
+                    </div>
+                    <div style="font-size:12.5px;color:#334155;margin-bottom:6px;">${r.motivo_penalidade||'-'}</div>
+                    <div style="font-size:11.5px;color:#64748b;display:flex;gap:16px;flex-wrap:wrap;">
+                        <span><i class="material-icons" style="font-size:12px;">play_arrow</i> Início: ${formatarData(r.data_inicio)}</span>
+                        <span><i class="material-icons" style="font-size:12px;">stop</i> Fim: ${formatarData(r.data_fim)}</span>
+                        <span><i class="material-icons" style="font-size:12px;">campaign</i> Publicação: ${formatarData(r.data_publicacao)}</span>
+                    </div>
+                </div>`;
+            }).join('')}
+        </div>
+    </div>`;
+    window._registrosConsulta = registros;
+    setTimeout(iframeH, 200);
+}
+
+// ============================================================
+// 8. DICIONÁRIO DE DADOS
+// ============================================================
+const DICIONARIO_CAFIMP = [
+    { campo:'cnpj_cpf', descricao:'CNPJ (pessoa jurídica) ou CPF (pessoa física) da empresa/fornecedor penalizado', tipo:'Texto (14 ou 11 dígitos)' },
+    { campo:'nome_empresarial', descricao:'Razão social ou nome empresarial da empresa penalizada', tipo:'Texto' },
+    { campo:'tipo_penalidade', descricao:'Tipo/natureza da sanção aplicada (ex: Impedimento de Licitar e Contratar, Suspensão, Declaração de Inidoneidade)', tipo:'Texto' },
+    { campo:'motivo_penalidade', descricao:'Descrição do motivo/fundamentação que originou a aplicação da penalidade', tipo:'Texto' },
+    { campo:'data_inicio', descricao:'Data de início da vigência da penalidade', tipo:'Data (DD/MM/AAAA)' },
+    { campo:'data_fim', descricao:'Data de término da vigência da penalidade. Quando não preenchida, indica prazo indeterminado', tipo:'Data (DD/MM/AAAA)' },
+    { campo:'data_publicacao', descricao:'Data de publicação do ato/portaria que aplicou a penalidade', tipo:'Data (DD/MM/AAAA)' },
+];
+
+function renderizarDicionario() {
+    const c = document.getElementById('dicionario-content'); if (!c) return;
+    c.innerHTML = `
+    <div class="filter-container">
+        <div>
+            <h5 style="font-size:15px;font-weight:700;color:#20445d;margin:0;">Dicionário de Dados</h5>
+            <p style="color:#6c757d;font-size:12px;margin:0;">Descrição de todas as colunas do dataset do CAFIMP</p>
+        </div>
+        <div style="margin-top:14px;">
+            <input type="text" id="dicBusca" class="form-control" style="height:36px;font-size:12px;max-width:320px;padding:4px 12px;" placeholder="Buscar campo ou descrição..." oninput="buscarDicionario(this.value)">
+        </div>
+    </div>
+    <div class="metadata-container">
+        <div class="metadata-header">
+            <i class="material-icons" style="margin-right:8px;">table_chart</i>cafimp.csv
+            <span style="margin-left:8px;background:rgba(255,255,255,0.2);padding:2px 10px;border-radius:10px;font-size:11px;">${DICIONARIO_CAFIMP.length} campos</span>
+            <a href="${REPO_URL}" target="_blank" style="margin-left:auto;color:rgba(255,255,255,0.85);font-size:11px;display:flex;align-items:center;gap:3px;text-decoration:none;">
+                <i class="material-icons" style="font-size:14px;">open_in_new</i> Ver no GitHub
+            </a>
+        </div>
+        <div class="table-responsive">
+            <table class="metadata-table">
+                <thead><tr><th>Campo</th><th>Descrição</th><th>Tipo</th></tr></thead>
+                <tbody>
+                    ${DICIONARIO_CAFIMP.map(row=>`<tr class="dic-linha">
+                        <td><code>${row.campo}</code></td>
+                        <td>${row.descricao}</td>
+                        <td><span style="background:#e2e8f0;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:600;color:#475569;">${row.tipo}</span></td>
+                    </tr>`).join('')}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="filter-container" style="margin-top:6px;">
+        <h6 style="font-size:12.5px;font-weight:700;color:#20445d;margin-bottom:8px;"><i class="material-icons" style="font-size:15px;vertical-align:middle;">info</i> Regra de Situação</h6>
+        <p style="font-size:12px;color:#475569;margin:0;">A coluna calculada <strong>Situação</strong>, exibida na Visão Geral e na Consulta Individual, é derivada comparando a <code>data_fim</code> com a data atual: <strong>Ativa</strong> (data_fim futura ou igual a hoje), <strong>Encerrada</strong> (data_fim já ultrapassada) ou <strong>Prazo Indeterminado</strong> (data_fim não preenchida).</p>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-top:12px;">
+        <button class="btn-topo" onclick="voltarAoTopo()"><i class="material-icons">arrow_upward</i> Voltar ao topo</button>
+    </div>`;
+    setTimeout(iframeH, 200);
+}
+
+function buscarDicionario(termo) {
+    const t = (termo||'').toLowerCase().trim();
+    document.querySelectorAll('.dic-linha').forEach(row => {
+        const match = !t || row.textContent.toLowerCase().includes(t);
+        row.style.display = match ? '' : 'none';
+        row.classList.toggle('dic-row-highlight', !!t && match);
+    });
+}
+
+// ============================================================
+// 9. DOWNLOADS
+// ============================================================
+function renderizarDownloads() {
+    const c = document.getElementById('downloads-content'); if (!c) return;
+    c.innerHTML = `
+    <div class="filter-container">
+        <div style="text-align:center;padding:16px 0 8px;">
+            <i class="material-icons" style="font-size:48px;color:#20445d;">cloud_download</i>
+            <h5 style="margin-top:8px;margin-bottom:4px;font-size:15px;">Repositório de Dados Abertos</h5>
+            <p style="color:#6c757d;font-size:13px;margin-bottom:12px;">Acesse o histórico completo e versionado do CAFIMP no GitHub</p>
+            <a href="${REPO_URL}" target="_blank" class="btn-pesquisa text-decoration-none">
+                <i class="material-icons">open_in_new</i> Acessar Repositório no GitHub
+            </a>
+        </div>
+    </div>
+    <div class="filter-container">
+        <h5 style="font-size:14px;font-weight:700;color:#20445d;margin-bottom:16px;"><i class="material-icons" style="vertical-align:middle;margin-right:4px;">download</i> Download Direto</h5>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <div style="background:#f8fafd;border:1px solid #e2e8f0;border-radius:8px;padding:12px 16px;min-width:200px;">
+                <div style="font-weight:700;color:#20445d;font-size:14px;margin-bottom:8px;">Base Completa</div>
+                <div style="font-size:11.5px;color:#64748b;margin-bottom:10px;">${dadosCafimp.length.toLocaleString('pt-BR')} registro(s)</div>
+                <button class="btn-export" style="width:100%;justify-content:center;" onclick='baixarCSV("cafimp_completo.csv", ${JSON.stringify(COLUNAS_VG.map(c=>c.col))}, ${JSON.stringify(COLUNAS_VG.map(c=>c.label))}, dadosCafimp)'>
+                    <i class="material-icons">description</i> CSV Completo
+                </button>
+            </div>
+            <div style="background:#f8fafd;border:1px solid #e2e8f0;border-radius:8px;padding:12px 16px;min-width:200px;">
+                <div style="font-weight:700;color:#20445d;font-size:14px;margin-bottom:8px;">Base Filtrada (Visão Geral)</div>
+                <div style="font-size:11.5px;color:#64748b;margin-bottom:10px;">Respeita os filtros aplicados na aba Visão Geral</div>
+                <button class="btn-export" style="width:100%;justify-content:center;" onclick="exportarVGCSV()">
+                    <i class="material-icons">filter_alt</i> CSV Filtrado
+                </button>
+            </div>
+            <div style="background:#f8fafd;border:1px solid #e2e8f0;border-radius:8px;padding:12px 16px;min-width:200px;">
+                <div style="font-weight:700;color:#20445d;font-size:14px;margin-bottom:8px;">Arquivo Fonte</div>
+                <div style="font-size:11.5px;color:#64748b;margin-bottom:10px;">cafimp.csv original, direto do GitHub</div>
+                <a class="btn-export" style="width:100%;justify-content:center;text-decoration:none;" href="${GITHUB_BASE}${CSV_FILE}" target="_blank">
+                    <i class="material-icons">open_in_new</i> Abrir CSV
+                </a>
+            </div>
+        </div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-top:12px;">
+        <button class="btn-topo" onclick="voltarAoTopo()"><i class="material-icons">arrow_upward</i> Voltar ao topo</button>
+    </div>`;
+    setTimeout(iframeH, 200);
+}
+
+// ============================================================
+// 10. COMBOBOX FILTER (componente genérico)
+// ============================================================
+function buildComboHTML(id, placeholder='Selecione ou digite...') {
+    return `<div class="combo-filter-wrap">
+        <input type="text" class="combo-filter-input form-control" id="${id}" placeholder="${placeholder}" autocomplete="off">
+        <button class="combo-clear-btn" title="Limpar">✕</button>
+        <div class="combo-filter-dropdown"></div>
+    </div>`;
+}
+
+class ComboFilter {
+    constructor(inputId, options, onChange) {
+        this.inputId = inputId;
+        this.allOptions = options || [];
+        this.value = '';
+        this.onChange = onChange;
+        this.input = document.getElementById(inputId);
+        if (!this.input) return;
+        this.wrap = this.input.closest('.combo-filter-wrap');
+        this.dropdown = this.wrap ? this.wrap.querySelector('.combo-filter-dropdown') : null;
+        this.clearBtn = this.wrap ? this.wrap.querySelector('.combo-clear-btn') : null;
+        this.renderOptions(this.allOptions);
+        this.input.addEventListener('focus', ()=>{ this.renderOptions(this.filterOpts(this.input.value)); this.open(); });
+        this.input.addEventListener('input', ()=>{ this.renderOptions(this.filterOpts(this.input.value)); this.open(); if(this.clearBtn) this.clearBtn.classList.toggle('visible', !!this.input.value); });
+        this.input.addEventListener('keydown', (e)=>this.handleKey(e));
+        document.addEventListener('mousedown', (e)=>{ if (this.wrap && !this.wrap.contains(e.target)) this.close(); });
+        if (this.clearBtn) this.clearBtn.addEventListener('mousedown', (e)=>{ e.preventDefault(); this.clear(); });
+    }
+    filterOpts(term) {
+        const t = (term||'').toLowerCase().trim();
+        if (!t) return this.allOptions;
+        return this.allOptions.filter(o => o.label.toLowerCase().includes(t));
+    }
+    handleKey(e) {
+        if (e.key === 'Escape') { this.close(); return; }
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const active = this.dropdown ? this.dropdown.querySelector('.combo-filter-option.active') : null;
+            if (active) this.selectOption(active.dataset.value, active.dataset.label);
+            this.close(); return;
+        }
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (!this.dropdown) return;
+            const opts = [...this.dropdown.querySelectorAll('.combo-filter-option')];
+            if (!opts.length) return;
+            let idx = opts.findIndex(o=>o.classList.contains('active'));
+            idx = e.key==='ArrowDown' ? Math.min(idx+1,opts.length-1) : Math.max(idx-1,0);
+            if (idx < 0) idx = 0;
+            opts.forEach((o,i)=>o.classList.toggle('active',i===idx));
+            opts[idx].scrollIntoView({block:'nearest'});
+        }
+    }
+    renderOptions(opts) {
+        if (!this.dropdown) return;
+        this.dropdown.innerHTML = opts.length === 0
+            ? '<div class="combo-filter-option" style="color:#94a3b8;cursor:default;">Nenhuma opção</div>'
+            : opts.map(o=>`<div class="combo-filter-option${this.value===o.value?' selected':''}" data-value="${o.value.replace(/"/g,'&quot;')}" data-label="${o.label.replace(/"/g,'&quot;')}">${o.label}</div>`).join('');
+        this.dropdown.querySelectorAll('.combo-filter-option').forEach(el=>{
+            el.addEventListener('mousedown', e=>{ e.preventDefault(); this.selectOption(el.dataset.value, el.dataset.label); });
+        });
+    }
+    selectOption(val, label) {
+        this.value = val;
+        this.input.value = label || val;
+        if (this.clearBtn) this.clearBtn.classList.toggle('visible', !!val);
+        this.close();
+        if (this.onChange) this.onChange(val);
+        if (this.dropdown) this.dropdown.querySelectorAll('.combo-filter-option').forEach(o=>o.classList.toggle('selected',o.dataset.value===val));
+    }
+    open() { if (this.dropdown) this.dropdown.classList.add('open'); }
+    close() { if (this.dropdown) this.dropdown.classList.remove('open'); }
+    clear() {
+        this.value = ''; this.input.value = '';
+        if (this.clearBtn) this.clearBtn.classList.remove('visible');
+        this.renderOptions(this.allOptions);
+        if (this.onChange) this.onChange('');
+    }
+    setValue(val, triggerChange=false) {
+        this.value = val;
+        const opt = this.allOptions.find(o=>o.value===val);
+        this.input.value = opt ? opt.label : (val||'');
+        if (this.clearBtn) this.clearBtn.classList.toggle('visible', !!val);
+        if (triggerChange && this.onChange) this.onChange(val);
+    }
+    updateOptions(newOpts, keepValue=false) {
+        this.allOptions = newOpts;
+        if (!keepValue || !newOpts.find(o=>o.value===this.value)) {
+            this.value = ''; this.input.value = '';
+            if (this.clearBtn) this.clearBtn.classList.remove('visible');
+        }
+        this.renderOptions(newOpts);
+    }
+}
+
+// ============================================================
+// 11. INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', ()=>{
+    carregarDados();
+    document.querySelectorAll('[data-bs-toggle="tab"]').forEach(tab=>{
+        tab.addEventListener('shown.bs.tab', ()=> setTimeout(iframeH,300));
+    });
+    window.addEventListener('resize',()=>{ clearTimeout(window.rTimer); window.rTimer=setTimeout(iframeH,250); });
+});
+
+(function(){
+    function sendH() {
+        const h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight)+10;
+        try{if(window.parent&&window.parent!==window)window.parent.postMessage({iframeHeight:h,iframeResize:true,type:'resize'},'*');}catch(e){}
+    }
+    if(window.ResizeObserver) new ResizeObserver(sendH).observe(document.body);
+    else { window.addEventListener('resize',sendH); setInterval(sendH,2000); }
+    sendH();
+})();
+</script>
+
+
+</body>
+</html>
