@@ -1,0 +1,59 @@
+{
+  "name": "portal_cafimp",
+  "owner_org": "",
+  "profile": "data-package",
+  "resources": [
+    {
+      "description": "Insira a descrição/explicação detalhada deste recurso.",
+      "dialect": {
+        "delimiter": ";",
+        "quoteChar": "\""
+      },
+      "encoding": "utf-8-sig",
+      "format": "csv",
+      "hashing": "md5",
+      "name": "cafimp",
+      "path": "data/cafimp.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "cnpj_cpf",
+            "type": "integer"
+          },
+          {
+            "name": "nome_empresarial",
+            "type": "string"
+          },
+          {
+            "name": "tipo_penalidade",
+            "type": "string"
+          },
+          {
+            "name": "motivo_penalidade",
+            "type": "string"
+          },
+          {
+            "name": "data_inicio",
+            "type": "string"
+          },
+          {
+            "name": "data_fim",
+            "type": "string"
+          },
+          {
+            "name": "data_publicacao",
+            "type": "string"
+          },
+          {
+            "name": "orgao",
+            "type": "string"
+          }
+        ]
+      },
+      "scheme": "file",
+      "title": "Insira um título humanamente legível para este recurso."
+    }
+  ],
+  "title": "Portal_cafimp"
+}
