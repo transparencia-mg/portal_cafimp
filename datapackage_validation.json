@@ -1,0 +1,98 @@
+{
+  "version": "4.16.6",
+  "time": 0.054,
+  "errors": [],
+  "tasks": [
+    {
+      "resource": {
+        "description": "Insira a descrição/explicação detalhada deste recurso.",
+        "dialect": {
+          "delimiter": ";",
+          "quoteChar": "\""
+        },
+        "encoding": "utf-8-sig",
+        "format": "csv",
+        "hashing": "md5",
+        "name": "cafimp",
+        "path": "data/cafimp.csv",
+        "profile": "tabular-data-resource",
+        "schema": {
+          "fields": [
+            {
+              "name": "cnpj_cpf",
+              "type": "integer"
+            },
+            {
+              "name": "nome_empresarial",
+              "type": "string"
+            },
+            {
+              "name": "tipo_penalidade",
+              "type": "string"
+            },
+            {
+              "name": "motivo_penalidade",
+              "type": "string"
+            },
+            {
+              "name": "data_inicio",
+              "type": "string"
+            },
+            {
+              "name": "data_fim",
+              "type": "string"
+            },
+            {
+              "name": "data_publicacao",
+              "type": "string"
+            },
+            {
+              "name": "orgao",
+              "type": "string"
+            }
+          ]
+        },
+        "scheme": "file",
+        "title": "Insira um título humanamente legível para este recurso.",
+        "stats": {
+          "hash": "c4c52b9cd1ba80a02cfb09a9f1c22e7d",
+          "bytes": 334567,
+          "fields": 8,
+          "rows": 1693
+        }
+      },
+      "time": 0.044,
+      "scope": [
+        "hash-count-error",
+        "byte-count-error",
+        "field-count-error",
+        "row-count-error",
+        "blank-header",
+        "extra-label",
+        "missing-label",
+        "blank-label",
+        "duplicate-label",
+        "incorrect-label",
+        "blank-row",
+        "primary-key-error",
+        "foreign-key-error",
+        "extra-cell",
+        "missing-cell",
+        "type-error",
+        "constraint-error",
+        "unique-error"
+      ],
+      "partial": false,
+      "errors": [],
+      "stats": {
+        "errors": 0
+      },
+      "valid": true
+    }
+  ],
+  "stats": {
+    "errors": 0,
+    "tasks": 1
+  },
+  "valid": true
+}
