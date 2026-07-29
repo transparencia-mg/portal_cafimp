@@ -314,7 +314,8 @@
 // cnpj_cpf;nome_empresarial;tipo_penalidade;motivo_penalidade;data_inicio;data_fim;data_publicacao
 const GITHUB_BASE = 'https://raw.githubusercontent.com/transparencia-mg/portal_cafimp/refs/heads/main/dataset/data/';
 const CSV_FILE     = 'cafimp.csv';
-const REPO_URL     = 'https://github.com/transparencia-mg/portal_cafimp'; // usado nos botões "Ver no GitHub"
+const REPO_URL     = 'https://github.com/transparencia-mg/portal_cafimp'; // usado no botão "Ver no GitHub" do Dicionário de Dados
+const DADOS_ABERTOS_URL = 'https://www.dados.mg.gov.br'; // usado no botão de acesso ao Portal de Dados Abertos, na aba Downloads
 
 // ============================================================
 // 2. GLOBALS
@@ -489,6 +490,51 @@ function aplicarCorrecoesConhecidas(dados) {
     return dados;
 }
 
+// ============================================================
+// 3.2 NORMALIZAÇÃO DE CABEÇALHO (aceita dois padrões de nomes de coluna)
+// ============================================================
+// Padrão principal (interno, usado em todo o dashboard):
+//   cnpj_cpf, nome_empresarial, tipo_penalidade, motivo_penalidade,
+//   data_inicio, data_fim, data_publicacao, orgao
+// Padrão alternativo aceito (mapeado automaticamente para o principal):
+//   cnpj_cpf_fornecedor, nome, dstipo_penalidade, motivo,
+//   dtinicio, dtfim, dtpublicacao, nome_orgao
+const MAPA_CABECALHO = {
+    // padrão principal (identidade — garante que já vem correto se for esse o caso)
+    'cnpj_cpf': 'cnpj_cpf',
+    'nome_empresarial': 'nome_empresarial',
+    'tipo_penalidade': 'tipo_penalidade',
+    'motivo_penalidade': 'motivo_penalidade',
+    'data_inicio': 'data_inicio',
+    'data_fim': 'data_fim',
+    'data_publicacao': 'data_publicacao',
+    'orgao': 'orgao',
+    // padrão alternativo
+    'cnpj_cpf_fornecedor': 'cnpj_cpf',
+    'nome': 'nome_empresarial',
+    'dstipo_penalidade': 'tipo_penalidade',
+    'motivo': 'motivo_penalidade',
+    'dtinicio': 'data_inicio',
+    'dtfim': 'data_fim',
+    'dtpublicacao': 'data_publicacao',
+    'nome_orgao': 'orgao',
+};
+
+// Converte as chaves de uma linha lida do CSV (em qualquer um dos dois padrões,
+// inclusive minúsculas/maiúsculas misturadas) para o padrão interno do dashboard.
+function normalizarCabecalhoLinha(rowBruta) {
+    const row = {};
+    Object.keys(rowBruta).forEach(chaveOriginal => {
+        const chaveLimpa = _limpar(chaveOriginal).toLowerCase();
+        const chaveInterna = MAPA_CABECALHO[chaveLimpa] || chaveLimpa;
+        // Evita que um alias sobrescreva um valor já preenchido pelo campo principal
+        if (row[chaveInterna] === undefined || row[chaveInterna] === '') {
+            row[chaveInterna] = _limpar(rowBruta[chaveOriginal]);
+        }
+    });
+    return row;
+}
+
 async function carregarDados() {
     mostrarLoading(true, 'Carregando dados do CAFIMP...');
     try {
@@ -496,11 +542,8 @@ async function carregarDados() {
         if (!resp.ok) throw new Error('HTTP '+resp.status);
         const texto = await resp.text();
         const parsed = Papa.parse(texto.replace(/^\uFEFF/,''), { header:true, skipEmptyLines:true, delimiter:'' });
-        dadosCafimp = (parsed.data||[]).map(r=>{
-            const row = {};
-            Object.keys(r).forEach(k => { row[_limpar(k)] = _limpar(r[k]); });
-            return row;
-        }).filter(r => r.cnpj_cpf || r.nome_empresarial);
+        dadosCafimp = (parsed.data||[]).map(r => normalizarCabecalhoLinha(r))
+            .filter(r => r.cnpj_cpf || r.nome_empresarial);
 
         dadosCafimp = aplicarCorrecoesConhecidas(dadosCafimp);
 
@@ -557,9 +600,6 @@ function renderizarVisaoGeral() {
             </div>
         </div>
     </div>
-    <p style="font-size:11.5px;color:#94a3b8;text-align:center;margin-top:-6px;">
-        <i class="material-icons" style="font-size:13px;vertical-align:middle;">touch_app</i>
-        Clique em um órgão para ver as empresas correspondentes na Consulta Individual.
     </p>
 
     <div style="display:flex;justify-content:flex-end;margin-top:12px;">
@@ -1058,10 +1098,10 @@ function renderizarDownloads() {
     <div class="filter-container">
         <div style="text-align:center;padding:16px 0 8px;">
             <i class="material-icons" style="font-size:48px;color:#20445d;">cloud_download</i>
-            <h5 style="margin-top:8px;margin-bottom:4px;font-size:15px;">Repositório de Dados Abertos</h5>
-            <p style="color:#6c757d;font-size:13px;margin-bottom:12px;">Acesse o histórico completo e versionado do CAFIMP no GitHub</p>
-            <a href="${REPO_URL}" target="_blank" class="btn-pesquisa text-decoration-none">
-                <i class="material-icons">open_in_new</i> Acessar Repositório no GitHub
+            <h5 style="margin-top:8px;margin-bottom:4px;font-size:15px;">Portal de Dados Abertos</h5>
+            <p style="color:#6c757d;font-size:13px;margin-bottom:12px;">Acesse o Portal de Dados Abertos do Governo de Minas Gerais</p>
+            <a href="${DADOS_ABERTOS_URL}" target="_blank" class="btn-pesquisa text-decoration-none">
+                <i class="material-icons">open_in_new</i> Acessar Portal de Dados Abertos
             </a>
         </div>
     </div>
