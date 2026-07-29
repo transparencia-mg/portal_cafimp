@@ -1,6 +1,6 @@
 {
   "version": "4.16.6",
-  "time": 0.065,
+  "time": 0.063,
   "errors": [],
   "tasks": [
     {
@@ -55,13 +55,13 @@
         "scheme": "file",
         "title": "Insira um título humanamente legível para este recurso.",
         "stats": {
-          "hash": "39671e1f0b4e9c76b899e6a7d4c92eaf",
-          "bytes": 487675,
+          "hash": "97a37ba372e4f0cb9c575a2072b83f11",
+          "bytes": 487689,
           "fields": 8,
           "rows": 2062
         }
       },
-      "time": 0.055,
+      "time": 0.053,
       "scope": [
         "hash-count-error",
         "byte-count-error",
@@ -83,249 +83,16 @@
         "unique-error"
       ],
       "partial": false,
-      "errors": [
-        {
-          "label": "cnpj_cpf_fornecedor",
-          "fieldName": "cnpj_cpf",
-          "fieldNumber": 1,
-          "fieldPosition": 1,
-          "labels": [
-            "cnpj_cpf_fornecedor",
-            "nome",
-            "dstipo_penalidade",
-            "motivo",
-            "dtinicio",
-            "dtfim",
-            "dtpublicacao",
-            "nome_orgao"
-          ],
-          "rowPositions": [
-            1
-          ],
-          "code": "incorrect-label",
-          "name": "Incorrect Label",
-          "tags": [
-            "#table",
-            "#header",
-            "#label"
-          ],
-          "note": "",
-          "message": "Label \"cnpj_cpf_fornecedor\" in field cnpj_cpf at position \"1\" does not match the field name in the schema",
-          "description": "One of the data source header does not match the field name defined in the schema."
-        },
-        {
-          "label": "nome",
-          "fieldName": "nome_empresarial",
-          "fieldNumber": 2,
-          "fieldPosition": 2,
-          "labels": [
-            "cnpj_cpf_fornecedor",
-            "nome",
-            "dstipo_penalidade",
-            "motivo",
-            "dtinicio",
-            "dtfim",
-            "dtpublicacao",
-            "nome_orgao"
-          ],
-          "rowPositions": [
-            1
-          ],
-          "code": "incorrect-label",
-          "name": "Incorrect Label",
-          "tags": [
-            "#table",
-            "#header",
-            "#label"
-          ],
-          "note": "",
-          "message": "Label \"nome\" in field nome_empresarial at position \"2\" does not match the field name in the schema",
-          "description": "One of the data source header does not match the field name defined in the schema."
-        },
-        {
-          "label": "dstipo_penalidade",
-          "fieldName": "tipo_penalidade",
-          "fieldNumber": 3,
-          "fieldPosition": 3,
-          "labels": [
-            "cnpj_cpf_fornecedor",
-            "nome",
-            "dstipo_penalidade",
-            "motivo",
-            "dtinicio",
-            "dtfim",
-            "dtpublicacao",
-            "nome_orgao"
-          ],
-          "rowPositions": [
-            1
-          ],
-          "code": "incorrect-label",
-          "name": "Incorrect Label",
-          "tags": [
-            "#table",
-            "#header",
-            "#label"
-          ],
-          "note": "",
-          "message": "Label \"dstipo_penalidade\" in field tipo_penalidade at position \"3\" does not match the field name in the schema",
-          "description": "One of the data source header does not match the field name defined in the schema."
-        },
-        {
-          "label": "motivo",
-          "fieldName": "motivo_penalidade",
-          "fieldNumber": 4,
-          "fieldPosition": 4,
-          "labels": [
-            "cnpj_cpf_fornecedor",
-            "nome",
-            "dstipo_penalidade",
-            "motivo",
-            "dtinicio",
-            "dtfim",
-            "dtpublicacao",
-            "nome_orgao"
-          ],
-          "rowPositions": [
-            1
-          ],
-          "code": "incorrect-label",
-          "name": "Incorrect Label",
-          "tags": [
-            "#table",
-            "#header",
-            "#label"
-          ],
-          "note": "",
-          "message": "Label \"motivo\" in field motivo_penalidade at position \"4\" does not match the field name in the schema",
-          "description": "One of the data source header does not match the field name defined in the schema."
-        },
-        {
-          "label": "dtinicio",
-          "fieldName": "data_inicio",
-          "fieldNumber": 5,
-          "fieldPosition": 5,
-          "labels": [
-            "cnpj_cpf_fornecedor",
-            "nome",
-            "dstipo_penalidade",
-            "motivo",
-            "dtinicio",
-            "dtfim",
-            "dtpublicacao",
-            "nome_orgao"
-          ],
-          "rowPositions": [
-            1
-          ],
-          "code": "incorrect-label",
-          "name": "Incorrect Label",
-          "tags": [
-            "#table",
-            "#header",
-            "#label"
-          ],
-          "note": "",
-          "message": "Label \"dtinicio\" in field data_inicio at position \"5\" does not match the field name in the schema",
-          "description": "One of the data source header does not match the field name defined in the schema."
-        },
-        {
-          "label": "dtfim",
-          "fieldName": "data_fim",
-          "fieldNumber": 6,
-          "fieldPosition": 6,
-          "labels": [
-            "cnpj_cpf_fornecedor",
-            "nome",
-            "dstipo_penalidade",
-            "motivo",
-            "dtinicio",
-            "dtfim",
-            "dtpublicacao",
-            "nome_orgao"
-          ],
-          "rowPositions": [
-            1
-          ],
-          "code": "incorrect-label",
-          "name": "Incorrect Label",
-          "tags": [
-            "#table",
-            "#header",
-            "#label"
-          ],
-          "note": "",
-          "message": "Label \"dtfim\" in field data_fim at position \"6\" does not match the field name in the schema",
-          "description": "One of the data source header does not match the field name defined in the schema."
-        },
-        {
-          "label": "dtpublicacao",
-          "fieldName": "data_publicacao",
-          "fieldNumber": 7,
-          "fieldPosition": 7,
-          "labels": [
-            "cnpj_cpf_fornecedor",
-            "nome",
-            "dstipo_penalidade",
-            "motivo",
-            "dtinicio",
-            "dtfim",
-            "dtpublicacao",
-            "nome_orgao"
-          ],
-          "rowPositions": [
-            1
-          ],
-          "code": "incorrect-label",
-          "name": "Incorrect Label",
-          "tags": [
-            "#table",
-            "#header",
-            "#label"
-          ],
-          "note": "",
-          "message": "Label \"dtpublicacao\" in field data_publicacao at position \"7\" does not match the field name in the schema",
-          "description": "One of the data source header does not match the field name defined in the schema."
-        },
-        {
-          "label": "nome_orgao",
-          "fieldName": "orgao",
-          "fieldNumber": 8,
-          "fieldPosition": 8,
-          "labels": [
-            "cnpj_cpf_fornecedor",
-            "nome",
-            "dstipo_penalidade",
-            "motivo",
-            "dtinicio",
-            "dtfim",
-            "dtpublicacao",
-            "nome_orgao"
-          ],
-          "rowPositions": [
-            1
-          ],
-          "code": "incorrect-label",
-          "name": "Incorrect Label",
-          "tags": [
-            "#table",
-            "#header",
-            "#label"
-          ],
-          "note": "",
-          "message": "Label \"nome_orgao\" in field orgao at position \"8\" does not match the field name in the schema",
-          "description": "One of the data source header does not match the field name defined in the schema."
-        }
-      ],
+      "errors": [],
       "stats": {
-        "errors": 8
+        "errors": 0
       },
-      "valid": false
+      "valid": true
     }
   ],
   "stats": {
-    "errors": 8,
+    "errors": 0,
     "tasks": 1
   },
-  "valid": false
+  "valid": true
 }
