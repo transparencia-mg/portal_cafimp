@@ -1,4 +1,4 @@
-﻿cnpj_cpf_fornecedor;nome;dstipo_penalidade;motivo;dtinicio;dtfim;dtpublicacao;nome_orgao
+﻿cnpj_cpf;nome_empresarial;tipo_penalidade;motivo_penalidade;data_inicio;data_fim;data_publicacao;orgao
 15534324600;Luciano Magno Coelho;Suspensão por Decisão Judicial;Improbidade administrativa.;'2018-12-12 00:00:00.000';'2023-12-11 00:00:00.000';'2049-06-14 00:00:00.000';TRIBUNAL DE JUSTICA DO ESTADO DE MINAS GERAIS
 84414251672;CINZIA DINIZ ANTONINI;Suspensão por até 5 anos;DESCUMPRIMENTO CONTRATUAL;'2025-10-07 00:00:00.000';'2029-10-07 00:00:00.000';'2026-07-10 00:00:00.000';TRIBUNAL DE JUSTICA DO ESTADO DE MINAS GERAIS
 37553003620;ENIO FONSECA SAMPAIO;Suspensão por até 5 anos;DESCUMPRIMENTO CONTRATUAL;'2025-10-07 00:00:00.000';'2029-10-07 00:00:00.000';'2026-07-10 00:00:00.000';TRIBUNAL DE JUSTICA DO ESTADO DE MINAS GERAIS
