@@ -119,6 +119,7 @@
         .sortable-header:hover { background-color: #3d5566 !important; }
         .sortable-header .sort-icon { font-size: 13px; position: absolute; right: 5px; top: 50%; transform: translateY(-50%); opacity: 0.8; }
         .text-right { text-align: right; }
+        .text-center { text-align: center; }
 
         /* BOTÕES */
         .btn-pesquisa { background: linear-gradient(to right, #20445d, #20445d); border: none; padding: 0 16px; font-weight: 600; border-radius: 6px; transition: all 0.3s ease; font-size: 13px; color: white; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; height: 36px; white-space: nowrap; }
@@ -322,7 +323,7 @@ let dadosCafimp   = [];   // dataset completo normalizado
 let dadosFiltrados = [];  // após aplicar filtros da Visão Geral
 let paginaAtual = 1;
 let porPagina   = 25;
-let sortCfg = { col: 'data_publicacao', dir: 'desc' };
+let sortCfg = { col: 'data_fim', dir: 'desc' };
 window._combos = {};
 
 // ============================================================
@@ -552,7 +553,6 @@ function renderizarVisaoGeral() {
     <div class="row g-3 mb-3">
         <div class="col-12">
             <div class="chart-container">
-                <div class="chart-header"><h4 class="chart-title">Resumo por Órgão/Entidade</h4></div>
                 <div id="resumoOrgao"></div>
             </div>
         </div>
@@ -573,8 +573,10 @@ function renderizarVisaoGeral() {
 }
 
 // Tabela de resumo por Órgão/Entidade: empresas, penalidades, ativas e encerradas
+let sortResumoOrgaoCfg = { col: 'nome', dir: 'asc' };
+let dadosResumoOrgaoCache = [];
+
 function renderizarResumoOrgaoVG(dados) {
-    const el = document.getElementById('resumoOrgao'); if (!el) return;
     const grupos = {};
     dados.forEach(r => {
         const chave = r.orgao || 'Não informado';
@@ -585,31 +587,82 @@ function renderizarResumoOrgaoVG(dados) {
         const sit = calcularSituacao(r);
         if (sit==='ativa') g.ativas++; else if (sit==='encerrada') g.encerradas++;
     });
-    const linhas = Object.entries(grupos).sort((a,b)=>b[1].penalidades - a[1].penalidades);
-    if (!linhas.length) { el.innerHTML = '<p style="padding:16px;color:#94a3b8;font-size:12px;">Sem dados.</p>'; return; }
+    dadosResumoOrgaoCache = Object.entries(grupos).map(([nome,g])=>({
+        nome, empresas: g.empresas.size, penalidades: g.penalidades, ativas: g.ativas, encerradas: g.encerradas
+    }));
+    renderizarTabelaResumoOrgao();
+}
+
+const COLUNAS_RESUMO_ORGAO = [
+    { col:'nome', label:'Órgão/Entidade' },
+    { col:'empresas', label:'Empresas' },
+    { col:'penalidades', label:'Penalidades' },
+    { col:'ativas', label:'Ativas' },
+    { col:'encerradas', label:'Encerradas' },
+];
+
+function renderizarTabelaResumoOrgao() {
+    const el = document.getElementById('resumoOrgao'); if (!el) return;
+    if (!dadosResumoOrgaoCache.length) { el.innerHTML = '<p style="padding:16px;color:#94a3b8;font-size:12px;">Sem dados.</p>'; return; }
+
+    const { col, dir } = sortResumoOrgaoCfg;
+    const linhas = [...dadosResumoOrgaoCache].sort((a,b)=>{
+        let va = a[col], vb = b[col];
+        if (typeof va === 'string') {
+            va = va.toLowerCase(); vb = vb.toLowerCase();
+            return dir==='asc' ? (va<vb?-1:va>vb?1:0) : (va>vb?-1:va<vb?1:0);
+        }
+        return dir==='asc' ? va-vb : vb-va;
+    });
 
     el.innerHTML = `
+    <div class="toolbar" style="padding:12px 16px 0;">
+        <div class="toolbar-left"></div>
+        <div class="toolbar-right">
+            <button class="btn-export" onclick="compartilharLink()"><i class="material-icons">share</i> Compartilhar Link</button>
+        </div>
+    </div>
     <div class="table-fixed-header-container" style="max-height:400px;">
         <table class="table">
             <thead><tr>
-                <th>Órgão/Entidade</th>
-                <th class="text-right">Empresas</th>
-                <th class="text-right">Penalidades</th>
-                <th class="text-right">Ativas</th>
-                <th class="text-right">Encerradas</th>
+                ${COLUNAS_RESUMO_ORGAO.map(c=>{
+                    const icone = col===c.col ? `<i class="material-icons sort-icon">${dir==='asc'?'arrow_upward':'arrow_downward'}</i>` : `<i class="material-icons sort-icon" style="opacity:.35">unfold_more</i>`;
+                    return `<th class="sortable-header${c.col!=='nome'?' text-center':''}" onclick="ordenarResumoOrgao('${c.col}')">${c.label}${icone}</th>`;
+                }).join('')}
             </tr></thead>
             <tbody>
-                ${linhas.map(([nome,g])=>`
-                <tr class="resumo-tr" onclick="irParaConsultaComFiltro('orgao','${esc(nome)}')">
-                    <td>${nome}</td>
-                    <td class="text-right">${g.empresas.size}</td>
-                    <td class="text-right">${g.penalidades}</td>
-                    <td class="text-right" style="color:#8f1c22;font-weight:600;">${g.ativas}</td>
-                    <td class="text-right" style="color:#0f6b3a;font-weight:600;">${g.encerradas}</td>
+                ${linhas.map(g=>`
+                <tr class="resumo-tr" onclick="irParaConsultaComFiltro('orgao','${esc(g.nome)}')">
+                    <td>${g.nome}</td>
+                    <td class="text-center">${g.empresas}</td>
+                    <td class="text-center">${g.penalidades}</td>
+                    <td class="text-center" style="color:#8f1c22;font-weight:600;">${g.ativas}</td>
+                    <td class="text-center" style="color:#0f6b3a;font-weight:600;">${g.encerradas}</td>
                 </tr>`).join('')}
             </tbody>
         </table>
     </div>`;
+}
+
+function ordenarResumoOrgao(col) {
+    sortResumoOrgaoCfg.dir = (sortResumoOrgaoCfg.col===col && sortResumoOrgaoCfg.dir==='asc') ? 'desc' : 'asc';
+    sortResumoOrgaoCfg.col = col;
+    renderizarTabelaResumoOrgao();
+}
+
+// Copia o link da página atual para a área de transferência
+function compartilharLink() {
+    const url = window.location.href;
+    const aoCopiar = () => mostrarToast('Link copiado para área de transferência!');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(aoCopiar).catch(()=>mostrarToast('Não foi possível copiar o link.'));
+    } else {
+        const temp = document.createElement('textarea');
+        temp.value = url; temp.style.position = 'fixed'; temp.style.opacity = '0';
+        document.body.appendChild(temp); temp.select();
+        try { document.execCommand('copy'); aoCopiar(); } catch(e) { mostrarToast('Não foi possível copiar o link.'); }
+        document.body.removeChild(temp);
+    }
 }
 
 // Navega para a Consulta Individual já filtrada pelo órgão clicado no resumo
@@ -892,7 +945,7 @@ function renderizarConsulta() {
             </div>
         </div>
         <div class="botoes-abaixo">
-            <button class="btn-pesquisa" onclick="aplicarFiltrosVG()"><i class="material-icons">search</i> Pesquisar</button>
+            <button class="btn-pesquisa" onclick="aplicarFiltrosVG()"><i class="material-icons">refresh</i> Atualizar Filtros</button>
             <button class="btn-secondary-custom" onclick="limparFiltrosVG()"><i class="material-icons">clear</i> Limpar Filtros</button>
         </div>
     </div>
@@ -902,6 +955,7 @@ function renderizarConsulta() {
         <div class="toolbar-left">
             <button class="btn-export" onclick="exportarVGCSV()"><i class="material-icons">description</i> CSV</button>
             <button class="btn-export" onclick="exportarVGPDF()"><i class="material-icons">print</i> PDF</button>
+            <button class="btn-export" onclick="compartilharLink()"><i class="material-icons">share</i> Compartilhar Link</button>
         </div>
         <div class="toolbar-right" style="display:flex;align-items:center;gap:8px;">
             <input type="text" id="buscaVG" maxlength="60" placeholder="Buscar empresa, CNPJ, motivo..." class="form-control" style="height:32px;font-size:12px;width:260px;padding:4px 10px;" oninput="buscarVG(this.value)">
