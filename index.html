@@ -102,7 +102,7 @@
         .table th, .table td { border: 1px solid #d6dee6; }
         .table thead th { background-color: #54697b !important; color: white !important; font-weight: 600; font-size: 11px; padding: 10px 8px; text-transform: uppercase; border: 1px solid #d6dee6; cursor: pointer; user-select: none; white-space: nowrap; vertical-align: middle; line-height: 1.3; }
         .table thead th.th-wrap { white-space: normal !important; }
-        .table thead th:not(.text-right):not(.text-center) { min-width: 80px; }
+        .table thead th:not(.text-right) { min-width: 80px; }
         .table thead th:first-child { border-top-left-radius: 8px; }
         .table thead th:last-child  { border-top-right-radius: 8px; }
         .table thead th:hover { background-color: #3d5566 !important; }
@@ -465,6 +465,29 @@ function baixarPDF(titulo, campos, labels, dados) {
 // ============================================================
 // 4. CARREGAMENTO DE DADOS
 // ============================================================
+// ============================================================
+// 3.1 CORREÇÕES CONHECIDAS DE DADOS
+// ============================================================
+// Pequenas correções pontuais para erros de digitação já identificados na
+// fonte (cafimp.csv). Idealmente a correção definitiva deve ser feita
+// diretamente no CSV do repositório GitHub — esta tabela é uma camada de
+// segurança para garantir que o dado certo apareça enquanto isso não ocorre.
+const CORRECOES_CONHECIDAS = [
+    // Luciano Magno Coelho: data de publicação digitada como 2049, correta é 2019.
+    { nomeContem: 'luciano magno coelho', campo: 'data_publicacao', dataErradaISO: '2049-06-14', dataCorreta: '14/06/2019' },
+];
+
+function aplicarCorrecoesConhecidas(dados) {
+    CORRECOES_CONHECIDAS.forEach(c => {
+        dados.forEach(r => {
+            if ((r.nome_empresarial||'').toLowerCase().includes(c.nomeContem) && dataParaISO(r[c.campo]) === c.dataErradaISO) {
+                r[c.campo] = c.dataCorreta;
+            }
+        });
+    });
+    return dados;
+}
+
 async function carregarDados() {
     mostrarLoading(true, 'Carregando dados do CAFIMP...');
     try {
@@ -477,6 +500,8 @@ async function carregarDados() {
             Object.keys(r).forEach(k => { row[_limpar(k)] = _limpar(r[k]); });
             return row;
         }).filter(r => r.cnpj_cpf || r.nome_empresarial);
+
+        dadosCafimp = aplicarCorrecoesConhecidas(dadosCafimp);
 
         document.getElementById('data-atualizacao-header').textContent = new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});
     } catch (err) {
@@ -504,20 +529,6 @@ function renderizarVisaoGeral() {
     const c = document.getElementById('visaogeral-content'); if (!c) return;
 
     c.innerHTML = `
-    <!-- FILTRO POR ÓRGÃO/ENTIDADE -->
-    <div class="filter-container">
-        <div class="filters-row">
-            <div class="filter-group" style="flex:1;min-width:240px;">
-                <label class="filter-label">Órgão/Entidade</label>
-                ${buildComboHTML('filtroOrgaoVG','Selecione ou digite o órgão/entidade...')}
-            </div>
-        </div>
-        <div class="botoes-abaixo">
-            <button class="btn-pesquisa" onclick="aplicarFiltroOrgaoVG()"><i class="material-icons">refresh</i> Atualizar Filtros</button>
-            <button class="btn-secondary-custom" onclick="limparFiltroOrgaoVG()"><i class="material-icons">clear</i> Limpar Filtros</button>
-        </div>
-    </div>
-
     <!-- MÉTRICAS -->
     <div class="row g-3 mb-4" id="metricasVG"></div>
 
@@ -541,6 +552,7 @@ function renderizarVisaoGeral() {
     <div class="row g-3 mb-3">
         <div class="col-12">
             <div class="chart-container">
+                <div class="chart-header"><h4 class="chart-title">Resumo por Órgão/Entidade</h4></div>
                 <div id="resumoOrgao"></div>
             </div>
         </div>
@@ -554,100 +566,50 @@ function renderizarVisaoGeral() {
         <button class="btn-topo" onclick="voltarAoTopo()"><i class="material-icons">arrow_upward</i> Voltar ao topo</button>
     </div>`;
 
-    inicializarComboOrgaoVG();
     atualizarMetricasVG(dadosCafimp);
     setTimeout(()=>atualizarGraficosVG(dadosCafimp), 150);
     renderizarResumoOrgaoVG(dadosCafimp);
     setTimeout(iframeH, 300);
 }
 
-// Combo de Órgão/Entidade específico da Visão Geral
-function inicializarComboOrgaoVG() {
-    if (!window._combos['filtroOrgaoVG']) window._combos['filtroOrgaoVG'] = new ComboFilter('filtroOrgaoVG', opcoesUnicas('orgao'), ()=>{});
-    else window._combos['filtroOrgaoVG'].updateOptions(opcoesUnicas('orgao'));
-}
-
-// Aplica o filtro por órgão/entidade sobre métricas, gráficos e resumo da Visão Geral
-function aplicarFiltroOrgaoVG() {
-    const orgao = window._combos['filtroOrgaoVG']?.value || '';
-    const dados = orgao ? dadosCafimp.filter(r => r.orgao === orgao) : dadosCafimp;
-    atualizarMetricasVG(dados);
-    atualizarGraficosVG(dados);
-    renderizarResumoOrgaoVG(dados);
-    setTimeout(iframeH, 200);
-}
-
-function limparFiltroOrgaoVG() {
-    window._combos['filtroOrgaoVG']?.clear();
-    aplicarFiltroOrgaoVG();
-}
-
 // Tabela de resumo por Órgão/Entidade: empresas, penalidades, ativas e encerradas
-const COLUNAS_RESUMO = [
-    { col:'nome',        label:'Órgão/Entidade', align:'left'   },
-    { col:'empresas',    label:'Empresas',       align:'center' },
-    { col:'penalidades', label:'Penalidades',    align:'center' },
-    { col:'ativas',      label:'Ativas',         align:'center' },
-    { col:'encerradas',  label:'Encerradas',     align:'center' },
-];
-let sortCfgResumo = { col:'penalidades', dir:'desc' };
-let resumoOrgaoDadosBase = [];
-
 function renderizarResumoOrgaoVG(dados) {
+    const el = document.getElementById('resumoOrgao'); if (!el) return;
     const grupos = {};
     dados.forEach(r => {
         const chave = r.orgao || 'Não informado';
-        if (!grupos[chave]) grupos[chave] = { nome:chave, empresas:new Set(), penalidades:0, ativas:0, encerradas:0 };
+        if (!grupos[chave]) grupos[chave] = { empresas:new Set(), penalidades:0, ativas:0, encerradas:0 };
         const g = grupos[chave];
         g.empresas.add(r.cnpj_cpf);
         g.penalidades++;
         const sit = calcularSituacao(r);
         if (sit==='ativa') g.ativas++; else if (sit==='encerrada') g.encerradas++;
     });
-    resumoOrgaoDadosBase = Object.values(grupos).map(g => ({ nome:g.nome, empresas:g.empresas.size, penalidades:g.penalidades, ativas:g.ativas, encerradas:g.encerradas }));
-    renderizarTabelaResumoOrgao();
-}
-
-function renderizarTabelaResumoOrgao() {
-    const el = document.getElementById('resumoOrgao'); if (!el) return;
-    if (!resumoOrgaoDadosBase.length) { el.innerHTML = '<p style="padding:16px;color:#94a3b8;font-size:12px;">Sem dados.</p>'; return; }
-
-    const linhas = [...resumoOrgaoDadosBase].sort((a,b)=>{
-        const va = a[sortCfgResumo.col], vb = b[sortCfgResumo.col];
-        if (typeof va === 'string') {
-            const sa = va.toLowerCase(), sb = vb.toLowerCase();
-            return sortCfgResumo.dir==='asc' ? (sa<sb?-1:sa>sb?1:0) : (sa>sb?-1:sa<sb?1:0);
-        }
-        return sortCfgResumo.dir==='asc' ? va-vb : vb-va;
-    });
+    const linhas = Object.entries(grupos).sort((a,b)=>b[1].penalidades - a[1].penalidades);
+    if (!linhas.length) { el.innerHTML = '<p style="padding:16px;color:#94a3b8;font-size:12px;">Sem dados.</p>'; return; }
 
     el.innerHTML = `
     <div class="table-fixed-header-container" style="max-height:400px;">
         <table class="table">
             <thead><tr>
-                ${COLUNAS_RESUMO.map(c=>{
-                    const icone = sortCfgResumo.col===c.col ? `<i class="material-icons sort-icon">${sortCfgResumo.dir==='asc'?'arrow_upward':'arrow_downward'}</i>` : `<i class="material-icons sort-icon" style="opacity:.35">unfold_more</i>`;
-                    return `<th class="sortable-header${c.align==='center'?' text-center':''}" onclick="sortResumoOrgaoVG('${c.col}')">${c.label}${icone}</th>`;
-                }).join('')}
+                <th>Órgão/Entidade</th>
+                <th class="text-right">Empresas</th>
+                <th class="text-right">Penalidades</th>
+                <th class="text-right">Ativas</th>
+                <th class="text-right">Encerradas</th>
             </tr></thead>
             <tbody>
-                ${linhas.map(g=>`
-                <tr class="resumo-tr" onclick="irParaConsultaComFiltro('orgao','${esc(g.nome)}')">
-                    <td>${g.nome}</td>
-                    <td class="text-center">${g.empresas}</td>
-                    <td class="text-center">${g.penalidades}</td>
-                    <td class="text-center" style="color:#8f1c22;font-weight:600;">${g.ativas}</td>
-                    <td class="text-center" style="color:#0f6b3a;font-weight:600;">${g.encerradas}</td>
+                ${linhas.map(([nome,g])=>`
+                <tr class="resumo-tr" onclick="irParaConsultaComFiltro('orgao','${esc(nome)}')">
+                    <td>${nome}</td>
+                    <td class="text-right">${g.empresas.size}</td>
+                    <td class="text-right">${g.penalidades}</td>
+                    <td class="text-right" style="color:#8f1c22;font-weight:600;">${g.ativas}</td>
+                    <td class="text-right" style="color:#0f6b3a;font-weight:600;">${g.encerradas}</td>
                 </tr>`).join('')}
             </tbody>
         </table>
     </div>`;
-}
-
-function sortResumoOrgaoVG(col) {
-    sortCfgResumo.dir = (sortCfgResumo.col===col && sortCfgResumo.dir==='asc') ? 'desc' : 'asc';
-    sortCfgResumo.col = col;
-    renderizarTabelaResumoOrgao();
 }
 
 // Navega para a Consulta Individual já filtrada pelo órgão clicado no resumo
@@ -909,8 +871,6 @@ function renderizarConsulta() {
                 <label class="filter-label">Órgão/Entidade</label>
                 ${buildComboHTML('filtroOrgao','Selecione ou digite...')}
             </div>
-        </div>
-        <div class="filters-row">
             <div class="filter-group">
                 <label class="filter-label">Situação</label>
                 <select class="form-select" id="filtroSituacao">
@@ -920,6 +880,8 @@ function renderizarConsulta() {
                     <option value="indeterminada">Prazo Indeterminado</option>
                 </select>
             </div>
+        </div>
+        <div class="filters-row">
             <div class="filter-group">
                 <label class="filter-label">Publicação - De</label>
                 <input type="date" class="form-control" id="filtroPubDe">
@@ -930,7 +892,7 @@ function renderizarConsulta() {
             </div>
         </div>
         <div class="botoes-abaixo">
-            <button class="btn-pesquisa" onclick="aplicarFiltrosVG()"><i class="material-icons">refresh</i> Atualizar Filtros</button>
+            <button class="btn-pesquisa" onclick="aplicarFiltrosVG()"><i class="material-icons">search</i> Pesquisar</button>
             <button class="btn-secondary-custom" onclick="limparFiltrosVG()"><i class="material-icons">clear</i> Limpar Filtros</button>
         </div>
     </div>
@@ -940,7 +902,6 @@ function renderizarConsulta() {
         <div class="toolbar-left">
             <button class="btn-export" onclick="exportarVGCSV()"><i class="material-icons">description</i> CSV</button>
             <button class="btn-export" onclick="exportarVGPDF()"><i class="material-icons">print</i> PDF</button>
-            <button class="btn-export" onclick="compartilharLinkConsulta()"><i class="material-icons">share</i> Compartilhar Link</button>
         </div>
         <div class="toolbar-right" style="display:flex;align-items:center;gap:8px;">
             <input type="text" id="buscaVG" maxlength="60" placeholder="Buscar empresa, CNPJ, motivo..." class="form-control" style="height:32px;font-size:12px;width:260px;padding:4px 10px;" oninput="buscarVG(this.value)">
@@ -963,77 +924,11 @@ function renderizarConsulta() {
     </div>`;
 
     inicializarCombosVG();
-    aplicarFiltrosDaURL();
     reconstruirCabecalhoVG();
     paginaAtual = 1;
     atualizarTabelaVG();
 
     setTimeout(iframeH, 300);
-}
-
-// Gera um link com os filtros atuais da Consulta Individual e copia para a área de transferência
-function compartilharLinkConsulta() {
-    const params = new URLSearchParams();
-    const empresa  = window._combos['filtroEmpresa']?.value || '';
-    const cnpj     = window._combos['filtroCnpj']?.value || '';
-    const tipo     = window._combos['filtroTipo']?.value || '';
-    const orgao    = window._combos['filtroOrgao']?.value || '';
-    const situacao = document.getElementById('filtroSituacao')?.value || '';
-    const pubDe    = document.getElementById('filtroPubDe')?.value || '';
-    const pubAte   = document.getElementById('filtroPubAte')?.value || '';
-    const busca    = document.getElementById('buscaVG')?.value || '';
-
-    if (empresa)  params.set('empresa', empresa);
-    if (cnpj)     params.set('cnpj', cnpj);
-    if (tipo)     params.set('tipo', tipo);
-    if (orgao)    params.set('orgao', orgao);
-    if (situacao) params.set('situacao', situacao);
-    if (pubDe)    params.set('pubDe', pubDe);
-    if (pubAte)   params.set('pubAte', pubAte);
-    if (busca)    params.set('busca', busca);
-    params.set('tab', 'consulta');
-
-    const url = window.location.origin + window.location.pathname + '?' + params.toString();
-
-    const copiarTexto = (texto) => {
-        if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(texto);
-        const tmp = document.createElement('textarea');
-        tmp.value = texto; tmp.style.position = 'fixed'; tmp.style.opacity = '0';
-        document.body.appendChild(tmp); tmp.select();
-        document.execCommand('copy'); document.body.removeChild(tmp);
-        return Promise.resolve();
-    };
-    copiarTexto(url)
-        .then(() => mostrarToast('Link copiado para área de transferência!'))
-        .catch(() => mostrarToast('Não foi possível copiar o link.'));
-}
-
-// Lê parâmetros da URL (gerados por compartilharLinkConsulta) e restaura os filtros da Consulta Individual
-function aplicarFiltrosDaURL() {
-    const params = new URLSearchParams(window.location.search);
-    if (![...params.keys()].length) return;
-
-    const empresa  = params.get('empresa')  || '';
-    const cnpj     = params.get('cnpj')     || '';
-    const tipo     = params.get('tipo')     || '';
-    const orgao    = params.get('orgao')    || '';
-    const situacao = params.get('situacao') || '';
-    const pubDe    = params.get('pubDe')    || '';
-    const pubAte   = params.get('pubAte')   || '';
-    const busca    = params.get('busca')    || '';
-
-    if (empresa) window._combos['filtroEmpresa']?.setValue(empresa, false);
-    if (cnpj)    window._combos['filtroCnpj']?.setValue(cnpj, false);
-    if (tipo)    window._combos['filtroTipo']?.setValue(tipo, false);
-    if (orgao)   window._combos['filtroOrgao']?.setValue(orgao, false);
-    if (situacao && document.getElementById('filtroSituacao')) document.getElementById('filtroSituacao').value = situacao;
-    if (pubDe && document.getElementById('filtroPubDe')) document.getElementById('filtroPubDe').value = pubDe;
-    if (pubAte && document.getElementById('filtroPubAte')) document.getElementById('filtroPubAte').value = pubAte;
-    if (busca && document.getElementById('buscaVG')) document.getElementById('buscaVG').value = busca;
-
-    if (params.get('tab') === 'consulta') document.getElementById('consulta-tab')?.click();
-    aplicarFiltrosVG();
-    if (busca) buscarVG(busca);
 }
 
 // Clique no nome da empresa em qualquer linha da tabela: filtra a própria tabela para essa empresa
@@ -1146,7 +1041,7 @@ function renderizarDownloads() {
 function buildComboHTML(id, placeholder='Selecione ou digite...') {
     return `<div class="combo-filter-wrap">
         <input type="text" class="combo-filter-input form-control" id="${id}" placeholder="${placeholder}" autocomplete="off">
-        <button class="combo-clear-btn" title="Limpar"><i class="material-icons" style="font-size:14px;">close</i></button>
+        <button class="combo-clear-btn" title="Limpar">✕</button>
         <div class="combo-filter-dropdown"></div>
     </div>`;
 }
