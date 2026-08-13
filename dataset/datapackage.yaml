@@ -1,9 +1,8 @@
-name: portal_cafimp
-owner_org: ''
+name: CAFIMP
+owner_org: controladoria-geral-do-estado-cge
 profile: data-package
 resources:
-  - description: Insira a descrição/explicação detalhada deste recurso.
-    dialect:
+  - dialect:
       delimiter: ;
       quoteChar: '"'
     encoding: utf-8-sig
@@ -14,22 +13,26 @@ resources:
     profile: tabular-data-resource
     schema:
       fields:
-        - name: cnpj_cpf
+        - name: cnpj_cpf_fornecedor
           type: integer
-        - name: nome_empresarial
+        - name: nome
           type: string
-        - name: tipo_penalidade
+        - name: dstipo_penalidade
           type: string
-        - name: motivo_penalidade
+        - name: motivo
           type: string
-        - name: data_inicio
+        - name: sancao
           type: string
-        - name: data_fim
+        - name: dtinicio
           type: string
-        - name: data_publicacao
+        - name: dtfim
           type: string
-        - name: orgao
+        - name: dtpublicacao
+          type: string
+        - name: cd_orgao
+          type: string
+        - name: nome_orgao
           type: string
     scheme: file
-    title: Insira um título humanamente legível para este recurso.
-title: Portal_cafimp
+    title: CAFIMP
+title: CAFIMP - MG
