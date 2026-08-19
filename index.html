@@ -518,7 +518,7 @@ const MAPA_CABECALHO = {
     'data_publicacao': 'data_publicacao',
     'codigo_orgao': 'codigo_orgao',
     'orgao': 'orgao',
-    // padrão alternativo
+    // padrão alternativo (versão antiga do CSV de origem)
     'cnpj_cpf_fornecedor': 'cnpj_cpf',
     'nome': 'nome_empresarial',
     'dstipo_penalidade': 'tipo_penalidade',
@@ -528,6 +528,17 @@ const MAPA_CABECALHO = {
     'dtpublicacao': 'data_publicacao',
     'cd_orgao': 'codigo_orgao',
     'nome_orgao': 'orgao',
+    // padrão atual do CSV de origem (transparencia-mg/portal_cafimp, a partir de 2026) —
+    // colunas renomeadas pela CGE-MG: cpf_cnpj_fornecedor;nome;dt_registro;ds_tipo_descricao;
+    // dt_publicacao;dt_inicio;dt_fim;cd_orgao;nome_orgao;num_processo;sansao
+    'cpf_cnpj_fornecedor': 'cnpj_cpf',
+    'ds_tipo_descricao': 'tipo_penalidade',
+    'sansao': 'sancao',
+    'dt_inicio': 'data_inicio',
+    'dt_fim': 'data_fim',
+    'dt_publicacao': 'data_publicacao',
+    'dt_registro': 'data_registro',
+    'num_processo': 'num_processo',
 };
 
 // Converte as chaves de uma linha lida do CSV (em qualquer um dos dois padrões,
