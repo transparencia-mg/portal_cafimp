@@ -1,6 +1,6 @@
 {
   "version": "4.16.6",
-  "time": 0.065,
+  "time": 0.082,
   "errors": [],
   "tasks": [
     {
@@ -68,7 +68,7 @@
           "rows": 0
         }
       },
-      "time": 0.055,
+      "time": 0.071,
       "scope": [
         "hash-count-error",
         "byte-count-error",
@@ -97,10 +97,10 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "labels": [
-            "cpf_cnpj_fornecedor",
+            "cnpj_cpf_fornecedor",
             "nome",
             "dt_registro",
-            "ds_tipo_descricao",
+            "ds_tipo_penalidade",
             "dt_publicacao",
             "dt_inicio",
             "dt_fim",
@@ -124,47 +124,15 @@
           "description": "The header of the data source contains label that does not exist in the provided schema."
         },
         {
-          "label": "cpf_cnpj_fornecedor",
-          "fieldName": "cnpj_cpf_fornecedor",
-          "fieldNumber": 1,
-          "fieldPosition": 1,
-          "labels": [
-            "cpf_cnpj_fornecedor",
-            "nome",
-            "dt_registro",
-            "ds_tipo_descricao",
-            "dt_publicacao",
-            "dt_inicio",
-            "dt_fim",
-            "cd_orgao",
-            "nome_orgao",
-            "num_processo",
-            "sansao"
-          ],
-          "rowPositions": [
-            1
-          ],
-          "code": "incorrect-label",
-          "name": "Incorrect Label",
-          "tags": [
-            "#table",
-            "#header",
-            "#label"
-          ],
-          "note": "",
-          "message": "Label \"cpf_cnpj_fornecedor\" in field cnpj_cpf_fornecedor at position \"1\" does not match the field name in the schema",
-          "description": "One of the data source header does not match the field name defined in the schema."
-        },
-        {
           "label": "dt_registro",
           "fieldName": "dstipo_penalidade",
           "fieldNumber": 3,
           "fieldPosition": 3,
           "labels": [
-            "cpf_cnpj_fornecedor",
+            "cnpj_cpf_fornecedor",
             "nome",
             "dt_registro",
-            "ds_tipo_descricao",
+            "ds_tipo_penalidade",
             "dt_publicacao",
             "dt_inicio",
             "dt_fim",
@@ -188,15 +156,15 @@
           "description": "One of the data source header does not match the field name defined in the schema."
         },
         {
-          "label": "ds_tipo_descricao",
+          "label": "ds_tipo_penalidade",
           "fieldName": "motivo",
           "fieldNumber": 4,
           "fieldPosition": 4,
           "labels": [
-            "cpf_cnpj_fornecedor",
+            "cnpj_cpf_fornecedor",
             "nome",
             "dt_registro",
-            "ds_tipo_descricao",
+            "ds_tipo_penalidade",
             "dt_publicacao",
             "dt_inicio",
             "dt_fim",
@@ -216,7 +184,7 @@
             "#label"
           ],
           "note": "",
-          "message": "Label \"ds_tipo_descricao\" in field motivo at position \"4\" does not match the field name in the schema",
+          "message": "Label \"ds_tipo_penalidade\" in field motivo at position \"4\" does not match the field name in the schema",
           "description": "One of the data source header does not match the field name defined in the schema."
         },
         {
@@ -225,10 +193,10 @@
           "fieldNumber": 5,
           "fieldPosition": 5,
           "labels": [
-            "cpf_cnpj_fornecedor",
+            "cnpj_cpf_fornecedor",
             "nome",
             "dt_registro",
-            "ds_tipo_descricao",
+            "ds_tipo_penalidade",
             "dt_publicacao",
             "dt_inicio",
             "dt_fim",
@@ -257,10 +225,10 @@
           "fieldNumber": 6,
           "fieldPosition": 6,
           "labels": [
-            "cpf_cnpj_fornecedor",
+            "cnpj_cpf_fornecedor",
             "nome",
             "dt_registro",
-            "ds_tipo_descricao",
+            "ds_tipo_penalidade",
             "dt_publicacao",
             "dt_inicio",
             "dt_fim",
@@ -289,10 +257,10 @@
           "fieldNumber": 7,
           "fieldPosition": 7,
           "labels": [
-            "cpf_cnpj_fornecedor",
+            "cnpj_cpf_fornecedor",
             "nome",
             "dt_registro",
-            "ds_tipo_descricao",
+            "ds_tipo_penalidade",
             "dt_publicacao",
             "dt_inicio",
             "dt_fim",
@@ -321,10 +289,10 @@
           "fieldNumber": 8,
           "fieldPosition": 8,
           "labels": [
-            "cpf_cnpj_fornecedor",
+            "cnpj_cpf_fornecedor",
             "nome",
             "dt_registro",
-            "ds_tipo_descricao",
+            "ds_tipo_penalidade",
             "dt_publicacao",
             "dt_inicio",
             "dt_fim",
@@ -353,10 +321,10 @@
           "fieldNumber": 9,
           "fieldPosition": 9,
           "labels": [
-            "cpf_cnpj_fornecedor",
+            "cnpj_cpf_fornecedor",
             "nome",
             "dt_registro",
-            "ds_tipo_descricao",
+            "ds_tipo_penalidade",
             "dt_publicacao",
             "dt_inicio",
             "dt_fim",
@@ -385,10 +353,10 @@
           "fieldNumber": 10,
           "fieldPosition": 10,
           "labels": [
-            "cpf_cnpj_fornecedor",
+            "cnpj_cpf_fornecedor",
             "nome",
             "dt_registro",
-            "ds_tipo_descricao",
+            "ds_tipo_penalidade",
             "dt_publicacao",
             "dt_inicio",
             "dt_fim",
@@ -417,7 +385,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5608786000148",
+            "05608786000148",
             "MEGA SOM (GILDÁRIO NUNES LEANDRO)",
             "2006-10-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -448,7 +416,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4055859000159",
+            "04055859000159",
             "LOURDES GOMES CAMPOS ME",
             "2006-12-13",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -479,7 +447,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5893299000174",
+            "05893299000174",
             "FALCAO ALIMENTOS EIRELI",
             "2007-01-16",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -510,7 +478,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2472743000190",
+            "02472743000190",
             "DIMALAB ELETRONICS DO BRASIL LTDA - EPP",
             "2006-12-14",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -541,7 +509,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3310258000182",
+            "03310258000182",
             "CONSTRUAL CONSTRUTORA ALMENARA LTDA",
             "2006-10-18",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -572,7 +540,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "740220000151",
+            "00740220000151",
             "EPI COMERCIAL LTDA",
             "2006-09-30",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -634,7 +602,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4206907000162",
+            "04206907000162",
             "HELTON SILVA - EPP",
             "2006-12-15",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -665,7 +633,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4618462000128",
+            "04618462000128",
             "INFO OFFICE SHOP LTDA",
             "2006-09-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -696,7 +664,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4115692000174",
+            "04115692000174",
             "MESSALA COMERCIAL LTDA",
             "2005-09-06",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -758,7 +726,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1526218000147",
+            "01526218000147",
             "TECNO TERMICA ENGENHARIA LTDA",
             "2006-05-11",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -789,7 +757,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1999073000100",
+            "01999073000100",
             "ULTRA CLEAN RECURSOS HUMANOS E SERVIÇOS LTDA",
             "2006-12-15",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -820,7 +788,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7819351000178",
+            "07819351000178",
             "VENDASNET.COM LTDA",
             "2006-09-30",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -851,7 +819,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5724113000153",
+            "05724113000153",
             "SECONCRETE SERVICOS DE ENGENHARIA E CONSTRUCOES EM CONCRETO LTDA - EPP",
             "2006-10-18",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -882,7 +850,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7175777000136",
+            "07175777000136",
             "LEXPEL PAPELARIA E INFORMÁTICA LTDA",
             "2006-04-07",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -913,7 +881,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3173130000114",
+            "03173130000114",
             "RH CARDOSO & CIA LTDA",
             "2006-11-17",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -944,7 +912,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7322299000140",
+            "07322299000140",
             "MICROINFO PAPELARIA E INFORMÁTICA LTDA",
             "2006-12-15",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -1032,12 +1000,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***7805***",
+          "cell": "***47805***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***7805***",
+            "***47805***",
             "VANTUIL DE PAULA",
             "2004-12-02",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -1059,7 +1027,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***7805***\" in row \"21\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***47805***\" in row \"21\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -1068,7 +1036,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***7805***",
+            "***47805***",
             "VANTUIL DE PAULA",
             "2004-12-02",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -1626,7 +1594,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6881234000171",
+            "06881234000171",
             "LICIBRAZ - DISTRIBUIDORA & COMERCIO LTDA",
             "2007-03-21",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -1657,7 +1625,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2804761000121",
+            "02804761000121",
             "ANTONIO SILVINO DA SILVA LEME ME",
             "2007-03-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -1683,12 +1651,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***4980***",
+          "cell": "***64980***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***4980***",
+            "***64980***",
             "PEDRO LUIZ CERIZZE FILHO",
             "2007-03-21",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -1710,7 +1678,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***4980***\" in row \"33\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***64980***\" in row \"33\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -1719,7 +1687,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***4980***",
+            "***64980***",
             "PEDRO LUIZ CERIZZE FILHO",
             "2007-03-21",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -1807,12 +1775,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***8387***",
+          "cell": "***58387***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***8387***",
+            "***58387***",
             "JOBER RESENDE TORRES",
             "2007-03-21",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -1834,7 +1802,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***8387***\" in row \"35\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***58387***\" in row \"35\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -1843,7 +1811,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***8387***",
+            "***58387***",
             "JOBER RESENDE TORRES",
             "2007-03-21",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -1874,7 +1842,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4263366000104",
+            "04263366000104",
             "ISABEL CRISTINA CAMARGOS COIMBRA - ME",
             "2007-03-16",
             "INIDONEIDADE",
@@ -1936,7 +1904,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3163030000107",
+            "03163030000107",
             "DIRCE APARECIDA DIAS -ME",
             "2007-06-12",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -1967,7 +1935,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5198240000166",
+            "05198240000166",
             "ENERGY SAVER DO BRASIL LTDA",
             "2007-06-12",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -1998,7 +1966,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1256488000185",
+            "01256488000185",
             "JCTEL COMERCIO E DISTRIBUICAO LTDA",
             "2007-06-12",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -2029,7 +1997,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4561711000196",
+            "04561711000196",
             "SUPRIDISK SUPRIMENTOS PARA ESCRITORIO E INFORMATICA LTDA",
             "2007-06-12",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -2060,7 +2028,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5032857000107",
+            "05032857000107",
             "PRO DISK DISTRIBUIDORA EIRELI",
             "2007-06-12",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -2091,7 +2059,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5777918000165",
+            "05777918000165",
             "IMPERIO DOS TECIDOS E PLASTICOS LTDA",
             "2007-06-12",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -2122,7 +2090,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5201844000114",
+            "05201844000114",
             "MAIS IMAGEM LOCACOES LTDA -EPP",
             "2007-06-28",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -2215,7 +2183,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5390241000108",
+            "05390241000108",
             "IDR DESIGN COMUNICACAO VISUAL E COMERCIO LTDA -ME",
             "2007-07-10",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -2365,12 +2333,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***4333***",
+          "cell": "***34333***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***4333***",
+            "***34333***",
             "CARLOS ALBERTO BARROS",
             "2007-08-27",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -2392,7 +2360,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***4333***\" in row \"49\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***34333***\" in row \"49\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -2401,7 +2369,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***4333***",
+            "***34333***",
             "CARLOS ALBERTO BARROS",
             "2007-08-27",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -2432,7 +2400,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6009747000197",
+            "06009747000197",
             "EF BRASIL INDUSTRIA LTDA",
             "2007-08-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -2489,12 +2457,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***1946***",
+          "cell": "***01946***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***1946***",
+            "***01946***",
             "JOSÉ FERREIRA DINIZ",
             "2007-08-31",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -2516,7 +2484,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***1946***\" in row \"52\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***01946***\" in row \"52\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -2525,7 +2493,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***1946***",
+            "***01946***",
             "JOSÉ FERREIRA DINIZ",
             "2007-08-31",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -2556,7 +2524,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3530279000103",
+            "03530279000103",
             "TECNOVISION COMERCIO DE MATERIAIS PARA INFORMATICA LTDA.",
             "2007-09-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -2587,7 +2555,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1078876000113",
+            "01078876000113",
             "CONVIP SERVICOS GERAIS LTDA",
             "2007-09-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -2618,7 +2586,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3851371000175",
+            "03851371000175",
             "UBERPEL COMERCIO DE PAPEIS LTDA",
             "2007-09-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -2649,7 +2617,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3338327000166",
+            "03338327000166",
             "AUTO PECAS CAR LTDA",
             "2007-09-24",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -2680,7 +2648,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6312505000178",
+            "06312505000178",
             "DMS CONSULTORIA LTDA -ME",
             "2008-01-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -2706,12 +2674,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***5018***",
+          "cell": "***95018***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***5018***",
+            "***95018***",
             "JOBIANO RESENDE TORRES",
             "2004-06-08",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -2733,7 +2701,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***5018***\" in row \"58\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***95018***\" in row \"58\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -2742,7 +2710,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***5018***",
+            "***95018***",
             "JOBIANO RESENDE TORRES",
             "2004-06-08",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -2773,7 +2741,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6112421000190",
+            "06112421000190",
             "INFOELETRIK COMERCIO DE MATERIAIS ELETRONICOS LTDA",
             "2007-11-08",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -2830,12 +2798,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***3179***",
+          "cell": "***93179***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***3179***",
+            "***93179***",
             "CARLOS ANTONIO CERQUEIRA",
             "2008-01-10",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -2857,7 +2825,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***3179***\" in row \"61\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***93179***\" in row \"61\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -2866,7 +2834,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***3179***",
+            "***93179***",
             "CARLOS ANTONIO CERQUEIRA",
             "2008-01-10",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -3083,7 +3051,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1856601000163",
+            "01856601000163",
             "BETAMAQ TRATORPECAS LTDA -ME",
             "2007-12-21",
             "INIDONEIDADE",
@@ -3114,7 +3082,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3076170000148",
+            "03076170000148",
             "VIACAO ESTRELA DO SUL DE MURIAE LTDA -ME",
             "2007-12-21",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -3145,7 +3113,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1169999000160",
+            "01169999000160",
             "REIFASA COMERCIAL LTDA -ME",
             "2006-08-31",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -3207,7 +3175,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5471999000170",
+            "05471999000170",
             "BRASPEL PRODUTOS E ARTEFATOS GRAFICOS LTDA",
             "2008-03-05",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -3238,7 +3206,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2804761000121",
+            "02804761000121",
             "ANTONIO SILVINO DA SILVA LEME ME",
             "2008-02-13",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -3269,7 +3237,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7420814000124",
+            "07420814000124",
             "CIRURGICA RV COMERCIO DE ARTIGOS MEDICO HOSPITALAR",
             "2008-02-13",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -3300,7 +3268,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4025209000160",
+            "04025209000160",
             "VALTER VIANA DA SILVA - ME",
             "2008-02-13",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -3331,7 +3299,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3813907000168",
+            "03813907000168",
             "PAOLLO\"S RESTAURANTE",
             "2007-04-23",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -3362,7 +3330,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3815153000185",
+            "03815153000185",
             "VALERIA GOMES DELGADO RODRIGUES",
             "2006-12-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -3393,7 +3361,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3698559000125",
+            "03698559000125",
             "NETMAX INDUSTRIA E COMERCIO LTDA",
             "2007-03-05",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -3419,12 +3387,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***4980***",
+          "cell": "***64980***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***4980***",
+            "***64980***",
             "PEDRO LUIZ CERIZZE FILHO",
             "2007-03-22",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -3446,7 +3414,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***4980***\" in row \"76\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***64980***\" in row \"76\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -3455,7 +3423,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***4980***",
+            "***64980***",
             "PEDRO LUIZ CERIZZE FILHO",
             "2007-03-22",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -3481,12 +3449,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***8387***",
+          "cell": "***58387***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***8387***",
+            "***58387***",
             "JOBER RESENDE TORRES",
             "2007-03-22",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -3508,7 +3476,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***8387***\" in row \"77\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***58387***\" in row \"77\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -3517,7 +3485,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***8387***",
+            "***58387***",
             "JOBER RESENDE TORRES",
             "2007-03-22",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -3579,7 +3547,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2660585000100",
+            "02660585000100",
             "PCT INFORMATICA LTDA",
             "2007-04-17",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -3610,7 +3578,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3763569000105",
+            "03763569000105",
             "MOON SEA COMERCIAL LTDA",
             "2007-09-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -3641,7 +3609,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7058603000193",
+            "07058603000193",
             "AMINAH LIVRARIA E DISTRIBUIDORA LTDA -ME",
             "2007-12-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -3672,7 +3640,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "725347000100",
+            "00725347000100",
             "CONSTRUTORA GAUTAMA LTDA",
             "2007-12-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -3703,7 +3671,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1859108000105",
+            "01859108000105",
             "GOLDEN CAR LTDA",
             "2008-01-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -3734,7 +3702,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5991604000160",
+            "05991604000160",
             "GERAES DE SERVICOS LTDA",
             "2008-01-25",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -3765,7 +3733,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6312505000178",
+            "06312505000178",
             "DMS CONSULTORIA LTDA -ME",
             "2007-09-24",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -3827,7 +3795,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3173130000114",
+            "03173130000114",
             "RH CARDOSO & CIA LTDA",
             "2008-04-23",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -3858,7 +3826,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5529291000123",
+            "05529291000123",
             "POLSEC INDUSTRIA E COMERCIO DE EQUIPAMENTOS DE SEGURANCA LTDA",
             "2008-04-23",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -3889,7 +3857,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "843163000136",
+            "00843163000136",
             "RIERA EMPREENDIMENTOS E ADMINISTRACAO LTDA",
             "2008-05-15",
             "INIDONEIDADE",
@@ -3920,7 +3888,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7383072000104",
+            "07383072000104",
             "OHIO CONSULTORIA LTDA -ME",
             "2008-06-06",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -4013,7 +3981,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5607801000133",
+            "05607801000133",
             "SIG ENGENHARIA SISTEMA INTEGRADO DE GERENCIAMENTO EM ENGENHARIA LTDA",
             "2008-07-10",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -4044,7 +4012,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5607801000133",
+            "05607801000133",
             "SIG ENGENHARIA SISTEMA INTEGRADO DE GERENCIAMENTO EM ENGENHARIA LTDA",
             "2008-07-10",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -4075,7 +4043,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6312505000178",
+            "06312505000178",
             "DMS CONSULTORIA LTDA -ME",
             "2008-07-14",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -4106,7 +4074,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4806903000115",
+            "04806903000115",
             "WALTER FRANCISCO PACHECO SANTACRUZ -ME",
             "2008-07-14",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -4137,7 +4105,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5988560000110",
+            "05988560000110",
             "EDITORA PORTAL JURÍDICO LTDA.",
             "2008-07-18",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -4199,7 +4167,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6272366000104",
+            "06272366000104",
             "CONSTRUTORA VALE DO SAO FRANCISCO LTDA -ME",
             "2008-07-28",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -4230,7 +4198,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "725347000100",
+            "00725347000100",
             "CONSTRUTORA GAUTAMA LTDA",
             "2008-08-18",
             "INIDONEIDADE",
@@ -4292,7 +4260,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2154924000178",
+            "02154924000178",
             "DMAV SUPORTE MEDICO LTDA -EPP",
             "2008-08-27",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -4323,7 +4291,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2120261000170",
+            "02120261000170",
             "SHOP SIGNS COMUNICAÇÃO VISUAL LTDA",
             "2008-09-08",
             "INIDONEIDADE",
@@ -4354,7 +4322,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1856601000163",
+            "01856601000163",
             "BETAMAQ TRATORPECAS LTDA -ME",
             "2008-09-09",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -4416,7 +4384,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3173130000114",
+            "03173130000114",
             "RH CARDOSO & CIA LTDA",
             "2008-09-29",
             "INIDONEIDADE",
@@ -4447,7 +4415,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3896408000181",
+            "03896408000181",
             "SUELY TEREZINHA DE QUEIROZ FERREIRA - EPP",
             "2008-10-28",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -4478,7 +4446,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "862603000100",
+            "00862603000100",
             "DISTRIBUIDORA GOVEIA E MIRANDA LTDA -ME",
             "2008-10-28",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -4540,7 +4508,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5572827000193",
+            "05572827000193",
             "MARIA APARECIDA RODRIGUES DE OLIVEIRA - CPF 04147273637 -EPP",
             "2008-12-23",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -4571,7 +4539,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8763469000194",
+            "08763469000194",
             "LICITA PASSOS COMERCIO DE PRODUTOS ELETRONICOS LTDA -ME",
             "2009-02-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -4695,7 +4663,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1813185000116",
+            "01813185000116",
             "SOVE SERVICOS ESPECIALIZADOS LTDA",
             "2008-12-29",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -4726,7 +4694,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7356026000116",
+            "07356026000116",
             "RENATO DA CUNHA FERREIRA JUNIOR -ME",
             "2008-12-30",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -4757,7 +4725,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6312505000178",
+            "06312505000178",
             "DMS CONSULTORIA LTDA -ME",
             "2009-01-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -4819,7 +4787,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4795220000100",
+            "04795220000100",
             "AAG EMPREENDIMENTOS LTDA.",
             "2009-02-06",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -5067,7 +5035,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9173282000101",
+            "09173282000101",
             "HIGILAF LTDA - EPP",
             "2009-03-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -5093,12 +5061,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***4980***",
+          "cell": "***64980***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***4980***",
+            "***64980***",
             "PEDRO LUIZ CERIZZE FILHO",
             "2014-01-16",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -5120,7 +5088,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***4980***\" in row \"125\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***64980***\" in row \"125\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -5129,7 +5097,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***4980***",
+            "***64980***",
             "PEDRO LUIZ CERIZZE FILHO",
             "2014-01-16",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -5160,7 +5128,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8632477000100",
+            "08632477000100",
             "COMBOIO EQUIPAMENTOS LTDA -EPP",
             "2009-04-03",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -5191,7 +5159,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6053100000162",
+            "06053100000162",
             "DISKISUPRI INFORMATICA LTDA",
             "2009-04-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -5222,7 +5190,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8226857000136",
+            "08226857000136",
             "CONEL SERVICOS E OBRAS LTDA -EPP",
             "2009-04-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -5315,7 +5283,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5070639000167",
+            "05070639000167",
             "IDEAL SERVICOS LTDA",
             "2009-05-18",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -5346,7 +5314,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7448180000118",
+            "07448180000118",
             "MEGA METROPOLE COMERCIO ATACADISTA DE PRODUTOS ALIMENTICIOS LTDA -ME",
             "2009-05-26",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -5377,7 +5345,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7356026000116",
+            "07356026000116",
             "RENATO DA CUNHA FERREIRA JUNIOR -ME",
             "2009-05-29",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -5408,7 +5376,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5923856000152",
+            "05923856000152",
             "MP COMERCIO E SERVICOS EM INFORMATICA LTDA -EPP",
             "2009-06-03",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -5470,7 +5438,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4622258000180",
+            "04622258000180",
             "MAXIMA INTERMEDIACAO DE NEGOCIOS LTDA",
             "2009-06-16",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -5563,7 +5531,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5581027000139",
+            "05581027000139",
             "EDITORA GRAFICA DALIANA LTDA -ME",
             "2009-06-24",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -5651,12 +5619,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***9139***",
+          "cell": "***09139***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***9139***",
+            "***09139***",
             "DENILSON MENDES NOGUEIRA MATOS",
             "2009-06-24",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -5678,7 +5646,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***9139***\" in row \"141\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***09139***\" in row \"141\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -5687,7 +5655,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***9139***",
+            "***09139***",
             "DENILSON MENDES NOGUEIRA MATOS",
             "2009-06-24",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -5718,7 +5686,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7471272000119",
+            "07471272000119",
             "COMERCIAL EVOLUÇÃO PRODUTOS MÉDICOS E ODONTOLÓGICOS LTDA",
             "2009-07-01",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -5749,7 +5717,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4295026000165",
+            "04295026000165",
             "POROS CONSTRUTORA LTDA",
             "2009-07-02",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -5780,7 +5748,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2031526000164",
+            "02031526000164",
             "BRASIL FARMA COMERCIO LTDA -EPP",
             "2009-07-08",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -5811,7 +5779,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7797339000100",
+            "07797339000100",
             "A & C BUSINESS DISTRIBUIDORA & COMERCIO LTDA -ME",
             "2009-07-14",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -5966,7 +5934,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1754354000194",
+            "01754354000194",
             "D' PRIMA ENGENHARIA E CONSTRUÇÕES LTDA.",
             "2009-07-14",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -5997,7 +5965,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9242816000104",
+            "09242816000104",
             "SP LANGUAGE CENTER TREINAMENTOS E IDIOMAS LTDA EPP",
             "2009-07-21",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -6028,7 +5996,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "243299000105",
+            "00243299000105",
             "INOVA TECNOLOGIA EM SEGURANCA LTDA",
             "2009-08-17",
             "INIDONEIDADE",
@@ -6116,12 +6084,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***855***",
+          "cell": "***45855***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***855***",
+            "***45855***",
             "DHEIVID TORRES BARBOSA",
             "2009-08-17",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -6143,7 +6111,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***855***\" in row \"153\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***45855***\" in row \"153\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -6152,7 +6120,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***855***",
+            "***45855***",
             "DHEIVID TORRES BARBOSA",
             "2009-08-17",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -6183,7 +6151,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8763469000194",
+            "08763469000194",
             "LICITA PASSOS COMERCIO DE PRODUTOS ELETRONICOS LTDA -ME",
             "2009-08-18",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -6245,7 +6213,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6373822000102",
+            "06373822000102",
             "MASTER BRASIL COMÉRCIO E SISTEMAS DE INFORMAÇÃO LTDA.",
             "2009-08-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -6276,7 +6244,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5687031000186",
+            "05687031000186",
             "RESENDE E ROCHA MOVEIS DE ESCRITORIO LTDA -ME",
             "2009-08-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -6493,7 +6461,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3993982000158",
+            "03993982000158",
             "JUTA TEXTIL LTDA -ME",
             "2009-08-31",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -6555,7 +6523,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1830162000110",
+            "01830162000110",
             "LOGICOMEX CONSULTORIA EM LOGISTICA E IMPORTACAO E EXPORTACAO LTDA",
             "2009-09-02",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -6679,7 +6647,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3697750000152",
+            "03697750000152",
             "THADEU MAGNO DA SILVA",
             "2009-09-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -6710,7 +6678,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7571815000170",
+            "07571815000170",
             "INSTITUTO DE GESTAO DE POLITICAS SOCIAIS",
             "2009-09-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -6741,7 +6709,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9572296000190",
+            "09572296000190",
             "LEANDRO MONTEIRO DA SILVA - CPF: 042.224.866-55 -ME",
             "2009-09-29",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -6865,7 +6833,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5506851000124",
+            "05506851000124",
             "UNIAO DEDETIZADORA LTDA -ME",
             "2009-11-25",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -6896,7 +6864,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3474341000197",
+            "03474341000197",
             "J. ALMEIDA COMERCIAL LTDA",
             "2009-11-30",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -7051,7 +7019,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7868744000171",
+            "07868744000171",
             "A 10 EVENTOS LTDA EPP",
             "2009-12-15",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -7082,7 +7050,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7393704000110",
+            "07393704000110",
             "PROVIR SERVICOS GERAIS LTDA -EPP",
             "2009-12-17",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -7113,7 +7081,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2260293000171",
+            "02260293000171",
             "ENERGIA & CONSTRUCOES INDUSTRIAIS LTDA",
             "2009-12-17",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -7144,7 +7112,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4460026000173",
+            "04460026000173",
             "LIVRARIA DALDEGAN LTDA -EPP",
             "2009-12-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -7175,7 +7143,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2031526000164",
+            "02031526000164",
             "BRASIL FARMA COMERCIO LTDA -EPP",
             "2009-12-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -7206,7 +7174,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "995371000150",
+            "00995371000150",
             "STOCK DIAGNOSTICOS LTDA",
             "2009-12-23",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -7392,7 +7360,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8632477000100",
+            "08632477000100",
             "COMBOIO EQUIPAMENTOS LTDA -EPP",
             "2010-01-25",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -7454,7 +7422,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4974095000103",
+            "04974095000103",
             "ADSER SERVICOS LTDA",
             "2010-01-26",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -7485,7 +7453,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "831085000150",
+            "00831085000150",
             "ATLAS SERVIÇOS GERAIS LTDA",
             "2010-01-26",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -7516,7 +7484,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2885965000134",
+            "02885965000134",
             "MASTER BYTE INFORMATICA LTDA -EPP",
             "2010-01-26",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -7547,7 +7515,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7239327000160",
+            "07239327000160",
             "MED BRASIL DISTRIBUIDORA DE MEDICAMENTOS LTDA-EPP",
             "2010-02-09",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -7578,7 +7546,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4275196000188",
+            "04275196000188",
             "ZL AMBIENTAL LTDA",
             "2010-02-12",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -7609,7 +7577,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7448180000118",
+            "07448180000118",
             "MEGA METROPOLE COMERCIO ATACADISTA DE PRODUTOS ALIMENTICIOS LTDA -ME",
             "2010-02-18",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -7635,12 +7603,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***6663***",
+          "cell": "***46663***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***6663***",
+            "***46663***",
             "MARCOS COSTA GUIMARÃES",
             "2010-02-18",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -7662,7 +7630,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***6663***\" in row \"194\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***46663***\" in row \"194\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -7671,7 +7639,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***6663***",
+            "***46663***",
             "MARCOS COSTA GUIMARÃES",
             "2010-02-18",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -7702,7 +7670,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9133474000186",
+            "09133474000186",
             "COMERCIAL PEDROSA MATERIAL DE CONSTRUCAO CIVIL LTDA -ME",
             "2010-03-01",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -7733,7 +7701,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5371297000115",
+            "05371297000115",
             "ECAANPI INDÚSTRIA E COMÉRCIO LTDA",
             "2010-03-01",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -7795,7 +7763,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5061165000197",
+            "05061165000197",
             "ALVES & LIMA LTDA -EPP",
             "2010-03-08",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -7888,7 +7856,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7239327000160",
+            "07239327000160",
             "MED BRASIL DISTRIBUIDORA DE MEDICAMENTOS LTDA-EPP",
             "2010-03-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -7919,7 +7887,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7632212000130",
+            "07632212000130",
             "LM - LIDERANCA DE MINAS LOCADORA E TRANSPORTADORA LTDA",
             "2010-03-25",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -7950,7 +7918,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5197435000191",
+            "05197435000191",
             "CIO TERRA FERTILIZANTES E JARDINAGEM LTDA",
             "2010-03-25",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -7981,7 +7949,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8492979000174",
+            "08492979000174",
             "IMAGINATIONS SOLUCOES EM TECNOLOGIA LTDA -EPP",
             "2010-03-30",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -8007,12 +7975,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***6600***",
+          "cell": "***06600***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***6600***",
+            "***06600***",
             "ANTÔNIO NUNES TOLENTINO",
             "2010-04-13",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -8034,7 +8002,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***6600***\" in row \"205\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***06600***\" in row \"205\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -8043,7 +8011,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***6600***",
+            "***06600***",
             "ANTÔNIO NUNES TOLENTINO",
             "2010-04-13",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -8074,7 +8042,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4292896000180",
+            "04292896000180",
             "POLICIN-COMERCIO DE PRODUTOS PARA ESCRITORIOS E PAPELARIAS LTDA",
             "2010-05-14",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -8105,7 +8073,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2401514000184",
+            "02401514000184",
             "GÉRANCE GERENCIAMENTO E CONSULTORIA LTDA",
             "2010-05-14",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -8322,7 +8290,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7979281000115",
+            "07979281000115",
             "FRANCA E MATOS SERVICOS TECNICOS ESPECIALIZADOS LTDA -ME",
             "2010-05-17",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -8353,7 +8321,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3766907000154",
+            "03766907000154",
             "ALEXANDRE BARRETO - CPF 07131155721 -ME",
             "2010-05-21",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -8379,12 +8347,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***6760***",
+          "cell": "***26760***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***6760***",
+            "***26760***",
             "LAIR FURTADO",
             "2010-05-21",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -8406,7 +8374,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***6760***\" in row \"213\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***26760***\" in row \"213\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -8415,7 +8383,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***6760***",
+            "***26760***",
             "LAIR FURTADO",
             "2010-05-21",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -8441,12 +8409,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***6760***",
+          "cell": "***26760***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***6760***",
+            "***26760***",
             "LAIR FURTADO",
             "2010-05-21",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -8468,7 +8436,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***6760***\" in row \"214\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***26760***\" in row \"214\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -8477,7 +8445,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***6760***",
+            "***26760***",
             "LAIR FURTADO",
             "2010-05-21",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -8565,12 +8533,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***02***",
+          "cell": "***36802***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***02***",
+            "***36802***",
             "GILBERTO FERREIRA GOMES",
             "2010-06-02",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -8592,7 +8560,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***02***\" in row \"216\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***36802***\" in row \"216\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -8601,7 +8569,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***02***",
+            "***36802***",
             "GILBERTO FERREIRA GOMES",
             "2010-06-02",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -8880,7 +8848,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4622258000180",
+            "04622258000180",
             "MAXIMA INTERMEDIACAO DE NEGOCIOS LTDA",
             "2010-07-08",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -8911,7 +8879,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4292896000180",
+            "04292896000180",
             "POLICIN-COMERCIO DE PRODUTOS PARA ESCRITORIOS E PAPELARIAS LTDA",
             "2010-07-16",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -8942,7 +8910,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9497271000179",
+            "09497271000179",
             "MAGUI MOVEIS INDUSTRIA E COMERCIO LTDA -ME",
             "2010-07-16",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -8968,12 +8936,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***6741***",
+          "cell": "***06741***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***6741***",
+            "***06741***",
             "JOSÉ EDSON FERREIRA",
             "2010-08-02",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -8995,7 +8963,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***6741***\" in row \"224\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***06741***\" in row \"224\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -9004,7 +8972,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***6741***",
+            "***06741***",
             "JOSÉ EDSON FERREIRA",
             "2010-08-02",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -9092,12 +9060,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***2036***",
+          "cell": "***62036***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***2036***",
+            "***62036***",
             "JOÃO JOSÉ DE ASSIS",
             "2010-08-02",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -9119,7 +9087,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***2036***\" in row \"226\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***62036***\" in row \"226\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -9128,7 +9096,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***2036***",
+            "***62036***",
             "JOÃO JOSÉ DE ASSIS",
             "2010-08-02",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -9159,7 +9127,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4292896000180",
+            "04292896000180",
             "POLICIN-COMERCIO DE PRODUTOS PARA ESCRITORIOS E PAPELARIAS LTDA",
             "2010-08-02",
             "INIDONEIDADE",
@@ -9190,7 +9158,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3221368000178",
+            "03221368000178",
             "CASA DO CARIMBO PAPELARIA LTDA",
             "2010-08-02",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -9283,7 +9251,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8289823000190",
+            "08289823000190",
             "RAJA INTERMEDIACAO DE NEGOCIOS E COMERCIO EM INFORMATICA EIRELI - ME",
             "2010-08-03",
             "INIDONEIDADE",
@@ -9314,7 +9282,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4158278000142",
+            "04158278000142",
             "PEJOMA TECNOLOGIA E COMÉRCIO DE INFORMÁTICA LTDA",
             "2010-08-10",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -9345,7 +9313,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8965015000104",
+            "08965015000104",
             "STOCK SOFT IMPORTADORA E COMERCIO DE SOFTWARE E SUPRIMENTOS LTDA ¿ ME",
             "2010-08-12",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -9376,7 +9344,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4622258000180",
+            "04622258000180",
             "MAXIMA INTERMEDIACAO DE NEGOCIOS LTDA",
             "2010-08-13",
             "INIDONEIDADE",
@@ -9402,12 +9370,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***6760***",
+          "cell": "***26760***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***6760***",
+            "***26760***",
             "LAIR FURTADO",
             "2010-08-13",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -9429,7 +9397,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***6760***\" in row \"234\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***26760***\" in row \"234\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -9438,7 +9406,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***6760***",
+            "***26760***",
             "LAIR FURTADO",
             "2010-08-13",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -9655,7 +9623,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1447133000173",
+            "01447133000173",
             "MARIEL COMERCIO DE MOVEIS E EQUIPAMENTOS PARA ESCRITORIO LTDA -ME",
             "2010-08-27",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -9748,7 +9716,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7008274000176",
+            "07008274000176",
             "PALACIO DOS CARTUCHOS PAPELARIA E INFORMATICA LTDA -ME",
             "2010-08-27",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -9779,7 +9747,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7359967000103",
+            "07359967000103",
             "HIGITERC HIGIENIZACAO E TERCEIRIZACAO LTDA",
             "2010-09-10",
             "INIDONEIDADE",
@@ -9810,7 +9778,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7359967000103",
+            "07359967000103",
             "HIGITERC HIGIENIZACAO E TERCEIRIZACAO LTDA",
             "2010-09-10",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -9903,7 +9871,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5478626000121",
+            "05478626000121",
             "DIAGONAL ADMINISTRACAO DE SERVICOS INTERNOS LTDA -EPP",
             "2010-10-01",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -9991,12 +9959,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***0538***",
+          "cell": "***90538***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***0538***",
+            "***90538***",
             "ELIZETE ROSIMEIRE DA SILVA",
             "2010-10-13",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -10018,7 +9986,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***0538***\" in row \"248\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***90538***\" in row \"248\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -10027,7 +9995,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***0538***",
+            "***90538***",
             "ELIZETE ROSIMEIRE DA SILVA",
             "2010-10-13",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -10058,7 +10026,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5478626000121",
+            "05478626000121",
             "DIAGONAL ADMINISTRACAO DE SERVICOS INTERNOS LTDA -EPP",
             "2010-10-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -10089,7 +10057,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9171134000140",
+            "09171134000140",
             "CONSTRUTORA SAMAR LTDA",
             "2010-10-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -10120,7 +10088,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4293351000199",
+            "04293351000199",
             "COMPANHIA MINEIRA DE INFORMATICA LTDA -ME",
             "2010-11-18",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -10151,7 +10119,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7363874000152",
+            "07363874000152",
             "COMPEX PRODUTO AGROPECUÁRIO COMERCIAL LTDA - ME",
             "2010-11-18",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -10182,7 +10150,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7965910000158",
+            "07965910000158",
             "BAMBUI EMPREITEIRA LTDA -ME",
             "2010-11-18",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -10213,7 +10181,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4393860000193",
+            "04393860000193",
             "NANIRIO 445 COMÉRCIO E SERVIÇOS ESPECIALIZADOS LTDA",
             "2010-11-24",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -10399,7 +10367,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9171134000140",
+            "09171134000140",
             "CONSTRUTORA SAMAR LTDA",
             "2010-12-14",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -10425,12 +10393,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***3993***",
+          "cell": "***33993***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***3993***",
+            "***33993***",
             "VILMA TEIXEIRA DOS SANTOS",
             "2010-12-14",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -10452,7 +10420,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***3993***\" in row \"260\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***33993***\" in row \"260\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -10461,7 +10429,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***3993***",
+            "***33993***",
             "VILMA TEIXEIRA DOS SANTOS",
             "2010-12-14",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -10487,12 +10455,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***7030***",
+          "cell": "***87030***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***7030***",
+            "***87030***",
             "WEDER POMAROLLI DE MEDEIROS",
             "2010-12-14",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -10514,7 +10482,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***7030***\" in row \"261\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***87030***\" in row \"261\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -10523,7 +10491,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***7030***",
+            "***87030***",
             "WEDER POMAROLLI DE MEDEIROS",
             "2010-12-14",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -10709,7 +10677,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2559321000156",
+            "02559321000156",
             "POTENCIAL DISTRIBUIDORA EIRELI",
             "2011-01-14",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -10802,7 +10770,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2559321000156",
+            "02559321000156",
             "POTENCIAL DISTRIBUIDORA EIRELI",
             "2011-01-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -10926,7 +10894,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3821415000114",
+            "03821415000114",
             "CONSTRUMAT LTDA -ME",
             "2011-02-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -10988,7 +10956,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9385037000150",
+            "09385037000150",
             "FERREIRA & CÉSAR HIDRÁULICA J. F. LTDA.",
             "2011-02-23",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -11019,7 +10987,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7801105000199",
+            "07801105000199",
             "INOXFORTE COMÉRCIO IMPORTAÇÃO E EXPORTAÇÃO DE AÇOS LTDA",
             "2011-02-25",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -11174,7 +11142,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3490227000150",
+            "03490227000150",
             "SUDESTE PLÁSTICOS LTDA.",
             "2011-03-15",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -11267,7 +11235,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5522187000107",
+            "05522187000107",
             "CONECT CORP COMERCIAL EIRELI - ME",
             "2011-03-28",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -11298,7 +11266,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6244084000195",
+            "06244084000195",
             "VARELLA SEGURANCA E VIGILANCIA PATRIMONIAL LTDA -EPP",
             "2011-03-28",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -11329,7 +11297,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5690910000167",
+            "05690910000167",
             "GREEN VALLEY SOLUCOES AMBIENTAIS LTDA - ME",
             "2011-03-28",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -11360,7 +11328,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1201994000177",
+            "01201994000177",
             "MS TOPOGRAFIA E ENGENHARIA LTDA -EPP",
             "2011-03-30",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -11391,7 +11359,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8386775000159",
+            "08386775000159",
             "AGAHTEC ASSESSORIA GESTÃO E TERCEIRIZAÇÃO LTDA",
             "2011-03-30",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -11422,7 +11390,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9719654000144",
+            "09719654000144",
             "REFRI-GV REFRIGERACAO LTDA -ME",
             "2011-03-30",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -11453,7 +11421,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3389852000100",
+            "03389852000100",
             "DEMARA COMERCIAL LTDA -ME",
             "2011-03-30",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -11484,7 +11452,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5288245000180",
+            "05288245000180",
             "LICITAR COMERCIAL LTDA",
             "2011-04-14",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -11515,7 +11483,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1125413000165",
+            "01125413000165",
             "ADONAI COMERCIO DE PRODUTOS HOSPITALARES LTDA -ME",
             "2011-04-14",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -11546,7 +11514,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3389852000100",
+            "03389852000100",
             "DEMARA COMERCIAL LTDA -ME",
             "2011-04-27",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -11634,12 +11602,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***3943***",
+          "cell": "***93943***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***3943***",
+            "***93943***",
             "PAULINO ALEXANDRE SANTANA",
             "2011-04-28",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -11661,7 +11629,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***3943***\" in row \"291\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***93943***\" in row \"291\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -11670,7 +11638,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***3943***",
+            "***93943***",
             "PAULINO ALEXANDRE SANTANA",
             "2011-04-28",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -11763,7 +11731,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6044730000170",
+            "06044730000170",
             "R E F SERVICOS DE INFORMATICA LTDA",
             "2011-05-02",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -11949,7 +11917,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3301925000160",
+            "03301925000160",
             "METROFILE BRASIL GESTÃO DA INFORMAÇÃO LTDA.",
             "2011-05-25",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -12011,7 +11979,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6090166000122",
+            "06090166000122",
             "PONTO CERTO DISTRIBUIDORA DE GENEROS ALIMENTICIOS LTDA",
             "2011-05-30",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -12042,7 +12010,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5598452000130",
+            "05598452000130",
             "INDÚSTRIA E COMÉRCIO BOMAJET DE APERIBE LTDA",
             "2011-05-31",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -12073,7 +12041,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9615457000185",
+            "09615457000185",
             "SODROGAS DISTRIBUIDORA DE MEDICAMENTOS E MATERIAIS MEDICO HOSPITALARES LTDA.",
             "2011-05-31",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -12290,7 +12258,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4011170000122",
+            "04011170000122",
             "LAKELAND BRASIL S.A",
             "2013-01-08",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -12321,7 +12289,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8070862000100",
+            "08070862000100",
             "SMC GESTAO E PROJETOS LTDA - ME",
             "2011-06-09",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -12383,7 +12351,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3117720000120",
+            "03117720000120",
             "VÉRTICE CONSTRUÇÕES E COMÉRCIO LTDA",
             "2011-06-09",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -12569,7 +12537,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1996456000116",
+            "01996456000116",
             "JNW TOPOGRAFIA E PROJETOS LTDA",
             "2011-06-21",
             "INIDONEIDADE",
@@ -12600,7 +12568,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7393731000193",
+            "07393731000193",
             "PORTO & BARBOSA LTDA.",
             "2011-06-27",
             "INIDONEIDADE",
@@ -12631,7 +12599,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4113456000119",
+            "04113456000119",
             "ML CENTRO AUTOMOTIVO EIRELI - EPP",
             "2011-06-27",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -12693,7 +12661,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7717993000166",
+            "07717993000166",
             "VXJ COMERCIO DE MOVEIS LTDA -ME",
             "2011-06-30",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -12755,7 +12723,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2120449000119",
+            "02120449000119",
             "WORLDCOM COMERCIAL LTDA.-ME",
             "2011-07-21",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -12905,12 +12873,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***1627***",
+          "cell": "***71627***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***1627***",
+            "***71627***",
             "NEFE DE OLIVEIRA RODRIGUES",
             "2011-08-30",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -12932,7 +12900,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***1627***\" in row \"323\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***71627***\" in row \"323\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -12941,7 +12909,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***1627***",
+            "***71627***",
             "NEFE DE OLIVEIRA RODRIGUES",
             "2011-08-30",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -12972,7 +12940,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5652840000152",
+            "05652840000152",
             "EMBRAGEC SISTEMAS DE INFORMÁTICA LTDA",
             "2011-07-29",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -13034,7 +13002,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2620881000179",
+            "02620881000179",
             "TECGAS ENGENHARIA E CONSULTORIA LTDA.",
             "2011-08-03",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -13065,7 +13033,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5766427000119",
+            "05766427000119",
             "STEEL COMERCIO DE EQUIPAMENTOS DE EMERGENCIA LTDA ME",
             "2011-08-04",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -13127,7 +13095,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4166998000150",
+            "04166998000150",
             "DISTRIBUIDORA DE EMBALAGENS LIMPAPEL LTDA -ME",
             "2011-08-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -13220,7 +13188,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6090166000122",
+            "06090166000122",
             "PONTO CERTO DISTRIBUIDORA DE GENEROS ALIMENTICIOS LTDA",
             "2011-09-08",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -13251,7 +13219,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7793085000151",
+            "07793085000151",
             "AUTO CENTER MONTE SIAO LTDA -ME",
             "2011-09-08",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -13282,7 +13250,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4265840000137",
+            "04265840000137",
             "NEVESDIESEL PECAS E SERVICOS LTDA -ME",
             "2011-09-08",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -13313,7 +13281,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4998228000173",
+            "04998228000173",
             "CASA DO VIRABREQUIM COMÉRCIO E SERVIÇOS LTDA.",
             "2011-09-08",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -13344,7 +13312,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4622258000180",
+            "04622258000180",
             "MAXIMA INTERMEDIACAO DE NEGOCIOS LTDA",
             "2011-09-14",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -13375,7 +13343,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9315358000188",
+            "09315358000188",
             "ESPACO REQUINTE REFEICOES LTDA -ME",
             "2011-09-14",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -13468,7 +13436,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6272366000104",
+            "06272366000104",
             "CONSTRUTORA VALE DO SAO FRANCISCO LTDA -ME",
             "2011-09-26",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -13499,7 +13467,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7965910000158",
+            "07965910000158",
             "BAMBUI EMPREITEIRA LTDA -ME",
             "2011-09-26",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -13561,7 +13529,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4894286000157",
+            "04894286000157",
             "TINTA & COMPANHIA LTDA -EPP",
             "2011-09-27",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -13587,12 +13555,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***860***",
+          "cell": "***29860***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***860***",
+            "***29860***",
             "EDEVAL GONÇALVES AZEVEDO",
             "2011-10-03",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -13614,7 +13582,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***860***\" in row \"342\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***29860***\" in row \"342\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -13623,7 +13591,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***860***",
+            "***29860***",
             "EDEVAL GONÇALVES AZEVEDO",
             "2011-10-03",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -13654,7 +13622,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9146464000185",
+            "09146464000185",
             "RUIL DISTRIBUICAO DE PRODUTOS E INSUMOS LTDA -ME",
             "2011-10-05",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -13685,7 +13653,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2199157000113",
+            "02199157000113",
             "EQUIPE EMPRESA DE VIGILANCIA ARMADA LTDA",
             "2011-10-05",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -13716,7 +13684,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4622258000180",
+            "04622258000180",
             "MAXIMA INTERMEDIACAO DE NEGOCIOS LTDA",
             "2011-10-05",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -13866,12 +13834,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***2078***",
+          "cell": "***12078***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***2078***",
+            "***12078***",
             "ETELSON LUIZ DE LÍBERO HAUCK",
             "2011-10-10",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -13893,7 +13861,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***2078***\" in row \"348\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***12078***\" in row \"348\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -13902,7 +13870,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***2078***",
+            "***12078***",
             "ETELSON LUIZ DE LÍBERO HAUCK",
             "2011-10-10",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -14119,7 +14087,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1064846000158",
+            "01064846000158",
             "PROGRESSO INFORMATICA LTDA -EPP",
             "2011-10-14",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -14274,7 +14242,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7047767000115",
+            "07047767000115",
             "ATACADISTA ORIZANIA LTDA",
             "2011-10-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -14305,7 +14273,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1301195000172",
+            "01301195000172",
             "CONTECH TECNOLOGIA DA INFORMAÇÃO S/A",
             "2011-10-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -14336,7 +14304,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8816921000139",
+            "08816921000139",
             "SANDRO TAJURET DOS SANTOS - EPP",
             "2011-10-24",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -14703,12 +14671,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***0620***",
+          "cell": "***10620***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***0620***",
+            "***10620***",
             "VALTÔNIO SOARES",
             "2011-11-09",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -14730,7 +14698,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***0620***\" in row \"365\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***10620***\" in row \"365\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -14739,7 +14707,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***0620***",
+            "***10620***",
             "VALTÔNIO SOARES",
             "2011-11-09",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -14889,12 +14857,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***5271***",
+          "cell": "***05271***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***5271***",
+            "***05271***",
             "ADÉLIO NUNES CAIXETA",
             "2011-11-09",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -14916,7 +14884,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***5271***\" in row \"368\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***05271***\" in row \"368\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -14925,7 +14893,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***5271***",
+            "***05271***",
             "ADÉLIO NUNES CAIXETA",
             "2011-11-09",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -14956,7 +14924,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9076690000137",
+            "09076690000137",
             "AUTOPLAN LOCAÇÃO DE VEÍCULOS LTDA",
             "2011-11-17",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -14987,7 +14955,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5229878000117",
+            "05229878000117",
             "MASP CON INDUSTRIA COMERCIO E SERVICOS LTDA -ME",
             "2012-04-16",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -15018,7 +14986,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8789806000112",
+            "08789806000112",
             "SG SOLUCOES TECNOLOGICAS LTDA -ME",
             "2011-11-23",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -15080,7 +15048,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "491542000104",
+            "00491542000104",
             "WORLD SERVICE TERCEIRIZAÇÃO LTDA.",
             "2011-11-29",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -15111,7 +15079,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6353263000160",
+            "06353263000160",
             "MSE SYSTEMS",
             "2011-12-16",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -15142,7 +15110,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9133474000186",
+            "09133474000186",
             "COMERCIAL PEDROSA MATERIAL DE CONSTRUCAO CIVIL LTDA -ME",
             "2011-12-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -15297,7 +15265,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9076690000137",
+            "09076690000137",
             "AUTOPLAN LOCAÇÃO DE VEÍCULOS LTDA",
             "2012-01-13",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -15328,7 +15296,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9022996000100",
+            "09022996000100",
             "CONSERVECI ADMINISTRACAO DE SERVICOS LTDA -ME",
             "2012-01-13",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -15390,7 +15358,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2530575000141",
+            "02530575000141",
             "HGM PROMOCOES LTDA",
             "2012-01-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -15483,7 +15451,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3750721000107",
+            "03750721000107",
             "CLINICA DE ESPECIALIDADES MEDICAS CARIJOS LTDA",
             "2012-01-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -15545,7 +15513,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7322276000135",
+            "07322276000135",
             "SYDLE SISTEMAS LTDA",
             "2012-01-25",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -15638,7 +15606,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5824777000194",
+            "05824777000194",
             "MASTERFER LTDA",
             "2012-01-27",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -15669,7 +15637,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5276655000100",
+            "05276655000100",
             "BIOPLUS LTDA -ME",
             "2012-01-27",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -15700,7 +15668,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6334086000175",
+            "06334086000175",
             "HIDROSUL COMÉRCIO DE MATERIAIS HIDRÁULICOS LTDA.",
             "2012-02-01",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -15731,7 +15699,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4421071000119",
+            "04421071000119",
             "ZUHAUSE CONSTRUTORA LTDA",
             "2012-02-06",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -15762,7 +15730,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3345271000177",
+            "03345271000177",
             "INICIATIVA EMPREENDIMENTOS E SERVICOS LTDA",
             "2012-02-07",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -15793,7 +15761,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4421071000119",
+            "04421071000119",
             "ZUHAUSE CONSTRUTORA LTDA",
             "2012-02-08",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -15886,7 +15854,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2594546000143",
+            "02594546000143",
             "TRANSPORTES E TURISMO ITAPECERICA LTDA -EPP",
             "2012-03-09",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -15948,7 +15916,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3294333000169",
+            "03294333000169",
             "ENGEOP OBRAS E SERVICOS LTDA -EPP",
             "2012-03-13",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -15979,7 +15947,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9122816000162",
+            "09122816000162",
             "COMERCIAL ALVES E CAIXETA LTDA -EPP",
             "2012-03-15",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -16010,7 +15978,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9122816000162",
+            "09122816000162",
             "COMERCIAL ALVES E CAIXETA LTDA -EPP",
             "2012-03-15",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -16289,7 +16257,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2559321000156",
+            "02559321000156",
             "POTENCIAL DISTRIBUIDORA EIRELI",
             "2012-04-09",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -16320,7 +16288,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4702026000132",
+            "04702026000132",
             "GAUSS ESTATÍSTICA E MERCADO LTDA",
             "2012-04-09",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -16351,7 +16319,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3345271000177",
+            "03345271000177",
             "INICIATIVA EMPREENDIMENTOS E SERVICOS LTDA",
             "2012-04-09",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -16377,12 +16345,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***9500***",
+          "cell": "***09500***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***9500***",
+            "***09500***",
             "EDMUNDO VERSIANI DE SOUZA",
             "2012-04-09",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -16404,7 +16372,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***9500***\" in row \"410\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***09500***\" in row \"410\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -16413,7 +16381,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***9500***",
+            "***09500***",
             "EDMUNDO VERSIANI DE SOUZA",
             "2012-04-09",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -16749,12 +16717,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***1448***",
+          "cell": "***01448***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***1448***",
+            "***01448***",
             "EDUARDO ALVINO VERSIANI DE SOUZA",
             "2012-04-09",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -16776,7 +16744,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***1448***\" in row \"416\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***01448***\" in row \"416\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -16785,7 +16753,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***1448***",
+            "***01448***",
             "EDUARDO ALVINO VERSIANI DE SOUZA",
             "2012-04-09",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -16811,12 +16779,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***558***",
+          "cell": "***78558***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***558***",
+            "***78558***",
             "MAURÍCIO CLEBER DE PAULA",
             "2012-04-09",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -16838,7 +16806,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***558***\" in row \"417\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***78558***\" in row \"417\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -16847,7 +16815,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***558***",
+            "***78558***",
             "MAURÍCIO CLEBER DE PAULA",
             "2012-04-09",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -16873,12 +16841,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***2530***",
+          "cell": "***52530***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***2530***",
+            "***52530***",
             "PETRÔNIO BRAZ",
             "2012-04-09",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -16900,7 +16868,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***2530***\" in row \"418\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***52530***\" in row \"418\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -16909,7 +16877,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***2530***",
+            "***52530***",
             "PETRÔNIO BRAZ",
             "2012-04-09",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -16940,7 +16908,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5438576000159",
+            "05438576000159",
             "VALEPINHO COMERCIO DE MATERIAIS PARA CONSTRUÇÕES LTDA ME",
             "2012-04-10",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -17002,7 +16970,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5229878000117",
+            "05229878000117",
             "MASP CON INDUSTRIA COMERCIO E SERVICOS LTDA -ME",
             "2012-04-16",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -17033,7 +17001,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9022996000100",
+            "09022996000100",
             "CONSERVECI ADMINISTRACAO DE SERVICOS LTDA -ME",
             "2012-04-17",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -17064,7 +17032,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8647192000134",
+            "08647192000134",
             "COMERCIAL SOARES COMERCIO E SERVICOS EM ARTIGOS DE INFORMATICA LTDA -ME",
             "2012-04-17",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -17095,7 +17063,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3345271000177",
+            "03345271000177",
             "INICIATIVA EMPREENDIMENTOS E SERVICOS LTDA",
             "2012-04-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -17126,7 +17094,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3345271000177",
+            "03345271000177",
             "INICIATIVA EMPREENDIMENTOS E SERVICOS LTDA",
             "2012-04-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -17157,7 +17125,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4899631000145",
+            "04899631000145",
             "CONTROL SERVICE LTDA -EPP",
             "2012-04-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -17188,7 +17156,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2705738000180",
+            "02705738000180",
             "CASA DAS PECAS E SERVICOS AUTOMOTIVOS LTDA -EPP",
             "2012-11-06",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -17219,7 +17187,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5696490000126",
+            "05696490000126",
             "COMERCIAL IZABELLA LTDA -ME",
             "2012-04-26",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -17250,7 +17218,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4622258000180",
+            "04622258000180",
             "MAXIMA INTERMEDIACAO DE NEGOCIOS LTDA",
             "2012-04-26",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -17498,7 +17466,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4140189000179",
+            "04140189000179",
             "PRIME REFEICOES LTDA",
             "2017-11-24",
             "INIDONEIDADE",
@@ -17529,7 +17497,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7979281000115",
+            "07979281000115",
             "FRANCA E MATOS SERVICOS TECNICOS ESPECIALIZADOS LTDA -ME",
             "2012-06-05",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -17622,7 +17590,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3847718000106",
+            "03847718000106",
             "ATL ENGENHARIA LTDA.",
             "2012-06-06",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -17777,7 +17745,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1182232000170",
+            "01182232000170",
             "RAL ENGENHARIA LTDA",
             "2012-07-03",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -17839,7 +17807,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3345271000177",
+            "03345271000177",
             "INICIATIVA EMPREENDIMENTOS E SERVICOS LTDA",
             "2012-07-03",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -17932,7 +17900,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2653050000101",
+            "02653050000101",
             "CONSTRUTORA ROMARIA LTDA",
             "2012-07-04",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -17963,7 +17931,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5201844000114",
+            "05201844000114",
             "MAIS IMAGEM LOCACOES LTDA -EPP",
             "2012-07-18",
             "INIDONEIDADE",
@@ -18025,7 +17993,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4641589000168",
+            "04641589000168",
             "WILSON JUNIOR MIRANDA FONSECA - ME",
             "2012-07-24",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -18118,7 +18086,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5061165000197",
+            "05061165000197",
             "ALVES & LIMA LTDA -EPP",
             "2013-05-23",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -18144,12 +18112,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***3835***",
+          "cell": "***23835***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***3835***",
+            "***23835***",
             "CARLOS MOACIR COUTO",
             "2012-08-13",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -18171,7 +18139,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***3835***\" in row \"453\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***23835***\" in row \"453\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -18180,7 +18148,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***3835***",
+            "***23835***",
             "CARLOS MOACIR COUTO",
             "2012-08-13",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -18273,7 +18241,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8951391000131",
+            "08951391000131",
             "BV TECNOLOGIA DA INFORMAÇÃO LTDA. ME",
             "2012-08-13",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -18304,7 +18272,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4899631000145",
+            "04899631000145",
             "CONTROL SERVICE LTDA -EPP",
             "2012-08-16",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -18335,7 +18303,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8378712000150",
+            "08378712000150",
             "WBJS COMUNICACAO LTDA -EPP",
             "2012-08-16",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -18428,7 +18396,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3438563000154",
+            "03438563000154",
             "MILLENIUM ENGENHARIA E CONSTRUCOES EIRELI",
             "2012-08-23",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -18578,12 +18546,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***0529***",
+          "cell": "***40529***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***0529***",
+            "***40529***",
             "JOSÉ BELÍZIO DIAS RAMOS",
             "2012-08-29",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -18605,7 +18573,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***0529***\" in row \"463\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***40529***\" in row \"463\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -18614,7 +18582,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***0529***",
+            "***40529***",
             "JOSÉ BELÍZIO DIAS RAMOS",
             "2012-08-29",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -18676,7 +18644,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8084062000130",
+            "08084062000130",
             "CONSTRUTORA LANCE LTDA - ME",
             "2012-09-05",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -18707,7 +18675,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3233416000148",
+            "03233416000148",
             "GC MATERIAIS BASICOS EIRELI - EPP - EM RECUPERACAO JUDICIAL",
             "2012-09-05",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -18800,7 +18768,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6326137000117",
+            "06326137000117",
             "CONTACK RÓTULOS ADESIVOS LTDA ME",
             "2012-10-03",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -18893,7 +18861,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4899631000145",
+            "04899631000145",
             "CONTROL SERVICE LTDA -EPP",
             "2012-10-16",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -18955,7 +18923,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1216212000173",
+            "01216212000173",
             "SPEL ENGENHARIA LTDA",
             "2012-10-25",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -18986,7 +18954,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8084062000130",
+            "08084062000130",
             "CONSTRUTORA LANCE LTDA - ME",
             "2012-10-25",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -19017,7 +18985,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "885263000125",
+            "00885263000125",
             "12/12 HORTA E GRANJA COMUNITARIA BARBARA CHADID SALAZAR EIRELI - EPP",
             "2012-11-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -19110,7 +19078,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4902481000181",
+            "04902481000181",
             "AUTO POSTO TIGRAO LTDA",
             "2012-11-12",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -19136,12 +19104,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***8970***",
+          "cell": "***48970***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***8970***",
+            "***48970***",
             "ADELMO PEREIRA DOS REIS",
             "2012-12-26",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -19163,7 +19131,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***8970***\" in row \"480\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***48970***\" in row \"480\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -19172,7 +19140,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***8970***",
+            "***48970***",
             "ADELMO PEREIRA DOS REIS",
             "2012-12-26",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -19203,7 +19171,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3962261000180",
+            "03962261000180",
             "LUZ DE MINAS CONSTRUCOES ELETRICAS LTDA - ME",
             "2012-12-26",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -19296,7 +19264,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7886557000110",
+            "07886557000110",
             "SOARES & RIBEIRO COMERCIO E SERVICOS DE ARTIGOS DE COSTURA, VESTUARIO E MAGAZINE LTDA - ME",
             "2013-01-02",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -19327,7 +19295,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7585245000177",
+            "07585245000177",
             "THAGEMA ALIMENTOS EIRELI - ME",
             "2013-01-28",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -19358,7 +19326,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7671334000136",
+            "07671334000136",
             "DOM STEPHANO EMBALAGENS LTDA -ME",
             "2013-01-28",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -19389,7 +19357,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8431994000102",
+            "08431994000102",
             "COZINHA BRASIL  REFEIÇÕES COLETIVAS LTDA / ME",
             "2013-01-28",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -19415,12 +19383,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***55***",
+          "cell": "***29755***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***55***",
+            "***29755***",
             "COSME DAMIÃO LACOQUE",
             "2013-01-28",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -19442,7 +19410,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***55***\" in row \"487\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***29755***\" in row \"487\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -19451,7 +19419,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***55***",
+            "***29755***",
             "COSME DAMIÃO LACOQUE",
             "2013-01-28",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -19482,7 +19450,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5547702000103",
+            "05547702000103",
             "ALCANCE ELETRO INSTALADORA LTDA",
             "2013-01-28",
             "INIDONEIDADE",
@@ -19513,7 +19481,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8155941000106",
+            "08155941000106",
             "PAPELARIA JMV LTDA -ME",
             "2013-02-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -19575,7 +19543,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5696490000126",
+            "05696490000126",
             "COMERCIAL IZABELLA LTDA -ME",
             "2013-02-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -19606,7 +19574,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6283416000140",
+            "06283416000140",
             "HIPARC SISTEMAS E AEROLEVANTAMENTOS LTDA",
             "2013-02-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -19637,7 +19605,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6013589000149",
+            "06013589000149",
             "ABRIL ELETRIFICAÇÃO LTDA.",
             "2014-07-04",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -19668,7 +19636,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "261866000156",
+            "00261866000156",
             "HYTRONIC AUTOMAÇÃO LTDA",
             "2013-02-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -19730,7 +19698,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4589239000108",
+            "04589239000108",
             "THALES INFORMATION SYSTEMS S/A",
             "2013-03-01",
             "INIDONEIDADE",
@@ -19761,7 +19729,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8318112000105",
+            "08318112000105",
             "EXATAS PESQUISAS LTDA",
             "2013-03-01",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -19818,12 +19786,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***2220***",
+          "cell": "***92220***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***2220***",
+            "***92220***",
             "ARAILTON FRANCISCO DE OLIVEIRA",
             "2013-03-04",
             "INIDONEIDADE",
@@ -19845,7 +19813,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***2220***\" in row \"499\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***92220***\" in row \"499\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -19854,7 +19822,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***2220***",
+            "***92220***",
             "ARAILTON FRANCISCO DE OLIVEIRA",
             "2013-03-04",
             "INIDONEIDADE",
@@ -19880,12 +19848,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***9476***",
+          "cell": "***99476***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***9476***",
+            "***99476***",
             "ARAILTON FRANCISCO DE OLIVEIRA NETO",
             "2013-03-04",
             "INIDONEIDADE",
@@ -19907,7 +19875,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***9476***\" in row \"500\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***99476***\" in row \"500\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -19916,7 +19884,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***9476***",
+            "***99476***",
             "ARAILTON FRANCISCO DE OLIVEIRA NETO",
             "2013-03-04",
             "INIDONEIDADE",
@@ -20257,7 +20225,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1899791000104",
+            "01899791000104",
             "INSTITUTO BRASILEIRO DE APOIO AOS MUNICÍPIOS - IBRAM",
             "2013-03-08",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -20288,7 +20256,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3695175000159",
+            "03695175000159",
             "MT EMPREITEIRA LTDA ME",
             "2013-03-13",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -20350,7 +20318,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5696490000126",
+            "05696490000126",
             "COMERCIAL IZABELLA LTDA -ME",
             "2013-03-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -20598,7 +20566,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6219757000157",
+            "06219757000157",
             "VIDAFARMA DISTRIBUIDORA DE MEDICAMENTOS LTDA",
             "2013-04-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -20691,7 +20659,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3116687000113",
+            "03116687000113",
             "ROMANAGI EMPREENDIMENTOS LTDA",
             "2013-04-26",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -20722,7 +20690,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8164724000182",
+            "08164724000182",
             "SANEMARCK - COMÉRCIO DE MATERIAIS HIDRÁULICOS LTDA.",
             "2013-05-07",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -20784,7 +20752,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5367044000178",
+            "05367044000178",
             "VH TRATAMENTO DE RESIDUOS, INDUSTRIA E COMERCIO LTDA.",
             "2013-05-13",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -20815,7 +20783,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6283416000493",
+            "06283416000493",
             "HIPPARKHOS GEOTECNOLOGIA, SISTEMAS E AEROLEVANTAMENTOS LTDA",
             "2013-05-17",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -20877,7 +20845,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5061165000197",
+            "05061165000197",
             "ALVES & LIMA LTDA -EPP",
             "2013-05-23",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -20908,7 +20876,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5281421000151",
+            "05281421000151",
             "FRANKLIN MAQUINAS E SERVICOS DE ENGENHARIA LTDA -EPP",
             "2013-05-23",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -21218,7 +21186,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9076690000137",
+            "09076690000137",
             "AUTOPLAN LOCAÇÃO DE VEÍCULOS LTDA",
             "2013-06-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -21249,7 +21217,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5453130000101",
+            "05453130000101",
             "BETALUX INDUSTRIAL LTDA",
             "2013-06-21",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -21311,7 +21279,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7813578000106",
+            "07813578000106",
             "WMR SUPRIMENTOS DE INFORMATICA LTDA -ME",
             "2013-07-04",
             "INIDONEIDADE",
@@ -21342,7 +21310,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4049640000147",
+            "04049640000147",
             "MULTI MERCANTES LTDA",
             "2013-07-04",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -21373,7 +21341,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6813762000193",
+            "06813762000193",
             "CONSULTA CONSULTORES ASSOCIADOS LTDA",
             "2013-07-10",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -21404,7 +21372,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5422808000180",
+            "05422808000180",
             "RODINI ENGENHARIA E CONSTRUÇÕES SA",
             "2013-07-25",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -21435,7 +21403,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5296914000165",
+            "05296914000165",
             "TREVOSERVIS LTDA",
             "2013-08-01",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -21528,7 +21496,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1012498000175",
+            "01012498000175",
             "PALHANO COMERCIO E REPRESENTACOES DE SERVICOS GRAFICOS LTDA -ME",
             "2013-08-12",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -21621,7 +21589,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5296914000165",
+            "05296914000165",
             "TREVOSERVIS LTDA",
             "2013-08-29",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -21652,7 +21620,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5959584000140",
+            "05959584000140",
             "PROGETTARE ENGENHARIA DE PROJETOS E CONSTRUCOES LTDA -EPP",
             "2013-09-10",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -21745,7 +21713,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4209123000198",
+            "04209123000198",
             "DISPAPER LTDA -ME",
             "2013-09-12",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -21776,7 +21744,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2813119000109",
+            "02813119000109",
             "3A RURAL ENGENHARIA S/S LTDA",
             "2013-09-12",
             "INIDONEIDADE",
@@ -21838,7 +21806,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9665096000181",
+            "09665096000181",
             "BRASMILI COMERCIO E SERVICOS LTDA-ME",
             "2013-10-16",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -21895,43 +21863,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***61000***",
-          "fieldName": "cnpj_cpf_fornecedor",
-          "fieldNumber": 1,
-          "fieldPosition": 1,
-          "cells": [
-            "***61000***",
-            "ACOMAR REFORMA E REFRIGERACAO LTDA -EPP",
-            "2013-10-18",
-            "SUSPENSÃO POR ATÉ 2 ANOS",
-            "2013-10-18",
-            "2013-10-18",
-            "2014-04-17",
-            "2250,0",
-            "JUNTA COMERCIAL DO ESTADO DE MINAS GERAIS",
-            "",
-            "IMPEDIMENTO DE LICITAR E CONTRATAR COM A ADMINISTRAÇÃO PÚBLICA ESTADUAL, PELO PRAZO DE 06 (SEIS) MESES, COM FUNDAMENTO NO ARTIGO 12 DA LEI Nº 14.167, DE 10/1/2002, E NO ARTIGO 45, INCISO I, DO DECRETO Nº 45.902, DE 27/1/2012."
-          ],
-          "rowNumber": 557,
-          "rowPosition": 558,
-          "code": "type-error",
-          "name": "Type Error",
-          "tags": [
-            "#table",
-            "#row",
-            "#cell"
-          ],
-          "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***61000***\" in row \"558\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
-          "description": "The value does not match the schema type and format for this field."
-        },
-        {
           "cell": "IMPEDIMENTO DE LICITAR E CONTRATAR COM A ADMINISTRAÇÃO PÚBLICA ESTADUAL, PELO PRAZO DE 06 (SEIS) MESES, COM FUNDAMENTO NO ARTIGO 12 DA LEI Nº 14.167, DE 10/1/2002, E NO ARTIGO 45, INCISO I, DO DECRETO Nº 45.902, DE 27/1/2012.",
           "fieldName": "",
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***61000***",
+            "00062861000102",
             "ACOMAR REFORMA E REFRIGERACAO LTDA -EPP",
             "2013-10-18",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -21993,7 +21930,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4209123000198",
+            "04209123000198",
             "DISPAPER LTDA -ME",
             "2013-10-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -22024,7 +21961,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8659934000141",
+            "08659934000141",
             "CONSTRUTORA ELE LTDA-EPP",
             "2013-10-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -22055,7 +21992,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5911583000126",
+            "05911583000126",
             "PERFIL OCUPACIONAL LTDA.",
             "2013-10-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -22086,7 +22023,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7432517000107",
+            "07432517000107",
             "SIMPRESS COMERCIO LOCACAO E SERVICOS LTDA",
             "2014-01-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -22174,12 +22111,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***3014***",
+          "cell": "***93014***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***3014***",
+            "***93014***",
             "CARLOS CÉSAR DA SILVA",
             "2013-10-24",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -22201,7 +22138,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***3014***\" in row \"565\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***93014***\" in row \"565\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -22210,7 +22147,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***3014***",
+            "***93014***",
             "CARLOS CÉSAR DA SILVA",
             "2013-10-24",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -22241,7 +22178,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9248890000120",
+            "09248890000120",
             "MEGA BRINDES & COMUNICAÇÃO VISUAL LTDA.",
             "2013-10-24",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -22272,7 +22209,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3338327000166",
+            "03338327000166",
             "AUTO PECAS CAR LTDA",
             "2013-11-11",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -22334,7 +22271,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2777831000280",
+            "02777831000280",
             "POSTO SANTA FELICIDADE LTDA",
             "2013-11-28",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -22360,12 +22297,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***6741***",
+          "cell": "***06741***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***6741***",
+            "***06741***",
             "JOSÉ EDSON FERREIRA",
             "2013-11-28",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -22387,7 +22324,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***6741***\" in row \"570\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***06741***\" in row \"570\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -22396,7 +22333,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***6741***",
+            "***06741***",
             "JOSÉ EDSON FERREIRA",
             "2013-11-28",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -22484,12 +22421,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***7327***",
+          "cell": "***17327***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***7327***",
+            "***17327***",
             "IVANIR RODRIGUES FERREIRA",
             "2013-12-03",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -22511,7 +22448,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***7327***\" in row \"573\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***17327***\" in row \"573\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -22520,7 +22457,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***7327***",
+            "***17327***",
             "IVANIR RODRIGUES FERREIRA",
             "2013-12-03",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -22582,7 +22519,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7666810000120",
+            "07666810000120",
             "ARTE E COR - SERVIÇOS DE FAIXAS E PLACAS LTDA.",
             "2013-12-03",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -22613,7 +22550,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8228956000157",
+            "08228956000157",
             "LINHARES ENGENHARIA LTDA",
             "2013-12-16",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -22954,7 +22891,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1344542000144",
+            "01344542000144",
             "EDITORA GRÁFICA CONTATTO LTDA.",
             "2014-01-23",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -22985,7 +22922,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4376507000103",
+            "04376507000103",
             "G4 ARQUITETURA E CONSULTORIA LTDA -ME",
             "2014-01-23",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -23016,7 +22953,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4234907000176",
+            "04234907000176",
             "CPR CONTRUÇÕES LTDA.",
             "2014-01-23",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -23104,12 +23041,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***7570***",
+          "cell": "***67570***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***7570***",
+            "***67570***",
             "RAIMUNDO TEIXEIRA MACHADO",
             "2014-01-23",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -23131,7 +23068,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***7570***\" in row \"589\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***67570***\" in row \"589\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -23140,7 +23077,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***7570***",
+            "***67570***",
             "RAIMUNDO TEIXEIRA MACHADO",
             "2014-01-23",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -23228,12 +23165,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***5994***",
+          "cell": "***25994***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***5994***",
+            "***25994***",
             "LÍLIAN DE SOUZA MIRANDA",
             "2014-01-23",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -23255,7 +23192,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***5994***\" in row \"591\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***25994***\" in row \"591\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -23264,7 +23201,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***5994***",
+            "***25994***",
             "LÍLIAN DE SOUZA MIRANDA",
             "2014-01-23",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -23295,7 +23232,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4209123000198",
+            "04209123000198",
             "DISPAPER LTDA -ME",
             "2014-01-29",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -23326,7 +23263,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3129316000176",
+            "03129316000176",
             "HIDROFONTE COMERCIAL LTDA -EPP",
             "2014-01-31",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -23357,7 +23294,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9328122000186",
+            "09328122000186",
             "CAMPOMORI SOCIEDADE COMERCIAL - CSC LTDA -ME",
             "2014-01-31",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -23543,7 +23480,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5859556000151",
+            "05859556000151",
             "PORTOBRAS COMERCIAL LTDA - EPP",
             "2014-02-13",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -23605,7 +23542,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8843546000116",
+            "08843546000116",
             "INDUSTRIA E COMERCIO DE CAFE SOUSAMORIM LTDA -ME",
             "2014-02-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -23636,7 +23573,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8647192000134",
+            "08647192000134",
             "COMERCIAL SOARES COMERCIO E SERVICOS EM ARTIGOS DE INFORMATICA LTDA -ME",
             "2014-02-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -23667,7 +23604,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5296914000165",
+            "05296914000165",
             "TREVOSERVIS LTDA",
             "2014-02-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -23698,7 +23635,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3610447000170",
+            "03610447000170",
             "MINAS UNIAO MUDANCAS LTDA -ME",
             "2014-02-19",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -23729,7 +23666,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9054830000176",
+            "09054830000176",
             "SENSORIAL DETECTORES DE SEGURANCA LTDA",
             "2014-08-08",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -23760,7 +23697,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6134364000140",
+            "06134364000140",
             "POTTENCIAL CONSTRUCOES E ENGENHARIA LTDA -EPP",
             "2014-02-21",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -23822,7 +23759,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5280840000179",
+            "05280840000179",
             "ENGEFORT CONSTRUTORA LTDA.",
             "2014-02-25",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -24008,7 +23945,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5280840000179",
+            "05280840000179",
             "ENGEFORT CONSTRUTORA LTDA.",
             "2014-03-26",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -24189,12 +24126,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***6049***",
+          "cell": "***46049***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***6049***",
+            "***46049***",
             "FLÁVIA FERREIRA VILLELA",
             "2014-03-26",
             "INIDONEIDADE",
@@ -24216,7 +24153,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***6049***\" in row \"616\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***46049***\" in row \"616\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -24225,7 +24162,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***6049***",
+            "***46049***",
             "FLÁVIA FERREIRA VILLELA",
             "2014-03-26",
             "INIDONEIDADE",
@@ -24473,7 +24410,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4880905000154",
+            "04880905000154",
             "TERRAPLENAGEM E CONSERVAS MEDEIROS LTDA.",
             "2014-05-12",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -24499,12 +24436,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***2318***",
+          "cell": "***32318***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***2318***",
+            "***32318***",
             "JOÃO ADALBERTO DE ANDRADE",
             "2014-05-12",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -24526,7 +24463,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***2318***\" in row \"624\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***32318***\" in row \"624\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -24535,7 +24472,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***2318***",
+            "***32318***",
             "JOÃO ADALBERTO DE ANDRADE",
             "2014-05-12",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -24690,7 +24627,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3674837000104",
+            "03674837000104",
             "PHARMASAIS DISTRIBUICAO E COMERCIO DE ESPECIALIDADES FARMACEUTICAS LTDA",
             "2014-05-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -24721,7 +24658,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "236854000171",
+            "00236854000171",
             "C.C.L. COMÉRCIO E SERVIÇOS LTDA",
             "2014-05-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -25124,7 +25061,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9022429000154",
+            "09022429000154",
             "SUÇUARANA CONSULTORIA AMBIENTAL LTDA",
             "2014-05-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -25150,12 +25087,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***3799***",
+          "cell": "***73799***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***3799***",
+            "***73799***",
             "RAMON CARLOS FERNANDES",
             "2014-05-22",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -25177,7 +25114,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***3799***\" in row \"638\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***73799***\" in row \"638\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -25186,7 +25123,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***3799***",
+            "***73799***",
             "RAMON CARLOS FERNANDES",
             "2014-05-22",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -25217,7 +25154,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3546235000171",
+            "03546235000171",
             "ENGELMAR CONSTRUCOES LTDA -EPP",
             "2014-05-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -25248,7 +25185,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3546235000171",
+            "03546235000171",
             "ENGELMAR CONSTRUCOES LTDA -EPP",
             "2014-05-22",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -25279,7 +25216,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3546235000171",
+            "03546235000171",
             "ENGELMAR CONSTRUCOES LTDA -EPP",
             "2014-05-22",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -25372,7 +25309,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4978633000120",
+            "04978633000120",
             "AUREA PUBLICIDADE E EVENTOS LTDA EPP",
             "2014-06-02",
             "INIDONEIDADE",
@@ -25403,7 +25340,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9285197000127",
+            "09285197000127",
             "HOREBE LOCACOES SERVICOS E EVENTOS LTDA -EPP",
             "2014-06-02",
             "INIDONEIDADE",
@@ -25496,7 +25433,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9503870000158",
+            "09503870000158",
             "RECOM REFORMAS & COMERCIO LTDA -ME",
             "2014-06-09",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -25868,7 +25805,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2471055000105",
+            "02471055000105",
             "GOMES COMERCIO TRANSPORTES E REPRESENTACOES LTDA -ME",
             "2014-06-30",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -25930,7 +25867,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4196935000227",
+            "04196935000227",
             "GOLDEN DISTRIBUIDORA LTDA.",
             "2014-07-04",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -26049,12 +25986,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***1257***",
+          "cell": "***21257***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***1257***",
+            "***21257***",
             "EDNARDO GOMES DE SOUSA",
             "2014-07-09",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -26076,7 +26013,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***1257***\" in row \"662\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***21257***\" in row \"662\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -26085,7 +26022,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***1257***",
+            "***21257***",
             "EDNARDO GOMES DE SOUSA",
             "2014-07-09",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -26204,12 +26141,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***8528***",
+          "cell": "***18528***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***8528***",
+            "***18528***",
             "CAMILLA SANTOS MOURA",
             "2014-07-16",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -26231,7 +26168,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***8528***\" in row \"665\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***18528***\" in row \"665\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -26240,7 +26177,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***8528***",
+            "***18528***",
             "CAMILLA SANTOS MOURA",
             "2014-07-16",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -26271,7 +26208,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2471055000105",
+            "02471055000105",
             "GOMES COMERCIO TRANSPORTES E REPRESENTACOES LTDA -ME",
             "2014-07-18",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -26421,12 +26358,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***9641***",
+          "cell": "***79641***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***9641***",
+            "***79641***",
             "VANESSA BLANDIM DE FREITAS",
             "2014-07-18",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -26448,7 +26385,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***9641***\" in row \"669\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***79641***\" in row \"669\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -26457,7 +26394,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***9641***",
+            "***79641***",
             "VANESSA BLANDIM DE FREITAS",
             "2014-07-18",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -26488,7 +26425,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7585245000177",
+            "07585245000177",
             "THAGEMA ALIMENTOS EIRELI - ME",
             "2014-08-04",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -26576,12 +26513,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***4920***",
+          "cell": "***44920***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***4920***",
+            "***44920***",
             "CELSO LUCIANO SOARES MOURÃO",
             "2014-08-04",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -26603,7 +26540,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***4920***\" in row \"672\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***44920***\" in row \"672\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -26612,7 +26549,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***4920***",
+            "***44920***",
             "CELSO LUCIANO SOARES MOURÃO",
             "2014-08-04",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -26643,7 +26580,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "324920000165",
+            "00324920000165",
             "PH DISTRIBUIDORA DE PRODUTOS HOSPITALARES LTDA",
             "2014-08-04",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -26824,12 +26761,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***3985***",
+          "cell": "***43985***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***3985***",
+            "***43985***",
             "JOAQUIM  MARTINS MADEIRA",
             "2014-08-08",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -26851,7 +26788,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***3985***\" in row \"679\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***43985***\" in row \"679\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -26860,7 +26797,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***3985***",
+            "***43985***",
             "JOAQUIM  MARTINS MADEIRA",
             "2014-08-08",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -26886,12 +26823,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***8257***",
+          "cell": "***08257***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***8257***",
+            "***08257***",
             "CÁCIO GOMES CAMPOS",
             "2014-08-08",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -26913,7 +26850,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***8257***\" in row \"680\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***08257***\" in row \"680\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -26922,7 +26859,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***8257***",
+            "***08257***",
             "CÁCIO GOMES CAMPOS",
             "2014-08-08",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -26984,7 +26921,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "894044000102",
+            "00894044000102",
             "HIGH TECH COMÉRCIO & SERVIÇO ASSISTÊNCIA TÉCNICA LTDA.",
             "2014-08-08",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -27139,7 +27076,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1123467000191",
+            "01123467000191",
             "NEUSA CONFECCOES COMERCIAL LTDA",
             "2014-09-03",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -27170,7 +27107,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5499920000110",
+            "05499920000110",
             "HF INFORMATICA LTDA -EPP",
             "2014-09-05",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -27573,7 +27510,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2970709000145",
+            "02970709000145",
             "CONSTRUTORA LOURENÇO LTDA.",
             "2014-10-01",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -27604,7 +27541,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2970709000145",
+            "02970709000145",
             "CONSTRUTORA LOURENÇO LTDA.",
             "2014-10-01",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -27635,7 +27572,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4078774000196",
+            "04078774000196",
             "CTAP CENTRO DE TREINAMENTO APERFEIÇOAMENTO PROFISSIONAL LTDA",
             "2014-10-01",
             "INIDONEIDADE",
@@ -27666,7 +27603,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2472743000190",
+            "02472743000190",
             "DIMALAB ELETRONICS DO BRASIL LTDA - EPP",
             "2014-10-01",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -27697,7 +27634,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4570411000173",
+            "04570411000173",
             "INSTITUTO EDUCACIONAL META LTDA",
             "2014-10-01",
             "INIDONEIDADE",
@@ -27728,7 +27665,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7123889000143",
+            "07123889000143",
             "ALFA GESTAO DE SERVICOS LTDA -EPP",
             "2014-10-01",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -27759,7 +27696,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1591328000192",
+            "01591328000192",
             "ENGELUZ CONSTRUCOES LTDA",
             "2014-10-02",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -27790,7 +27727,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "7123889000143",
+            "07123889000143",
             "ALFA GESTAO DE SERVICOS LTDA -EPP",
             "2014-10-03",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -28069,7 +28006,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5912971000121",
+            "05912971000121",
             "MUNDIAL SERVIÇOS LTDA",
             "2014-10-17",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -28100,7 +28037,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5387456000170",
+            "05387456000170",
             "FORTE NUTRICAO EIRELI - ME",
             "2014-10-17",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -28131,7 +28068,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2970709000145",
+            "02970709000145",
             "CONSTRUTORA LOURENÇO LTDA.",
             "2014-10-20",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -28255,7 +28192,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6090065000151",
+            "06090065000151",
             "PH SERVICOS E ADMINISTRACAO LTDA",
             "2014-11-28",
             "INIDONEIDADE",
@@ -28317,7 +28254,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4553637000166",
+            "04553637000166",
             "SEGGRAF IMPRESSOS DE SEGURANÇA LTDA.",
             "2014-11-28",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -28348,7 +28285,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6090065000151",
+            "06090065000151",
             "PH SERVICOS E ADMINISTRACAO LTDA",
             "2014-11-28",
             "INIDONEIDADE",
@@ -28379,7 +28316,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6090065000151",
+            "06090065000151",
             "PH SERVICOS E ADMINISTRACAO LTDA",
             "2014-11-28",
             "INIDONEIDADE",
@@ -28410,7 +28347,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6090065000151",
+            "06090065000151",
             "PH SERVICOS E ADMINISTRACAO LTDA",
             "2014-11-28",
             "INIDONEIDADE",
@@ -28441,7 +28378,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6090065000151",
+            "06090065000151",
             "PH SERVICOS E ADMINISTRACAO LTDA",
             "2014-11-28",
             "INIDONEIDADE",
@@ -28529,12 +28466,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***6741***",
+          "cell": "***06741***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***6741***",
+            "***06741***",
             "JOSÉ EDSON FERREIRA",
             "2014-12-01",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -28556,7 +28493,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***6741***\" in row \"724\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***06741***\" in row \"724\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -28565,7 +28502,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***6741***",
+            "***06741***",
             "JOSÉ EDSON FERREIRA",
             "2014-12-01",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -28596,7 +28533,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5935466000100",
+            "05935466000100",
             "EMPRESARIAL SOLUCOES EM SERVICOS EIRELI - EPP",
             "2014-12-01",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -28720,7 +28657,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9656438000105",
+            "09656438000105",
             "IMR TECNOLOGIA E MARKETING LTDA.",
             "2014-12-01",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -28875,7 +28812,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2349094000134",
+            "02349094000134",
             "CONSTRUTORA RODRIGUES DE CARANGOLA LTDA.",
             "2014-12-04",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -28937,7 +28874,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5935466000100",
+            "05935466000100",
             "EMPRESARIAL SOLUCOES EM SERVICOS EIRELI - EPP",
             "2014-12-02",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -28968,7 +28905,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9328122000186",
+            "09328122000186",
             "CAMPOMORI SOCIEDADE COMERCIAL - CSC LTDA -ME",
             "2014-12-02",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -29123,7 +29060,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2952959000152",
+            "02952959000152",
             "TRANSPORTE FARIA NETTO LTDA. - ME",
             "2014-12-04",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -29154,7 +29091,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2828845000103",
+            "02828845000103",
             "ADA COMERCIO E SERVICOS LTDA -ME",
             "2014-12-03",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -29185,7 +29122,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6090065000151",
+            "06090065000151",
             "PH SERVICOS E ADMINISTRACAO LTDA",
             "2014-12-05",
             "INIDONEIDADE",
@@ -29216,7 +29153,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5296914000165",
+            "05296914000165",
             "TREVOSERVIS LTDA",
             "2014-12-05",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -29247,7 +29184,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6090065000151",
+            "06090065000151",
             "PH SERVICOS E ADMINISTRACAO LTDA",
             "2014-12-12",
             "INIDONEIDADE",
@@ -29278,7 +29215,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "2928544000143",
+            "02928544000143",
             "AHL CONSTRUCOES LTDA.",
             "2014-12-30",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -29309,7 +29246,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "582153000194",
+            "00582153000194",
             "JUVENAL RODRIGUES MENDES - CPF 49608614600 -EPP",
             "2014-12-30",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -29681,7 +29618,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "1512364000113",
+            "01512364000113",
             "MGO CONSTRUÇÕES LTDA - ME",
             "2015-01-29",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -29805,7 +29742,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "4426660000190",
+            "04426660000190",
             "RL ENTREGAS RAPIDAS LTDA -EPP",
             "2015-01-30",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -29836,7 +29773,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3869589000157",
+            "03869589000157",
             "EXPERTI EMPREENDIMENTOS LTDA",
             "2015-01-30",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -29929,7 +29866,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9022398000131",
+            "09022398000131",
             "AGEM TECNOLOGIA DISTRIBUIDORA LTDA",
             "2015-02-12",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -29960,7 +29897,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "9495600000142",
+            "09495600000142",
             "EDITORA GRÁFICA PAULA MOURA LTDA",
             "2015-02-12",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -30022,7 +29959,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3311116000130",
+            "03311116000130",
             "TCI BPO - TECNOLOGIA, CONHECIMENTO E INFORMACAO S.A.",
             "2015-02-19",
             "SUSPENSÃO POR ATÉ 5 ANOS",
@@ -30110,12 +30047,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***0102***",
+          "cell": "***10102***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***0102***",
+            "***10102***",
             "MURILINHO ANTÔNIO VALENTINO",
             "2015-02-27",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -30137,7 +30074,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***0102***\" in row \"763\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***10102***\" in row \"763\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -30146,7 +30083,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***0102***",
+            "***10102***",
             "MURILINHO ANTÔNIO VALENTINO",
             "2015-02-27",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -30239,7 +30176,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3361592000165",
+            "03361592000165",
             "CENTURIUM COMERCIAL LTDA ME",
             "2015-03-09",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -30301,7 +30238,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "6015223000109",
+            "06015223000109",
             "CARDCOM SOLUCOES EM TECNOLOGIA LTDA - EPP",
             "2015-03-09",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -30332,7 +30269,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5296914000165",
+            "05296914000165",
             "TREVOSERVIS LTDA",
             "2015-03-23",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -30611,7 +30548,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "5296914000165",
+            "05296914000165",
             "TREVOSERVIS LTDA",
             "2015-04-10",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -30797,7 +30734,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "3457246000185",
+            "03457246000185",
             "D3 INFORMATICA LTDA -EPP",
             "2015-04-28",
             "SUSPENSÃO POR ATÉ 2 ANOS",
@@ -30823,12 +30760,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***6471***",
+          "cell": "***76471***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***6471***",
+            "***76471***",
             "NICODEMOS RIBEIRO DOS SANTOS",
             "2015-04-28",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -30850,7 +30787,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***6471***\" in row \"781\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***76471***\" in row \"781\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -30859,7 +30796,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***6471***",
+            "***76471***",
             "NICODEMOS RIBEIRO DOS SANTOS",
             "2015-04-28",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -30916,12 +30853,12 @@
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         },
         {
-          "cell": "***8961***",
+          "cell": "***18961***",
           "fieldName": "cnpj_cpf_fornecedor",
           "fieldNumber": 1,
           "fieldPosition": 1,
           "cells": [
-            "***8961***",
+            "***18961***",
             "JOSÉ LUCIANO PEREIRA",
             "2015-04-28",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -30943,7 +30880,7 @@
             "#cell"
           ],
           "note": "type is \"integer/default\"",
-          "message": "Type error in the cell \"***8961***\" in row \"783\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "message": "Type error in the cell \"***18961***\" in row \"783\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
           "description": "The value does not match the schema type and format for this field."
         },
         {
@@ -30952,7 +30889,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "***8961***",
+            "***18961***",
             "JOSÉ LUCIANO PEREIRA",
             "2015-04-28",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -31014,7 +30951,7 @@
           "fieldNumber": 10,
           "fieldPosition": 11,
           "cells": [
-            "8061408000185",
+            "08061408000185",
             "VALTEIR MENDES MOREIRA",
             "2015-04-28",
             "SUSPENSÃO POR DECISÃO JUDICIAL",
@@ -31099,6 +31036,68 @@
           ],
           "note": "",
           "message": "Row at position \"786\" has an extra value in field at position \"11\"",
+          "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
+        },
+        {
+          "cell": "***91889***",
+          "fieldName": "cnpj_cpf_fornecedor",
+          "fieldNumber": 1,
+          "fieldPosition": 1,
+          "cells": [
+            "***91889***",
+            "ROSIMEIRE FERREIRA DINIZ",
+            "2015-04-28",
+            "SUSPENSÃO POR DECISÃO JUDICIAL",
+            "2015-04-28",
+            "2013-02-06",
+            "2016-02-05",
+            "1520,0",
+            "CONTROLADORIA GERAL DO ESTADO DE MINAS GERAIS",
+            "12303909720088130271",
+            "PROIBIÇÃO DE CONTRATAR COM O PODER PÚBLICO OU RECEBER BENEFÍCIOS OU INCENTIVOS FISCAIS OU CREDITÍCIOS, DIRETA OU INDIRETAMENTE, AINDA QUE POR INTERMÉDIO DE PESSOA JURÍDICA DA QUAL SEJA SÓCIO MAJORITÁRIO, PELO PRAZO DE 03 (TRÊS) ANOS, COM FUNDAMENTO NA LEI Nº 8.429, DE 2/6/1992, E NO DECRETO Nº 45.902, DE 27/1/2012."
+          ],
+          "rowNumber": 786,
+          "rowPosition": 787,
+          "code": "type-error",
+          "name": "Type Error",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "type is \"integer/default\"",
+          "message": "Type error in the cell \"***91889***\" in row \"787\" and field \"cnpj_cpf_fornecedor\" at position \"1\": type is \"integer/default\"",
+          "description": "The value does not match the schema type and format for this field."
+        },
+        {
+          "cell": "PROIBIÇÃO DE CONTRATAR COM O PODER PÚBLICO OU RECEBER BENEFÍCIOS OU INCENTIVOS FISCAIS OU CREDITÍCIOS, DIRETA OU INDIRETAMENTE, AINDA QUE POR INTERMÉDIO DE PESSOA JURÍDICA DA QUAL SEJA SÓCIO MAJORITÁRIO, PELO PRAZO DE 03 (TRÊS) ANOS, COM FUNDAMENTO NA LEI Nº 8.429, DE 2/6/1992, E NO DECRETO Nº 45.902, DE 27/1/2012.",
+          "fieldName": "",
+          "fieldNumber": 10,
+          "fieldPosition": 11,
+          "cells": [
+            "***91889***",
+            "ROSIMEIRE FERREIRA DINIZ",
+            "2015-04-28",
+            "SUSPENSÃO POR DECISÃO JUDICIAL",
+            "2015-04-28",
+            "2013-02-06",
+            "2016-02-05",
+            "1520,0",
+            "CONTROLADORIA GERAL DO ESTADO DE MINAS GERAIS",
+            "12303909720088130271",
+            "PROIBIÇÃO DE CONTRATAR COM O PODER PÚBLICO OU RECEBER BENEFÍCIOS OU INCENTIVOS FISCAIS OU CREDITÍCIOS, DIRETA OU INDIRETAMENTE, AINDA QUE POR INTERMÉDIO DE PESSOA JURÍDICA DA QUAL SEJA SÓCIO MAJORITÁRIO, PELO PRAZO DE 03 (TRÊS) ANOS, COM FUNDAMENTO NA LEI Nº 8.429, DE 2/6/1992, E NO DECRETO Nº 45.902, DE 27/1/2012."
+          ],
+          "rowNumber": 786,
+          "rowPosition": 787,
+          "code": "extra-cell",
+          "name": "Extra Cell",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "",
+          "message": "Row at position \"787\" has an extra value in field at position \"11\"",
           "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns."
         }
       ],
