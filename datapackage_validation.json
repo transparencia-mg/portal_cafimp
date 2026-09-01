@@ -1,6 +1,6 @@
 {
   "version": "4.16.6",
-  "time": 0.049,
+  "time": 0.065,
   "errors": [],
   "tasks": [
     {
@@ -68,7 +68,7 @@
           "rows": 0
         }
       },
-      "time": 0.042,
+      "time": 0.055,
       "scope": [
         "hash-count-error",
         "byte-count-error",
@@ -820,7 +820,7 @@
           "fieldPosition": 11,
           "cells": [
             "05724113000153",
-            "SECONCRETE SERVICOS DE ENGENHARIA E CONSTRUCOES EM CONCRETO LTDA - EPP",
+            "SECONCRETE SERVICOS DE ENGENHARIA E CONSTRUCOES EM CONCRETO LTDA",
             "2006-10-18",
             "SUSPENSÃO POR ATÉ 2 ANOS",
             "2006-10-18",
